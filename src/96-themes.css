@@ -1,0 +1,82 @@
+/* ===== 96 themes: Nitro color themes show through the 2018 columns ===== */
+
+/* see-through layers with Discord's own opacities (a quarter lighter in dark, like the old clients looked);
+   the guild list and channel sidebar always get a dark layer, as 2018 kept them dark in light too */
+:root.custom-theme-background {
+    --d18-nitro-fade: 0.75;
+    --d18-nitro-image: var(--custom-theme-background) fixed 0 0 / cover;
+    --d18-nitro-guilds-layer: rgb(0 0 0 / calc(var(--custom-background-gradient-lowest-opacity, 0.9) * 0.75));
+    --d18-nitro-channels-layer: rgb(0 0 0 / calc(var(--custom-background-gradient-lower-opacity, 0.85) * 0.75));
+    --d18-nitro-chat-layer: rgb(var(--custom-background-gradient-color, 0 0 0) / calc(var(--custom-background-gradient-opacity-chat, 0.8) * var(--d18-nitro-fade)));
+    --d18-nitro-members-layer: rgb(var(--custom-background-gradient-color, 0 0 0) / calc(var(--custom-background-gradient-lower-opacity, 0.85) * var(--d18-nitro-fade)));
+    --d18-nitro-guilds: linear-gradient(var(--d18-nitro-guilds-layer), var(--d18-nitro-guilds-layer)) fixed 0 0 / cover, var(--d18-nitro-image);
+    --d18-nitro-channels: linear-gradient(var(--d18-nitro-channels-layer), var(--d18-nitro-channels-layer)) fixed 0 0 / cover, var(--d18-nitro-image);
+    --d18-nitro-chat: linear-gradient(var(--d18-nitro-chat-layer), var(--d18-nitro-chat-layer)) fixed 0 0 / cover, var(--d18-nitro-image);
+    --d18-nitro-members: linear-gradient(var(--d18-nitro-members-layer), var(--d18-nitro-members-layer)) fixed 0 0 / cover, var(--d18-nitro-image);
+}
+
+:root.custom-theme-background.theme-light {
+    --d18-nitro-fade: 1;
+}
+
+:root.custom-theme-background [class*="content_"] > [class*="sidebar_"]:has(> [class*="sidebarList_"]),
+:root.custom-theme-background [class*="sidebar_"] > [class*="panels_"] {
+    --d18-panel-bg: transparent;
+    background: var(--d18-nitro-guilds);
+}
+
+:root.custom-theme-background [class*="sidebar_"] > [class*="sidebarList_"] {
+    background: var(--d18-nitro-channels);
+}
+
+:root.custom-theme-background nav[class*="wrapper_"][class*="guilds_"],
+:root.custom-theme-background nav[class*="guilds_"] > [class*="tree_"],
+:root.custom-theme-background [class*="sidebarList_"] > [class^="container_"],
+:root.custom-theme-background [class*="sidebarList_"] > [class*="privateChannels_"] {
+    background: transparent;
+}
+
+:root.custom-theme-background [class*="page_"] [class^="chat_"],
+:root.custom-theme-background [class*="page_"] [class*=" chat_"] {
+    background: var(--d18-nitro-chat);
+}
+
+:root.custom-theme-background section[class*="container_"][class*="themed_"],
+:root.custom-theme-background [class*="chatContent_"],
+:root.custom-theme-background [class*="chatContent_"] > form[class*="form_"] {
+    background: transparent;
+}
+
+/* fixed layers line up, so the date pill takes the chat layer and still hides the line under it */
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"] [class^="content_"],
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="isUnread_"] [class*="unreadPill_"] {
+    background: var(--d18-nitro-chat);
+}
+
+:root.custom-theme-background [class*="membersWrap_"] {
+    --d18-members-bg: transparent;
+    background: var(--d18-nitro-members);
+}
+
+:root.custom-theme-background main:has(> [class*="tabBody_"] > [class*="peopleColumn_"]) {
+    background: var(--d18-nitro-chat);
+}
+
+:root.custom-theme-background main [class*="tabBody_"]:has(> [class*="peopleColumn_"]) {
+    background: transparent;
+}
+
+:root.custom-theme-background [class*="nowPlayingColumn_"] {
+    background: var(--d18-nitro-members);
+}
+
+/* light: the message box gets a thin border, as in the older light clients */
+.theme-light [class*="channelTextArea_"] > [class*="scrollableContainer_"] {
+    box-shadow: inset 0 0 0 1px var(--d18-border-input);
+}
+
+/* light: the server column stays dark, so the title bar above it stays dark too and the white wordmark shows */
+:root.theme-light:not(.custom-theme-background) [class*="base_"] > [class^="bar_"]:has(> [class*="trailing_"]),
+:root.theme-light:not(.custom-theme-background) [class^="bar_"][class*="systemBar_"] {
+    background: var(--d18-guilds);
+}

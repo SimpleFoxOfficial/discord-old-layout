@@ -71,6 +71,8 @@
     box-shadow: var(--d18-picker-shadow);
     padding-top: 12px;
     row-gap: 0;
+    /* gif, sticker and soundboard headers pad with this, emoji header uses 12px */
+    --custom-gif-picker-gutter-size: 12px;
 }
 
 :is([class^="emojiPicker_"], [class*=" emojiPicker_"]) {

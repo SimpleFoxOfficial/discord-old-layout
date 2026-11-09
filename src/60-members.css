@@ -1,6 +1,7 @@
 /* 60-members: member list, activity cards, bot tag (2018-07-02 dark) */
 
 :root {
+    --d18-members-bg: #2f3136;
     --d18-members-group: hsla(0, 0%, 100%, 0.4);
     --d18-members-name: #b9bbbe;
     --d18-members-offline: hsla(216, 4%, 74%, 0.9);
@@ -13,11 +14,11 @@
 [class*="membersWrap_"] {
     --custom-member-list-width: 240px;
     min-width: 240px;
-    background: var(--d18-channels);
+    background: var(--d18-members-bg);
 }
 
 [class*="membersWrap_"] [class*="members_"][role="list"] {
-    background: var(--d18-channels);
+    background: var(--d18-members-bg);
     padding: 0 0 20px;
 }
 
@@ -118,7 +119,7 @@
 
 [class*="membersWrap_"] [role="listitem"][class*="container_"]:hover,
 [class*="membersWrap_"] [role="listitem"][aria-expanded="true"] {
-    color: #ffffff;
+    color: var(--d18-text-header);
 }
 
 [class*="membersWrap_"] [role="listitem"][aria-expanded="true"] [class*="childContainer_"],
@@ -234,7 +235,7 @@
 }
 
 [class*="membersWrap_"] [class*="usesCardRows_"]:hover [class*="contentTitle_"] {
-    color: #ffffff !important;
+    color: var(--d18-text-header) !important;
 }
 
 [class*="membersWrap_"] [class*="usesCardRows_"] [class*="badgesContainer_"] {

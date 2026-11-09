@@ -15,20 +15,29 @@
     --occ-radius: var(--d18-radius);
     --occ-font: var(--d18-font-primary);
     --occ-leave-text: "Leave Call";
+    --occ-art: url("https://discord.com/assets/976b56da8d86af63aef4f55afb553a9f.png");
 }
+
+/* 2019 console doodle art; the light theme used the blurple copy */
+[class*="callContainer_"].theme-light {
+    --occ-art: url("https://discord.com/assets/171a53265b4d807b208e80f1acba3762.png");
+}
+
 /* Panel */
 
 [class*="minimum_"]:has(> [class*="callContainer_"]) {
     background: var(--occ-panel) !important;
 }
 
-[class*="minimum_"] > [class*="callContainer_"] :is([class^="root_"], [class*=" root_"]):has(> [class*="videoControls_"]) {
-    background: transparent;
-}
-
 div[class*="callContainer_"] {
     --status-speaking: var(--occ-green);
     --custom-base-tile-border-radius: var(--occ-radius);
+    background: var(--occ-panel) var(--occ-art) repeat !important;
+    background-size: 260px 260px !important;
+}
+
+[class*="callContainer_"] > :is([class^="root_"], [class*=" root_"]):has(> [class*="videoControls_"]) {
+    background: transparent !important;
 }
 
 [class*="callContainer_"] [class*="gradientContainer_"] {
@@ -266,4 +275,140 @@ div[class*="callContainer_"] {
     background: rgba(0, 0, 0, 0.6) !important;
     color: #fff !important;
     font-family: var(--occ-font);
+}
+
+/* Focused layout: video in the middle, everyone else as 60px squares top right (2018 XLARGE call avatars) */
+
+[class*="callContainer_"] [class*="tileWrapper_"]:has(> [class*="participantsWrapperAnimated_"]) {
+    position: static;
+}
+
+[class*="callContainer_"] [class*="tileWrapper_"] > [class*="videoFrame_"] {
+    top: 0 !important;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] {
+    top: 60px !important;
+    right: 16px !important;
+    bottom: auto !important;
+    left: auto !important;
+    z-index: 2;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] > :is([class^="root_"], [class*=" root_"]) {
+    height: auto !important;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="tileSizer_"] {
+    flex: 0 0 auto;
+    width: 60px !important;
+    height: 60px !important;
+    margin: 0 0 0 8px !important;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="tileSizer_"] > [class*="tile_"],
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="tileSizer_"] > * > [class*="tile_"] {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: var(--occ-radius) !important;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="tileSizer_"] > * > [class*="tile_"] {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="avatarWrapper_"] {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="avatarWrapper_"] > svg {
+    width: 100%;
+    height: 100%;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="avatarWrapper_"] foreignObject {
+    mask: none;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="avatarWrapper_"] img {
+    border-radius: 0 !important;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="overlayContainer_"] {
+    display: none;
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="selectedScreen_"] {
+    background: none !important;
+    box-shadow: inset 0 0 0 2px var(--d18-brand);
+    border-radius: var(--occ-radius);
+}
+
+[class*="callContainer_"] [class*="participantsWrapperAnimated_"] [class*="selectedIcon_"] {
+    display: none;
+}
+
+/* Voice channel preview (not joined) */
+
+[class*="callContainer_"] [class*="pulseGradient_"] {
+    display: none;
+}
+
+[class*="callContainer_"] [class*="pulseGradient_"] ~ [class*="channelName_"] {
+    margin-bottom: 4px;
+    padding: 8px 10px;
+    color: #fff !important;
+    font-family: var(--occ-font);
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+[class*="callContainer_"] [class*="participantsRow_"] {
+    color: var(--d18-text-h5) !important;
+    font-family: var(--occ-font);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+[class*="callContainer_"] [class*="participantsRow_"] > * {
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+
+[class*="callContainer_"] [class*="joinButton_"] {
+    margin-top: 16px;
+}
+
+[class*="callContainer_"] [class*="joinButton_"] > button {
+    min-width: 96px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 2px 16px !important;
+    border: 0 !important;
+    border-radius: var(--occ-radius) !important;
+    background: var(--occ-green) !important;
+    color: #fff !important;
+    font-family: var(--occ-font);
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: background-color 0.17s ease;
+}
+
+[class*="callContainer_"] [class*="joinButton_"] > button > [class*="buttonChildrenWrapper_"] {
+    padding: 0 !important;
+}
+
+[class*="callContainer_"] [class*="joinButton_"] > button:hover {
+    background: var(--occ-green-hover) !important;
+}
+
+[class*="callContainer_"] [class*="joinButton_"] > button:active {
+    background: var(--occ-green-active) !important;
 }

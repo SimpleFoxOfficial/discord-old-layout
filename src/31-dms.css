@@ -87,9 +87,9 @@
     margin-inline-end: 12px;
 }
 
-/* names: white at .3, full on hover and selected */
+/* 2018 names were white at .3, which reads as muted today: plain rows use the activity grey, muted DMs stay dim */
 [class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="name_"] {
-    color: var(--d18-dm-name);
+    color: var(--d18-text-h5);
     font-family: var(--d18-font-primary);
     font-size: 15px;
     font-weight: 500;
@@ -97,12 +97,18 @@
     letter-spacing: 0;
 }
 [class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="content_"] {
-    opacity: .3;
     padding-right: 5px;
 }
-[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"]:hover [class*="content_"],
-[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"][class*="selected_"] [class*="content_"] {
-    opacity: 1;
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="muted_"] [class*="name_"] {
+    color: var(--d18-text-muted);
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"]:hover [class*="name_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"][class*="selected_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"]:hover [class*="muted_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"][class*="selected_"] [class*="muted_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"][class*="muted_"]:hover [class*="name_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"][class*="muted_"][class*="selected_"] [class*="name_"] {
+    color: var(--d18-dm-name);
 }
 
 /* activity / members line */

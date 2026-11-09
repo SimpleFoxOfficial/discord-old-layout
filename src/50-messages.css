@@ -10,6 +10,9 @@
     --d18-msg-red-text: rgba(240, 71, 71, 0.8);
     --d18-msg-bar: rgba(114, 137, 218, 0.9);
     --d18-msg-bar-alt: #c9d2f0;
+    --d18-msg-system: hsla(0, 0%, 100%, 0.5);
+    --d18-msg-reply: hsla(0, 0%, 100%, 0.5);
+    --d18-msg-reply-hover: hsla(0, 0%, 100%, 0.8);
     --d18-msg-text-size: 0.9375rem;
 }
 
@@ -225,7 +228,7 @@
 }
 
 [class*="messagesWrapper_"] [class*="systemMessage_"] [class*="container_"][class*="cozy_"] {
-    color: hsla(0, 0%, 100%, 0.5);
+    color: var(--d18-msg-system);
     font-size: var(--d18-msg-text-size);
     line-height: 18px;
     padding: 0;
@@ -314,14 +317,22 @@
 
 /* Replies (new): a quiet 2018 style line above the message */
 [class*="messagesWrapper_"] [class*="cozyMessage_"] [class*="repliedMessage_"] {
-    font-size: 0.875rem;
-    color: hsla(0, 0%, 100%, 0.5);
+    height: 18px;
     margin-bottom: 4px;
+    font-size: 0.875rem;
+    line-height: 18px;
+    color: var(--d18-msg-reply);
 }
 
+/* spine runs from the avatar column center over to the small avatar */
 [class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="repliedMessageClickableSpine_"] {
+    top: 9px;
+    left: -41px;
+    width: 36px;
+    height: 9px;
+    margin: 0;
     border-color: var(--d18-embed-pill);
-    border-radius: 3px 0 0 0;
+    border-radius: 4px 0 0 0;
 }
 
 [class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="repliedMessageClickableSpine_"]:hover {
@@ -331,16 +342,38 @@
 [class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="replyAvatar_"] {
     width: 16px;
     height: 16px;
+    margin: 0 4px 0 0;
+    border-radius: 50%;
 }
 
 [class*="messagesWrapper_"] [class*="repliedMessage_"] [class^="username_"] {
+    flex-shrink: 0;
+    margin-inline-end: 4px;
     font-size: 0.875rem;
     font-weight: 500;
-    opacity: 0.8;
+    line-height: 18px;
+    letter-spacing: 0;
 }
 
+[class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="repliedTextPreview_"] {
+    min-width: 0;
+    line-height: 18px;
+}
+
+/* the cozy content rule pulls every messageContent_ 60px left, the preview is one too */
 [class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="repliedTextContent_"] {
-    color: hsla(0, 0%, 100%, 0.5);
+    display: block !important;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--d18-msg-reply);
+}
+
+[class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="repliedTextPreview_"]:hover [class*="repliedTextContent_"] {
+    color: var(--d18-msg-reply-hover);
 }
 
 /* APP tag in the 2018 bot tag shape */
@@ -370,14 +403,14 @@
 [class*="typingDots_"] {
     font-size: 13px;
     font-weight: 400;
-    color: hsla(0, 0%, 100%, 0.8);
+    color: var(--d18-typing-text);
 }
 
 [class*="typingDots_"] strong {
     font-weight: 700;
-    color: hsla(0, 0%, 100%, 0.8);
+    color: var(--d18-typing-text);
 }
 
 [class*="typing_"] > [class*="ellipsis_"] {
-    color: hsla(0, 0%, 100%, 0.8);
+    color: var(--d18-typing-text);
 }

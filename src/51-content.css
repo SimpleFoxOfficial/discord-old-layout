@@ -8,6 +8,7 @@
     --d18-content-attachment-border: rgba(47, 49, 54, 0.6);
     --d18-content-invite-bg: rgba(47, 49, 54, 0.6);
     --d18-content-invite-border: rgba(47, 49, 54, 0.9);
+    --d18-content-invite-name: #f6f6f7;
     --d18-content-quote: #4f545c;
     --d18-content-spoiler-shown: hsla(0, 0%, 100%, 0.1);
 }
@@ -248,7 +249,7 @@
 }
 
 [class*="messagesWrapper_"] [class*="inviteEmbed_"] [class*="guildInfo_"] h3 {
-    color: #f6f6f7;
+    color: var(--d18-content-invite-name);
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;

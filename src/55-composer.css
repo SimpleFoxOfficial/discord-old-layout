@@ -311,6 +311,18 @@
     background: var(--d18-typing-text);
 }
 
+/* the typing row is under the input now, so Discord's fade over the last messages has nothing to make room for */
+[class*="chatGradientBase_"] {
+    display: none;
+}
+
+[class*="gradientDefault_"],
+[class*="typingGradientAtBottom_"],
+[class*="typingGradientNotAtBottom_"] {
+    -webkit-mask: none;
+    mask: none;
+}
+
 /* 2018 composer buttons only brighten on hover, no fill */
 [class*="scrollableContainer_"] [class*="attachButton_"][class*="button_"]:hover,
 [class*="channelTextArea_"] [class*="buttons_"] [class*="button_"]:hover {

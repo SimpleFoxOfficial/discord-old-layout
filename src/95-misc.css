@@ -3,6 +3,9 @@
 :root {
   --d18-control-radius: 3px;
   --d18-check-border: hsla(0, 0%, 100%, 0.2);
+  --d18-button-primary-bg: #4f545c;
+  --d18-button-primary-hover: #72767d;
+  --d18-button-primary-text: #f6f6f7;
   --d18-switch-off: #72767d;
   --d18-switch-on: #7289da;
   --d18-slider-bar: #4f545c;
@@ -72,15 +75,15 @@ button[class*="button_"][class*="hasText_"]:is([class*="primary_"], [class*="sec
 }
 button[class*="button_"][class*="secondary_"]:hover,
 button[class*="button_"][class*="secondary_"]:active {
-  background-color: #72767d;
-  color: #f6f6f7;
+  background-color: var(--d18-button-primary-hover);
+  color: var(--d18-button-primary-text);
 }
 button[class*="button_"][class*="lookFilled_"][class*="colorPrimary_"] {
-  background-color: #4f545c;
-  color: #f6f6f7;
+  background-color: var(--d18-button-primary-bg);
+  color: var(--d18-button-primary-text);
 }
 button[class*="button_"][class*="lookFilled_"][class*="colorPrimary_"]:hover {
-  background-color: #72767d;
+  background-color: var(--d18-button-primary-hover);
 }
 button[class*="button_"][class*="rounded_"] {
   border-radius: var(--d18-control-radius);
@@ -181,7 +184,7 @@ label:has(input:checked) > [class*="switchIndicator_"][data-mana-component="swit
   --checkbox-background-default: transparent;
   --checkbox-background-hover: transparent;
   --checkbox-border-default: var(--d18-check-border);
-  --checkbox-border-hover: hsla(0, 0%, 100%, 0.3);
+  --checkbox-border-hover: var(--d18-text-placeholder);
   --checkbox-background-selected-default: var(--d18-brand);
   --checkbox-background-selected-hover: var(--d18-brand);
   --checkbox-border-selected-default: var(--d18-brand);
@@ -198,7 +201,7 @@ label:has(input:checked) > [class*="switchIndicator_"][data-mana-component="swit
   --radio-background-default: transparent;
   --radio-border-default: var(--d18-check-border);
   --radio-background-hover: transparent;
-  --radio-border-hover: hsla(0, 0%, 100%, 0.3);
+  --radio-border-hover: var(--d18-text-placeholder);
   --radio-background-selected-default: var(--d18-brand);
   --radio-border-selected-default: var(--d18-brand);
   --radio-background-selected-hover: var(--d18-brand);

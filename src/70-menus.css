@@ -114,7 +114,7 @@
   font-size: 12px;
 }
 [role="menu"] [class*="colorDefault_"][class*="focused_"] [class*="subtext_"] {
-  color: hsla(0, 0%, 100%, 0.6);
+  color: var(--d18-menu-item);
 }
 [role="menu"] [class*="shortcutContainer_"] {
   opacity: 0.8;
@@ -140,7 +140,7 @@
 }
 [role="menu"] [class*="colorDefault_"][class*="focused_"] svg[class*="caret_"],
 [role="menu"] [class*="colorDefault_"]:hover svg[class*="caret_"] {
-  color: #ffffff;
+  color: var(--d18-menu-item-hover);
 }
 [role="menu"] [class*="colorDefault_"][class*="focused_"]:not([class*="checkboxContainer_"]) path {
   fill: currentColor;
@@ -157,7 +157,7 @@
 [role="menu"] [class*="checkboxContainer_"] [class*="checkboxIndicator_"] {
   width: 18px;
   height: 18px;
-  border: 2px solid hsla(0, 0%, 100%, 0.2);
+  border: 2px solid var(--d18-check-border);
   border-radius: 2px;
   background-color: transparent;
 }
