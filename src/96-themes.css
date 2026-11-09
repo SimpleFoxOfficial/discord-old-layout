@@ -124,11 +124,6 @@
     background: transparent;
 }
 
-/* Discord swaps in a full-width tint on hover, keep the 2018 bar and tint */
-:root.custom-theme-background [class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"]:is(:hover, [class*="selected_"]) {
-    background: linear-gradient(to right, transparent 54px, rgba(250, 166, 26, 0.2) 54px, rgba(250, 166, 26, 0.2) 60px, var(--d18-mentioned-bg) 60px);
-}
-
 :root.custom-theme-background [class*="membersWrap_"] {
     --d18-members-bg: transparent;
     background: var(--d18-nitro-members);

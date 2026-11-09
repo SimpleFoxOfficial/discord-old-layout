@@ -115,16 +115,32 @@
     margin-left: 3px;
 }
 
-/* Mentioned message: bar and tint on the text column only */
-[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"] {
-    background: linear-gradient(to right, transparent 54px, rgba(250, 166, 26, 0.2) 54px, rgba(250, 166, 26, 0.2) 60px, var(--d18-mentioned-bg) 60px);
+/* Mentioned message: 2018 tinted only the message text, with the bar just left of it.
+   The text box reaches under the avatar (-60px margin, 60px padding), so the tint is clipped to its content */
+[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"],
+[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"]:is(:hover, [class*="selected_"]) {
+    background: transparent;
 }
 
 [class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"]::before {
-    background: var(--d18-mentioned-border);
+    display: none;
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"] > [class*="contents_"] > [class*="messageContent_"] {
+    position: relative;
+    background: var(--d18-mentioned-bg) content-box;
+    border-radius: 0 2px 2px 0;
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"] > [class*="contents_"] > [class*="messageContent_"]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
     left: 54px;
-    inset-inline-start: 54px;
-    width: 4px;
+    width: 2px;
+    background: var(--d18-mentioned-bg);
+    border-left: 4px solid var(--d18-mentioned-border);
     border-radius: 2px 0 0 2px;
 }
 

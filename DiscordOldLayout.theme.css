@@ -5598,14 +5598,48 @@ section[class*="container_"].themed_ybUK7Z {
     line-height: 0.625rem;
     margin-left: 3px;
 }:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_SY_P2T,
-:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_YtPzLx {
-    background: linear-gradient(to right, transparent 54px, rgba(250, 166, 26, 0.2) 54px, rgba(250, 166, 26, 0.2) 60px, var(--d18-mentioned-bg) 60px);
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_YtPzLx,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_SY_P2T:is(:hover, [class*="selected_"]),
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_YtPzLx:is(:hover, [class*="selected_"]) {
+    background: transparent;
 }:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_SY_P2T::before,
 :is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_YtPzLx::before {
-    background: var(--d18-mentioned-border);
+    display: none;
+}:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_2i8Bfm,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_2qmWP0,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_Qo6EL-,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_RiVzCj,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_SOY5H6,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_YtPzLx,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_bbJCi7,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_c3PP-T,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_k0hQNw,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_tqg020,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_w20Das,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_yRVHqK {
+    position: relative;
+    background: var(--d18-mentioned-bg) content-box;
+    border-radius: 0 2px 2px 0;
+}:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_2i8Bfm::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_2qmWP0::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_Qo6EL-::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_RiVzCj::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_SOY5H6::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_YtPzLx::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_bbJCi7::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_c3PP-T::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_k0hQNw::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_tqg020::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_w20Das::after,
+:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T:is(.mentioned_SY_P2T, .mentioned_YtPzLx) > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > .messageContent_yRVHqK::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
     left: 54px;
-    inset-inline-start: 54px;
-    width: 4px;
+    width: 2px;
+    background: var(--d18-mentioned-bg);
+    border-left: 4px solid var(--d18-mentioned-border);
     border-radius: 2px 0 0 2px;
 }:is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) [class*="divider_"][role="separator"] {
     margin: var(--d18-msg-group-pad) var(--d18-msg-margin-right) 0 var(--d18-msg-margin-left);
@@ -12640,9 +12674,6 @@ label:has(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"]
     order: 2;
     margin-top: -1px;
     background: transparent;
-}:root.custom-theme-background :is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_SY_P2T:is(:hover, [class*="selected_"]),
-:root.custom-theme-background :is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) .cozyMessage_SY_P2T.mentioned_YtPzLx:is(:hover, [class*="selected_"]) {
-    background: linear-gradient(to right, transparent 54px, rgba(250, 166, 26, 0.2) 54px, rgba(250, 166, 26, 0.2) 60px, var(--d18-mentioned-bg) 60px);
 }:root.custom-theme-background .membersWrap_86es0b {
     --d18-members-bg: transparent;
     background: var(--d18-nitro-members);
