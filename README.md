@@ -50,11 +50,11 @@ Discord OldLayout recreates the layout and interface Discord had in its 2018-201
 
 ## Install
 
-1. Download [`DiscordOldLayout.theme.css`](DiscordOldLayout.theme.css).
-2. In Discord open Settings > Equicord (or Vencord) > Themes > Open Themes Folder and drop the file in.
-3. Tick **Discord OldLayout** in the themes list.
+1. Download [`DiscordOldLayout.theme.css`](DiscordOldLayout.theme.css) and [`DiscordOldLayout.fonts.theme.css`](DiscordOldLayout.fonts.theme.css).
+2. In Discord open Settings > Equicord (or Vencord) > Themes > Open Themes Folder and drop both files in.
+3. Tick **Discord OldLayout** and **Discord OldLayout Fonts** in the themes list.
 
-Discord stopped hosting the regular and bold weights of Whitney, so those two fall back to Arial unless you add them yourself as a separate theme. The other weights load straight from Discord.
+Discord stopped hosting the regular and bold weights of Whitney, so the fonts theme carries those two. The other weights load straight from Discord. Copies of every font the theme uses are kept in [`fonts/`](fonts) in case Discord removes more of them.
 
 ## Building
 
