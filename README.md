@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.2.0-7289da?style=flat-square" alt="Version 2.2.0">
+  <img src="https://img.shields.io/badge/version-0.2.0-7289da?style=flat-square" alt="Version 0.2.0">
   <img src="https://img.shields.io/badge/Equicord-supported-43b581?style=flat-square" alt="Works with Equicord">
   <img src="https://img.shields.io/badge/Vencord-supported-43b581?style=flat-square" alt="Works with Vencord">
   <img src="https://img.shields.io/badge/Discord-stable%20667580-2f3136?style=flat-square&logo=discord&logoColor=white" alt="Built for Discord stable 667580">
