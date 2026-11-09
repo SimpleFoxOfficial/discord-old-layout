@@ -86,7 +86,8 @@
 
 :root.custom-theme-background section[class*="container_"][class*="themed_"],
 :root.custom-theme-background [class*="chatContent_"],
-:root.custom-theme-background [class*="chatContent_"] > form[class*="form_"] {
+:root.custom-theme-background [class*="chatContent_"] > form[class*="form_"],
+:root.custom-theme-background [class*="chatContent_"] > form [class*="base_"][class*="inTextChannel_"] {
     background: transparent;
 }
 

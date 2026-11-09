@@ -12648,7 +12648,16 @@ label:has(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"]
 :root.custom-theme-background .chatContent_z_gUBg > form.waveform_IMhZPA,
 :root.custom-theme-background .chatContent_z_gUBg > form.waveform_bWT6VE,
 :root.custom-theme-background .chatContent_z_gUBg > form.waveform_seLrDE,
-:root.custom-theme-background .chatContent_z_gUBg > form.waveform_wUYaqe {
+:root.custom-theme-background .chatContent_z_gUBg > form.waveform_wUYaqe,
+:root.custom-theme-background .chatContent_z_gUBg > form .base_CAMiwx.inTextChannel_U9Tvvz,
+:root.custom-theme-background .chatContent_z_gUBg > form .base_HcMfim.inTextChannel_U9Tvvz,
+:root.custom-theme-background .chatContent_z_gUBg > form .base_IXpFcz.inTextChannel_U9Tvvz,
+:root.custom-theme-background .chatContent_z_gUBg > form .base_MMA_-K.inTextChannel_U9Tvvz,
+:root.custom-theme-background .chatContent_z_gUBg > form .base_U9Tvvz.inTextChannel_U9Tvvz,
+:root.custom-theme-background .chatContent_z_gUBg > form .base__BLAbN.inTextChannel_U9Tvvz,
+:root.custom-theme-background .chatContent_z_gUBg > form .base_lMvXrQ.inTextChannel_U9Tvvz,
+:root.custom-theme-background .chatContent_z_gUBg > form .base_ngaTpP.inTextChannel_U9Tvvz,
+:root.custom-theme-background .chatContent_z_gUBg > form .base_pog62O.inTextChannel_U9Tvvz {
     background: transparent;
 }:root.custom-theme-background :is(.messagesWrapper_8AE1Qq, .messagesWrapper_UU236g) [class*="divider_"][role="separator"] {
     border-top-color: transparent;
