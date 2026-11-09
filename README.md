@@ -46,7 +46,7 @@ Discord OldLayout recreates the layout and interface Discord had in its 2018-201
 - Full-screen settings with the round ESC button
 - The old call bar with the red LEAVE CALL and green JOIN CALL buttons
 - Newer things like activity cards, profile widgets, quests and the soundboard restyled to fit instead of removed
-- Nitro color themes flattened back to the 2018 colors
+- Nitro color themes show through the 2018 layout, and the light theme keeps the dark server and channel columns of the older light clients
 
 ## Install
 
@@ -81,11 +81,12 @@ node build.js
 | `80-home.css` | Friends page |
 | `85-pickers.css` | Emoji, GIF and sticker pickers |
 | `90-voice.css` | Call screen |
+| `96-themes.css` | Nitro color themes and light theme touches |
 | `98-icons.css` | 2018 icon swaps |
 
 ## Issues
 
-Known gaps are tracked in [Issues](../../issues). There are templates for bugs, parts that aren't styled yet, and things that broke after a Discord update.
+Found something broken or not styled yet? Open an [issue](../../issues). There are templates for bugs, parts that aren't styled yet, and things that broke after a Discord update.
 
 ---
 
