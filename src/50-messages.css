@@ -265,60 +265,91 @@
     margin-inline-start: 6px;
 }
 
-/* Hover actions: 2018 had faint 16px icons at the right of the text line */
+/* Hover actions: faint 16px icons in a small 2018 popout box at the right of the text line */
 [class*="cozyMessage_"] > [class^="buttonContainer_"] [class^="buttons_"] {
-    top: 6px;
-    inset-inline-end: 20px;
+    top: 2px;
+    inset-inline-end: 16px;
     padding: 0;
 }
 
 [class*="cozyMessage_"][class*="groupStart_"] > [class^="buttonContainer_"] [class^="buttons_"] {
-    top: calc(var(--d18-msg-group-pad) + 24px);
+    top: calc(var(--d18-msg-group-pad) + 20px);
 }
 
 [class*="cozyMessage_"][class*="hasReply_"] > [class^="buttonContainer_"] [class^="buttons_"] {
-    top: calc(var(--d18-msg-group-pad) + 50px);
+    top: calc(var(--d18-msg-group-pad) + 46px);
 }
 
-[class*="cozyMessage_"][class*="systemMessage_"] > [class^="buttonContainer_"] [class^="buttons_"] {
-    top: calc(var(--d18-msg-group-pad) + 1px);
+[class*="cozyMessage_"][class*="systemMessage_"][class*="groupStart_"] > [class^="buttonContainer_"] [class^="buttons_"] {
+    top: calc(var(--d18-msg-group-pad) - 1px);
 }
 
 [class*="cozyMessage_"] [class*="buttonsInner_"][class*="popover_"][class*="popover_"] {
-    background: transparent;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2px;
+    height: 24px;
+    padding: 0 2px;
+    background: var(--d18-bg-primary);
     border: none;
-    border-radius: 0;
-    box-shadow: none !important;
-    padding: 0;
-    gap: 6px;
-    height: 16px;
+    border-radius: 3px;
+    box-shadow: var(--d18-elevation-border), var(--d18-elevation-low) !important;
+}
+
+[class*="cozyMessage_"] [class*="buttonsInner_"] > span {
+    display: flex;
+    flex: 0 0 auto;
 }
 
 [class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"][class*="hoverBarButton_"] {
-    width: 16px;
-    min-width: 16px;
-    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
     padding: 0;
-    border-radius: 0;
+    border-radius: 3px;
     background: transparent;
     color: var(--d18-text-header);
-    opacity: 0.4;
 }
 
 [class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"][class*="hoverBarButton_"]:hover {
     background: transparent;
-    opacity: 1;
 }
 
 [class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"] [class*="icon_"] {
     width: 16px;
     height: 16px;
+    opacity: 0.4;
     transform: none !important;
 }
 
+/* quick reaction emoji sit in a div, the other buttons are plain svgs */
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"] div[class*="icon_"] {
+    opacity: 0.6;
+}
+
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"]:hover [class*="icon_"],
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"][class*="selected_"] [class*="icon_"] {
+    opacity: 1;
+}
+
+/* quick reactions: the emoji node is 16x20 by default and spills into its neighbour */
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"] [class*="icon_"] > .emoji,
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"] [class*="icon_"] > img {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
 [class*="cozyMessage_"] [class*="buttonsInner_"] [class*="separator_"] {
+    flex: 0 0 auto;
+    width: 1px;
     height: 12px;
-    margin: 2px 0;
+    margin: 0 2px;
     background: var(--d18-msg-date-line);
 }
 

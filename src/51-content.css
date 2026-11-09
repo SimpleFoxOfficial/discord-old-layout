@@ -70,21 +70,29 @@
     background-color: var(--d18-content-spoiler-shown);
 }
 
-/* Mentions */
+/* Mentions: flat 2018 pills, nitro themes otherwise add a brand text shadow */
 [class*="messagesWrapper_"] [class*="markup_"] .mention,
-[class*="messagesWrapper_"] [class*="markup_"] [class*="wrapper_"][class*="interactive"] {
+[class*="messagesWrapper_"] [class*="markup_"] [class*="roleMention_"] {
     background: var(--d18-mention-bg);
     color: var(--d18-brand);
     font-weight: 500;
     border-radius: 0;
-    padding: 0;
+    padding: 0 1px;
+    text-shadow: none;
     transition: background-color 0.05s, color 0.05s;
 }
 
-[class*="messagesWrapper_"] [class*="markup_"] .mention:hover,
-[class*="messagesWrapper_"] [class*="markup_"] [class*="wrapper_"][class*="interactive"]:hover {
+[class*="messagesWrapper_"] [class*="markup_"] .mention.interactive:hover,
+[class*="messagesWrapper_"] [class*="markup_"] [class*="roleMention_"].interactive:hover {
     background: var(--d18-mention-bg-hover);
     color: #fff;
+}
+
+/* 2018 dropped the pill inside a message that mentions you */
+[class*="messagesWrapper_"] [class*="mentioned_"] [class*="markup_"] .mention,
+[class*="messagesWrapper_"] [class*="mentioned_"] [class*="markup_"] .mention.interactive:hover {
+    background: transparent;
+    color: var(--d18-brand);
 }
 
 /* Emoji: 22px inline, 32px jumbo */

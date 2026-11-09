@@ -40,7 +40,7 @@ Discord OldLayout recreates the layout and interface Discord had in its 2018-201
 
 ## What it does
 
-- 2018 dark palette, the Whitney font and the 2018 icons
+- 2018 dark palette and the Whitney font, with Discord's current icons sized and spaced the 2018 way
 - The old Windows title bar, round server icons, and the account panel back under the channel list
 - 2018 message layout, embeds, popouts, context menus and tooltips
 - Full-screen settings with the round ESC button
@@ -82,7 +82,6 @@ node build.js
 | `85-pickers.css` | Emoji, GIF and sticker pickers |
 | `90-voice.css` | Call screen |
 | `96-themes.css` | Nitro color themes and light theme touches |
-| `98-icons.css` | 2018 icon swaps |
 
 ## Issues
 
