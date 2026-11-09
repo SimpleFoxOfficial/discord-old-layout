@@ -1,4 +1,4 @@
-/* Call screen (ported from Old Call Screen) */
+/* Call screen */
 
 /* Button text follows Discord's own labels, so it stays right in other languages and modes (Stop Watching, Decline). Only English "Disconnect" is swapped for --occ-leave-text. */
 :root {

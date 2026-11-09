@@ -1,7 +1,7 @@
 /**
- * @name Old Call Screen
+ * @name Discord OldLayout
  * @author simplefox
- * @version 2.1.0
- * @description Discord as it looked in mid-2018 (the Old Call Screen era): 2018 colors, Whitney, icons, layout and call screen, with newer features restyled to match.
+ * @version 2.2.0
+ * @description Discord as it looked in mid-2018 (the Old Call Screen era): 2018 colors, Whitney, icons, layout and call screen.
  */
 

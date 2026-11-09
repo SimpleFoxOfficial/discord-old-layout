@@ -1,4 +1,4 @@
-// Builds OldCallScreen.theme.css from src/ for the Discord build listed in classes.txt.
+// Builds DiscordOldLayout.theme.css from src/ for the Discord build listed in classes.txt.
 // Rules are written with [class*="name_"] fragments; the build turns them into the exact class
 // names of the current build, which keeps the theme fast. Run fetch-classes.js first after a
 // Discord update, then this.
@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const srcDir = path.join(__dirname, 'src');
 const classesFile = path.join(__dirname, 'classes.txt');
-const outFile = path.join(__dirname, 'OldCallScreen.theme.css');
+const outFile = path.join(__dirname, 'DiscordOldLayout.theme.css');
 const headerFile = path.join(__dirname, 'src', 'header.txt');
 const EXPAND_MAX = +(process.env.EXPAND_MAX || 64);
 const ANCESTOR_MAX = 60;
@@ -156,7 +156,7 @@ function compileRuleList(css) {
   const stack = [];
   while (i < css.length) {
     const c = css[i];
-    if (c === '/' && css[i + 1] === '*') { const e = css.indexOf('*/', i + 2); out += css.slice(i, e + 2); i = e + 2; continue; }
+    if (c === '/' && css[i + 1] === '*') { i = css.indexOf('*/', i + 2) + 2; continue; }
     if (c === '"' || c === "'") { const q = c; let j = i + 1; while (j < css.length && css[j] !== q) { if (css[j] === '\\') j++; j++; } prelude += css.slice(i, j + 1); i = j + 1; continue; }
     if (c === '{') {
       const p = prelude.trim();
@@ -183,7 +183,7 @@ function compileRuleList(css) {
 }
 
 const parts = fs.readdirSync(srcDir).filter(n => /^\d\d-.*\.css$/.test(n)).sort();
-const body = parts.map(n => compileRuleList(fs.readFileSync(path.join(srcDir, n), 'utf8').trim())).join('\n\n');
+const body = parts.map(n => compileRuleList(fs.readFileSync(path.join(srcDir, n), 'utf8').trim()).replace(/\n{3,}/g, '\n\n').trim()).join('\n\n');
 const header = headerFile ? fs.readFileSync(headerFile, 'utf8') : '';
 fs.writeFileSync(outFile, header + body + '\n');
 console.log(JSON.stringify(stats), 'out', Math.round(fs.statSync(outFile).size / 1024) + 'KB');
