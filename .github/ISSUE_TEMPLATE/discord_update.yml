@@ -1,0 +1,42 @@
+name: Broke after a Discord update
+description: Parts of the theme stopped working after Discord updated
+labels: ["discord update"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The built theme uses the exact class names of one Discord build. When Discord renames classes, the affected parts fall back to today's look. Rebuilding usually fixes it:
+
+        ```
+        node fetch-classes.js
+        node build.js
+        ```
+
+        Then reinstall DiscordOldLayout.theme.css. Open this issue if rebuilding doesn't help.
+  - type: textarea
+    id: what
+    attributes:
+      label: What broke
+      description: Which parts went back to today's look.
+    validations:
+      required: true
+  - type: input
+    id: build
+    attributes:
+      label: Discord build
+      description: Shown at the bottom of the User Settings sidebar.
+      placeholder: stable 667580
+    validations:
+      required: true
+  - type: dropdown
+    id: rebuilt
+    attributes:
+      label: Did a rebuild help?
+      options:
+        - Didn't try yet
+        - Rebuilt, still broken
+        - Rebuilt, partly fixed
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot

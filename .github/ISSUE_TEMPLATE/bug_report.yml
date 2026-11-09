@@ -1,0 +1,60 @@
+name: Bug report
+description: Something looks wrong or broken with the theme
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What's wrong
+      description: What you see, and what it should look like.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Title bar, server list or layout
+        - Channel list, DM list or bottom panels
+        - Chat header, messages, embeds or chat input
+        - Member list or profiles
+        - Menus, tooltips, modals or settings
+        - Emoji, GIF or sticker picker
+        - Friends or other home pages
+        - Call screen or voice channels
+        - Icons
+        - UI from an Equicord or Vencord plugin
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Paste a screenshot of the problem.
+  - type: input
+    id: version
+    attributes:
+      label: Theme version
+      description: The @version line at the top of DiscordOldLayout.theme.css.
+      placeholder: 2.2.0
+  - type: input
+    id: build
+    attributes:
+      label: Discord build
+      description: Shown at the bottom of the User Settings sidebar.
+      placeholder: stable 667580
+  - type: dropdown
+    id: client
+    attributes:
+      label: Client mod
+      options:
+        - Equicord
+        - Vencord
+        - Vesktop
+        - Other
+  - type: textarea
+    id: others
+    attributes:
+      label: Other themes or plugins
+      description: Anything else enabled that changes how Discord looks.

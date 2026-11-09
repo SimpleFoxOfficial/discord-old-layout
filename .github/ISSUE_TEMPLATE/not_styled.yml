@@ -1,0 +1,27 @@
+name: Not styled yet
+description: A part of Discord that still has today's look
+labels: ["not styled"]
+body:
+  - type: textarea
+    id: where
+    attributes:
+      label: Where
+      description: Which screen or element, and how to get to it.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Paste a screenshot of it with the theme on.
+  - type: textarea
+    id: old
+    attributes:
+      label: How it looked in 2018
+      description: If it existed back then, what it looked like (a screenshot or a link helps). If it's newer, leave this empty.
+  - type: input
+    id: build
+    attributes:
+      label: Discord build
+      description: Shown at the bottom of the User Settings sidebar.
+      placeholder: stable 667580
