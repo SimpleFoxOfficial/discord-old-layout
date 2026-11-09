@@ -29,11 +29,54 @@
     background: var(--occ-panel) !important;
 }
 
+/* plain 2018 call background, set on the container so its own theme class picks the value */
 div[class*="callContainer_"] {
     --status-speaking: var(--occ-green);
     --custom-base-tile-border-radius: var(--occ-radius);
+    --occ-call-bg: var(--d18-bg-tertiary);
+    background: var(--occ-call-bg) !important;
+}
+
+div[class*="callContainer_"].theme-light {
+    --occ-call-bg: #dcddde;
+}
+
+:root.custom-theme-background div[class*="callContainer_"] {
+    --occ-call-bg: var(--d18-nitro-guilds);
+}
+
+:root.custom-theme-background div[class*="callContainer_"].theme-light {
+    --occ-call-bg: var(--d18-nitro-chat);
+}
+
+:root.custom-theme-background [class*="wrapper_"]:has(> div[class*="callContainer_"]) {
+    background: transparent !important;
+}
+
+/* doodle art only in DM and group calls with no camera, stream or activity: Discord then
+   drops to the minimum layout, and video_ is set whenever anyone has video */
+[class*="minimum_"]:not([class*="video_"]) > div[class*="callContainer_"] {
+    --occ-bar: rgba(0, 0, 0, 0.6);
     background: var(--occ-panel) var(--occ-art) repeat !important;
     background-size: 260px 260px !important;
+}
+
+/* the DM header sits inside the call, keep it on its normal bar */
+[class*="callContainer_"] [class*="headerWrapper_"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
+}
+
+[class*="callContainer_"].theme-light [class*="headerWrapper_"] {
+    background: none;
+}
+
+[class*="minimum_"] > [class*="callContainer_"] [class*="headerWrapper_"] {
+    background: var(--d18-header-bg);
+    box-shadow: var(--d18-ledge);
+}
+
+:root.custom-theme-background [class*="minimum_"] > [class*="callContainer_"] [class*="headerWrapper_"] {
+    background: var(--d18-nitro-chat);
 }
 
 [class*="callContainer_"] > :is([class^="root_"], [class*=" root_"]):has(> [class*="videoControls_"]) {
@@ -363,18 +406,16 @@ div[class*="callContainer_"] {
 [class*="callContainer_"] [class*="pulseGradient_"] ~ [class*="channelName_"] {
     margin-bottom: 4px;
     padding: 8px 10px;
-    color: #fff !important;
+    color: var(--d18-text-header) !important;
     font-family: var(--occ-font);
     font-size: 20px !important;
     font-weight: 600 !important;
     line-height: 24px !important;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 [class*="callContainer_"] [class*="participantsRow_"] {
     color: var(--d18-text-h5) !important;
     font-family: var(--occ-font);
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 [class*="callContainer_"] [class*="participantsRow_"] > * {
@@ -411,4 +452,155 @@ div[class*="callContainer_"] {
 
 [class*="callContainer_"] [class*="joinButton_"] > button:active {
     background: var(--occ-green-active) !important;
+}
+
+/* Incoming call popup (2018 IncomingCallModal: 240px card, 100px avatar, stacked buttons) */
+
+[class*="root_"]:has(> [class*="mainChannelInfo_"]),
+[class*="root_"][class*="previewCamera_"] {
+    border: 1px solid var(--d18-bg-floating);
+    border-radius: 5px;
+    background: var(--d18-bg-tertiary);
+    box-shadow: var(--d18-elevation-high);
+    font-family: var(--occ-font);
+}
+
+[class*="root_"]:has(> [class*="mainChannelInfo_"]) {
+    width: 240px;
+    min-width: 240px !important;
+    padding: 20px 10px 10px;
+}
+
+[class*="root_"].theme-light:has(> [class*="mainChannelInfo_"]),
+[class*="root_"].theme-light[class*="previewCamera_"] {
+    border-color: var(--d18-border-card);
+}
+
+[class*="mainChannelInfo_"] {
+    width: 100%;
+}
+
+[class*="mainChannelInfo_"] > [class*="icon_"] {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 20px 0 0;
+}
+
+[class*="mainChannelInfo_"] > [class*="icon_"] svg {
+    width: 100%;
+    height: 100%;
+}
+
+[class*="mainChannelInfo_"] [class*="titleGroup_"] {
+    width: 100%;
+}
+
+[class*="mainChannelInfo_"] [class*="title_"] {
+    margin: 20px 0 0;
+    overflow: hidden;
+    color: var(--d18-text-header) !important;
+    font-family: var(--occ-font);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+[class*="mainChannelInfo_"] [class*="subtitle_"] {
+    margin: 8px 0 0;
+    color: var(--d18-text-muted) !important;
+    font-family: var(--occ-font);
+    font-size: 14px;
+    line-height: 18px;
+}
+
+:is([class*="mainChannelInfo_"], [class*="previewRoot_"]) ~ [class*="actions_"] {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] > [class*="actionButton_"] {
+    display: flex;
+    order: 1;
+    width: 100%;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] > [class*="actionButton_"] > * {
+    flex: 1 1 auto;
+}
+
+/* decline comes first in the DOM, 2018 had it last */
+[class*="mainChannelInfo_"] ~ [class*="actions_"] > [class*="actionButton_"]:first-child {
+    order: 2;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"] {
+    justify-content: center;
+    width: 100%;
+    height: 38px;
+    min-height: 38px;
+    padding: 0 16px !important;
+    border: 0 !important;
+    border-radius: var(--occ-radius) !important;
+    color: #fff !important;
+    transition: background-color 0.17s ease;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"] > * {
+    display: flex;
+    align-items: center;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"]::after {
+    content: attr(aria-label);
+    font-family: var(--occ-font);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerIcon_"] {
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 4px;
+    color: inherit !important;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"][class*="join_"] {
+    background: var(--occ-green) !important;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"][class*="join_"]:hover {
+    background: var(--occ-green-hover) !important;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"][class*="join_"]:active {
+    background: var(--occ-green-active) !important;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"][class*="disconnect_"] {
+    background: hsla(0, 0%, 100%, 0.1) !important;
+    color: #f6f6f7 !important;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"][class*="disconnect_"]:hover {
+    background: hsla(0, 0%, 100%, 0.05) !important;
+}
+
+.theme-light [class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"][class*="disconnect_"] {
+    background: rgba(79, 84, 92, 0.01) !important;
+    color: #4f545c !important;
+}
+
+.theme-light [class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"][class*="disconnect_"]:hover {
+    background: rgba(79, 84, 92, 0.2) !important;
+}
+
+[class*="mainChannelInfo_"] ~ [class*="actions_"] [class*="centerButton_"][class*="disconnect_"] [class*="centerIcon_"] {
+    display: none;
 }
