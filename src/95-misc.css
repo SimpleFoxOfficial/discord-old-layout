@@ -103,7 +103,7 @@ button[class*="button_"][class*="rounded_"] {
 .theme-dark [class*="wrapper_"][class*="container_"]:has(> input):focus-within {
   outline: none;
 }
-[class*="wrapper_"][class*="container_"]:has(> input) > input::placeholder {
+[class*="wrapper_"][class*="container_"] > input::placeholder {
   color: var(--d18-text-muted);
 }
 [class*="wrapper_"][class*="container_"][class*="sm_"]:has(> input) {

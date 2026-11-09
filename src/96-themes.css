@@ -1,27 +1,46 @@
 /* ===== 96 themes: Nitro color themes show through the 2018 columns ===== */
 
 /* see-through layers with Discord's own opacities (a quarter lighter in dark, like the old clients looked);
-   the guild list and channel sidebar always get a dark layer, as 2018 kept them dark in light too */
+   the guild list and channel sidebar always get a dark layer, as 2018 kept them dark in light too.
+   the theme background is drawn once on Discord's app background, as fixed backgrounds on every
+   column made hovers and scrolling repaint the whole column */
 :root.custom-theme-background {
     --d18-nitro-fade: 0.75;
-    --d18-nitro-image: var(--custom-theme-background) fixed 0 0 / cover;
-    --d18-nitro-guilds-layer: rgb(0 0 0 / calc(var(--custom-background-gradient-lowest-opacity, 0.9) * 0.75));
-    --d18-nitro-channels-layer: rgb(0 0 0 / calc(var(--custom-background-gradient-lower-opacity, 0.85) * 0.75));
-    --d18-nitro-chat-layer: rgb(var(--custom-background-gradient-color, 0 0 0) / calc(var(--custom-background-gradient-opacity-chat, 0.8) * var(--d18-nitro-fade)));
-    --d18-nitro-members-layer: rgb(var(--custom-background-gradient-color, 0 0 0) / calc(var(--custom-background-gradient-lower-opacity, 0.85) * var(--d18-nitro-fade)));
-    --d18-nitro-guilds: linear-gradient(var(--d18-nitro-guilds-layer), var(--d18-nitro-guilds-layer)) fixed 0 0 / cover, var(--d18-nitro-image);
-    --d18-nitro-channels: linear-gradient(var(--d18-nitro-channels-layer), var(--d18-nitro-channels-layer)) fixed 0 0 / cover, var(--d18-nitro-image);
-    --d18-nitro-chat: linear-gradient(var(--d18-nitro-chat-layer), var(--d18-nitro-chat-layer)) fixed 0 0 / cover, var(--d18-nitro-image);
-    --d18-nitro-members: linear-gradient(var(--d18-nitro-members-layer), var(--d18-nitro-members-layer)) fixed 0 0 / cover, var(--d18-nitro-image);
+    --d18-nitro-guilds-alpha: calc(var(--custom-background-gradient-lowest-opacity, 0.9) * 0.75);
+    --d18-nitro-channels-alpha: calc(var(--custom-background-gradient-lower-opacity, 0.85) * 0.75);
+    --d18-nitro-chat-alpha: calc(var(--custom-background-gradient-opacity-chat, 0.8) * var(--d18-nitro-fade));
+    --d18-nitro-members-alpha: calc(var(--custom-background-gradient-lower-opacity, 0.85) * var(--d18-nitro-fade));
+    --d18-nitro-guilds: rgb(0 0 0 / var(--d18-nitro-guilds-alpha));
+    --d18-nitro-channels: rgb(0 0 0 / var(--d18-nitro-channels-alpha));
+    --d18-nitro-chat: rgb(var(--custom-background-gradient-color, 0 0 0) / var(--d18-nitro-chat-alpha));
+    --d18-nitro-members: rgb(var(--custom-background-gradient-color, 0 0 0) / var(--d18-nitro-members-alpha));
+    /* a layer sitting on another one only adds what is missing, so the stack ends at its own opacity */
+    --d18-nitro-panels-on-channels: rgb(0 0 0 / max(0, 1 - (1 - var(--d18-nitro-guilds-alpha)) / (1 - var(--d18-nitro-channels-alpha))));
+    --d18-nitro-guilds-on-chat: rgb(0 0 0 / max(0, 1 - (1 - var(--d18-nitro-guilds-alpha)) / (1 - var(--d18-nitro-chat-alpha))));
+    --d18-nitro-members-on-chat: rgb(var(--custom-background-gradient-color, 0 0 0) / max(0, 1 - (1 - var(--d18-nitro-members-alpha)) / (1 - var(--d18-nitro-chat-alpha))));
+    /* Discord's own gradient surfaces drop their fixed copy of the theme background too */
+    --custom-background-gradient-cover: 0 0 / cover;
 }
 
 :root.custom-theme-background.theme-light {
     --d18-nitro-fade: 1;
 }
 
-:root.custom-theme-background [class*="content_"] > [class*="sidebar_"]:has(> [class*="sidebarList_"]),
-:root.custom-theme-background [class*="sidebar_"] > [class*="panels_"] {
+:root.custom-theme-background [class^="bg_"] {
+    background: var(--custom-theme-background) 0 0 / cover;
+}
+
+:root.custom-theme-background [class*="base_"] > [class^="bar_"],
+:root.custom-theme-background [class^="bar_"][class*="systemBar_"] {
+    background: var(--background-gradient-app-frame);
+}
+
+:root.custom-theme-background [class*="content_"] > [class*="sidebar_"]:has(> [class*="sidebarList_"]) {
     --d18-panel-bg: transparent;
+    background: transparent;
+}
+
+:root.custom-theme-background nav[class*="wrapper_"][class*="guilds_"] {
     background: var(--d18-nitro-guilds);
 }
 
@@ -29,16 +48,40 @@
     background: var(--d18-nitro-channels);
 }
 
-:root.custom-theme-background nav[class*="wrapper_"][class*="guilds_"],
+:root.custom-theme-background [class*="sidebar_"] > [class*="panels_"] {
+    --d18-panel-bg: transparent;
+    background: var(--d18-nitro-panels-on-channels);
+}
+
 :root.custom-theme-background nav[class*="guilds_"] > [class*="tree_"],
 :root.custom-theme-background [class*="sidebarList_"] > [class^="container_"],
 :root.custom-theme-background [class*="sidebarList_"] > [class*="privateChannels_"] {
     background: transparent;
 }
 
+/* everything inside the chat sits on its layer, Discord's own gradient surfaces (profile panel, reply bar) too */
 :root.custom-theme-background [class*="page_"] [class^="chat_"],
 :root.custom-theme-background [class*="page_"] [class*=" chat_"] {
-    background: var(--d18-nitro-chat);
+    --d18-nitro-chat: transparent;
+    --d18-nitro-guilds: var(--d18-nitro-guilds-on-chat);
+    --d18-nitro-members: var(--d18-nitro-members-on-chat);
+    --d18-nitro-on-chat-chat: rgb(var(--custom-background-gradient-color) / max(0, 1 - (1 - var(--custom-background-gradient-opacity-chat)) / (1 - var(--d18-nitro-chat-alpha))));
+    --d18-nitro-on-chat-lowest: rgb(var(--custom-background-gradient-color) / max(0, 1 - (1 - var(--custom-background-gradient-lowest-opacity)) / (1 - var(--d18-nitro-chat-alpha))));
+    --d18-nitro-on-chat-lower: rgb(var(--custom-background-gradient-color) / max(0, 1 - (1 - var(--custom-background-gradient-lower-opacity)) / (1 - var(--d18-nitro-chat-alpha))));
+    --d18-nitro-on-chat-low: rgb(var(--custom-background-gradient-color) / max(0, 1 - (1 - var(--custom-background-gradient-low-opacity)) / (1 - var(--d18-nitro-chat-alpha))));
+    --d18-nitro-on-chat-high: rgb(var(--custom-background-gradient-color) / max(0, 1 - (1 - var(--custom-background-gradient-high-opacity)) / (1 - var(--d18-nitro-chat-alpha))));
+    --d18-nitro-on-chat-higher: rgb(var(--custom-background-gradient-color) / max(0, 1 - (1 - var(--custom-background-gradient-higher-opacity)) / (1 - var(--d18-nitro-chat-alpha))));
+    --d18-nitro-on-chat-highest: rgb(var(--custom-background-gradient-color) / max(0, 1 - (1 - var(--custom-background-gradient-highest-opacity)) / (1 - var(--d18-nitro-chat-alpha))));
+    --d18-nitro-on-chat-app-frame: rgb(var(--custom-background-gradient-color) / max(0, 1 - (1 - var(--custom-background-gradient-opacity-app-frame)) / (1 - var(--d18-nitro-chat-alpha))));
+    --background-gradient-chat: linear-gradient(var(--d18-nitro-on-chat-chat), var(--d18-nitro-on-chat-chat));
+    --background-gradient-lowest: linear-gradient(var(--d18-nitro-on-chat-lowest), var(--d18-nitro-on-chat-lowest));
+    --background-gradient-lower: linear-gradient(var(--d18-nitro-on-chat-lower), var(--d18-nitro-on-chat-lower));
+    --background-gradient-low: linear-gradient(var(--d18-nitro-on-chat-low), var(--d18-nitro-on-chat-low));
+    --background-gradient-high: linear-gradient(var(--d18-nitro-on-chat-high), var(--d18-nitro-on-chat-high));
+    --background-gradient-higher: linear-gradient(var(--d18-nitro-on-chat-higher), var(--d18-nitro-on-chat-higher));
+    --background-gradient-highest: linear-gradient(var(--d18-nitro-on-chat-highest), var(--d18-nitro-on-chat-highest));
+    --background-gradient-app-frame: linear-gradient(var(--d18-nitro-on-chat-app-frame), var(--d18-nitro-on-chat-app-frame));
+    background: rgb(var(--custom-background-gradient-color, 0 0 0) / var(--d18-nitro-chat-alpha));
 }
 
 :root.custom-theme-background section[class*="container_"][class*="themed_"],
@@ -47,10 +90,43 @@
     background: transparent;
 }
 
-/* fixed layers line up, so the date pill takes the chat layer and still hides the line under it */
-:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"] [class^="content_"],
+/* the date pill has nothing to cover the line with, so the line is drawn on both sides of it */
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"] {
+    border-top-color: transparent;
+}
+
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"]::before,
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"]::after {
+    content: "";
+    flex: 1 1 0;
+    align-self: flex-start;
+    margin-top: -1px;
+    border-top: 1px solid var(--d18-msg-date-line);
+}
+
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"][class*="isUnread_"]::before,
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"][class*="isUnread_"]::after {
+    border-top-color: var(--d18-msg-red-line);
+}
+
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"]::after {
+    order: 1;
+}
+
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="divider_"][role="separator"] [class^="content_"] {
+    background: transparent;
+}
+
 :root.custom-theme-background [class*="messagesWrapper_"] [class*="isUnread_"] [class*="unreadPill_"] {
-    background: var(--d18-nitro-chat);
+    position: static;
+    order: 2;
+    margin-top: -1px;
+    background: transparent;
+}
+
+/* Discord swaps in a full-width tint on hover, keep the 2018 bar and tint */
+:root.custom-theme-background [class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"]:is(:hover, [class*="selected_"]) {
+    background: linear-gradient(to right, transparent 54px, rgba(250, 166, 26, 0.2) 54px, rgba(250, 166, 26, 0.2) 60px, var(--d18-mentioned-bg) 60px);
 }
 
 :root.custom-theme-background [class*="membersWrap_"] {
@@ -67,7 +143,7 @@
 }
 
 :root.custom-theme-background [class*="nowPlayingColumn_"] {
-    background: var(--d18-nitro-members);
+    background: var(--d18-nitro-members-on-chat);
 }
 
 /* the friends tabs sit on the see-through header, so their hover is an overlay instead of the solid 2018 grey */

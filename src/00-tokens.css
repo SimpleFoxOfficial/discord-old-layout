@@ -1101,8 +1101,9 @@
     --interactive-background-selected: rgba(79, 84, 92, 0.6);
 }
 
-/* Onyx (midnight): the 2018 dark palette taken a few steps darker */
-.theme-midnight.theme-midnight {
+/* Onyx (midnight): the 2018 dark palette taken a few steps darker. Only when Onyx is picked: Discord also marks the call area midnight in every dark theme */
+:root.theme-midnight,
+:root.theme-midnight .theme-midnight {
     --d18-bg-primary: #202225;
     --d18-bg-secondary: #18191c;
     --d18-bg-secondary-alt: #141517;
@@ -1173,8 +1174,7 @@
     --d18-select-menu-bg: #18191c;
 }
 
-.theme-midnight [class*="sidebar_"]:has(> [class*="sidebarList_"]),
-[class*="sidebar_"]:has(> [class*="sidebarList_"]).theme-midnight {
+:root.theme-midnight [class*="sidebar_"]:has(> [class*="sidebarList_"]) {
     --background-base-lower: #18191c;
     --background-base-low: #141517;
     --interactive-background-hover: #202225;
@@ -1182,7 +1182,7 @@
     --background-modifier-active: #202225;
 }
 
-.theme-midnight [class*="membersWrap_"] {
+:root.theme-midnight [class*="membersWrap_"] {
     --interactive-background-hover: #202225;
     --interactive-background-active: #202225;
 }
@@ -1308,8 +1308,16 @@
     --d18-search-popout-bg: color-mix(in oklab, #ffffff 100%, var(--d18-tint));
     --d18-autocomplete-bg: color-mix(in oklab, #f6f6f7 100%, var(--d18-tint));
     --d18-menu-bg: color-mix(in oklab, #ffffff 100%, var(--d18-tint));
-    --d18-menu-item-hover-bg: color-mix(in oklab, #f6f6f7 100%, var(--d18-tint));
     --d18-select-menu-bg: color-mix(in oklab, #ffffff 100%, var(--d18-tint));
+    --d18-hover: rgba(0, 0, 0, 0.04);
+    --d18-selected: rgba(0, 0, 0, 0.08);
+    --interactive-background-hover: var(--d18-hover);
+    --interactive-background-active: var(--d18-hover);
+    --interactive-background-selected: var(--d18-selected);
+    --d18-members-hover: var(--d18-hover);
+    --d18-members-open: var(--d18-selected);
+    --d18-menu-item-hover-bg: rgba(0, 0, 0, 0.04);
+    --d18-qs-selected: rgba(0, 0, 0, 0.05);
     --d18-home-row-hover: var(--d18-hover);
     --d18-composer-bg: rgba(255, 255, 255, 0.45);
 }
@@ -1358,8 +1366,12 @@
     --d18-guilds-icon-bg: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
     --d18-guilds-add-bg: color-mix(in oklab, #1e2124 100%, var(--d18-tint));
     --d18-guilds-voice-bg: color-mix(in oklab, #1e2124 100%, var(--d18-tint));
-    --d18-hover: color-mix(in oklab, var(--d18-bg-accent) 30%, transparent);
-    --d18-selected: color-mix(in oklab, var(--d18-bg-accent) 60%, transparent);
+    --d18-hover: hsla(0, 0%, 100%, 0.05);
+    --d18-selected: hsla(0, 0%, 100%, 0.1);
+    --background-mod-muted: hsla(0, 0%, 100%, 0.02);
+    --background-mod-subtle: hsla(0, 0%, 100%, 0.05);
+    --background-mod-normal: hsla(0, 0%, 100%, 0.07);
+    --background-mod-strong: hsla(0, 0%, 100%, 0.1);
     --interactive-background-hover: var(--d18-hover);
     --interactive-background-active: var(--d18-hover);
     --interactive-background-selected: var(--d18-selected);
@@ -1372,13 +1384,18 @@
     --d18-popout-card-bg: color-mix(in oklab, #36393e 100%, var(--d18-tint));
     --d18-search-popout-bg: color-mix(in oklab, #36393f 100%, var(--d18-tint));
     --d18-autocomplete-bg: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
-    --d18-autocomplete-selected: color-mix(in oklab, #36393f 100%, var(--d18-tint));
     --d18-members-hover: var(--d18-hover);
     --d18-members-open: var(--d18-selected);
     --d18-menu-bg: color-mix(in oklab, #18191c 100%, var(--d18-tint));
-    --d18-menu-item-hover-bg: color-mix(in oklab, #040405 100%, var(--d18-tint));
+    --d18-menu-item-hover-bg: rgba(0, 0, 0, 0.8);
     --d18-home-row-hover: var(--d18-hover);
     --d18-select-menu-bg: color-mix(in oklab, #303237 100%, var(--d18-tint));
+    --d18-autocomplete-selected: var(--d18-hover);
+    --d18-search-option-hover: rgba(0, 0, 0, 0.13);
+    --d18-side-item-hover-bg: hsla(0, 0%, 100%, 0.07);
+    --d18-close-hover-bg: var(--d18-hover);
+    --d18-qs-selected: rgba(0, 0, 0, 0.3);
+    --user-profile-overlay-background-hover: var(--d18-hover);
     --d18-msg-date-line: hsla(0, 0%, 100%, 0.1);
     --d18-composer-bg: rgba(0, 0, 0, 0.25);
 }
