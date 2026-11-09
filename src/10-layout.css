@@ -1,0 +1,289 @@
+/* ===== 10-layout: app frame, 2018 title bar, column frame, notices ===== */
+
+:root {
+    --d18-titlebar-wordmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 492 91.3'%3E%3Cpath d='M33.2,1.3H0v37.3l22.1,19.9V22.2H34c7.5,0,11.2,3.6,11.2,9.4v27.7c0,5.8-3.5,9.7-11.2,9.7H0V90h33.2 c17.8,0.1,34.5-8.8,34.5-29.2V31C67.7,10.3,51,1.3,33.2,1.3z M207.3,60.9V30.3c0-11,19.8-13.5,25.8-2.5l18.3-7.4 C244.3,4.6,231.1,0,220.2,0c-17.8,0-35.4,10.3-35.4,30.3v30.6c0,20.2,17.6,30.3,35,30.3c11.2,0,24.6-5.5,32-19.9l-19.6-9 C227.4,74.6,207.3,71.6,207.3,60.9z M146.7,34.5c-6.9-1.5-11.5-4-11.8-8.3c0.4-10.3,16.3-10.7,25.6-0.8l14.7-11.3 C166,3,155.6,0,144.8,0c-16.3,0-32.1,9.2-32.1,26.6c0,16.9,13,26,27.3,28.2c7.3,1,15.4,3.9,15.2,8.9c-0.6,9.5-20.2,9-29.1-1.8 L112,75.2c8.3,10.7,19.6,16.1,30.2,16.1c16.3,0,34.4-9.4,35.1-26.6C178.3,42.9,162.5,37.4,146.7,34.5z M79.8,90h22.4V1.3H79.8V90z M457.5,1.3h-33.2v37.3l22.1,19.9V22.2h11.8c7.5,0,11.2,3.6,11.2,9.4v27.7c0,5.8-3.5,9.7-11.2,9.7h-34V90h33.2 c17.8,0.1,34.5-8.8,34.5-29.2V31C492,10.3,475.3,1.3,457.5,1.3z M294.6,0c-18.4,0-36.7,10-36.7,30.5v30.3 c0,20.3,18.4,30.5,36.9,30.5s36.7-10.2,36.7-30.5V30.5C331.4,10.2,313,0,294.6,0z M309,60.8c0,6.4-7.2,9.7-14.3,9.7 c-7.2,0-14.4-3.1-14.4-9.7V30.5c0-6.5,7-10,14-10c7.3,0,14.7,3.1,14.7,10V60.8z M411.8,30.5c-0.5-20.8-14.7-29.2-33-29.2h-35.5V90 H366V61.8h4L390.6,90h28l-24.2-30.5C405.2,56.2,411.8,46.9,411.8,30.5z M379.2,42.5H366V22.2h13.2C393.4,22.2,393.4,42.5,379.2,42.5 z'/%3E%3C/svg%3E");
+    --d18-titlebar-height: 22px;
+    --d18-titlebar-button: 28px;
+    --d18-base-radius: 5px;
+    --d18-channels-width: 240px;
+    --d18-notice-default: #f26522;
+    --d18-notice-info: #4a90e2;
+    --d18-notice-success: #43b581;
+    --d18-notice-danger: #f04747;
+    --d18-notice-warning: #faa61a;
+    --d18-notice-streamer: #593695;
+    --d18-notice-spotify: #1db954;
+    --d18-notice-brand: #7289da;
+    --d18-notice-premium: #202225;
+}
+
+/* macOS keeps its own bar height for the traffic lights */
+:root:not(.platform-osx) {
+    --custom-app-top-bar-height: var(--d18-titlebar-height);
+}
+
+/* ---------- Title bar ---------- */
+[class*="base_"] > [class^="bar_"]:has(> [class*="trailing_"]),
+[class^="bar_"][class*="systemBar_"] {
+    min-height: var(--d18-titlebar-height);
+    height: var(--d18-titlebar-height);
+    gap: 0;
+    padding-inline-end: 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+}
+
+:root:not(.platform-osx) [class*="base_"] > [class^="bar_"]:has(> [class*="trailing_"]) {
+    padding-inline-start: var(--d18-guilds-width);
+}
+
+:root:not(.platform-osx) [class*="base_"] > [class^="bar_"]:has(> [class*="trailing_"])::before,
+:root:not(.platform-osx) [class^="bar_"][class*="systemBar_"][class*="show_"]::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 9px;
+    width: 52.5px;
+    height: 9.75px;
+    background-color: #fff;
+    opacity: .6;
+    -webkit-mask: var(--d18-titlebar-wordmark) 0 0 / 100% 100% no-repeat;
+    mask: var(--d18-titlebar-wordmark) 0 0 / 100% 100% no-repeat;
+    pointer-events: none;
+}
+
+[class*="base_"] > [class^="bar_"] > [class*="title_"]:not([class*="trailing_"]) {
+    display: none;
+}
+
+[class*="base_"] > [class^="bar_"] > :is([class*="leading_"], [class*="trailing_"]) {
+    gap: 0;
+    height: var(--d18-titlebar-height);
+}
+
+[class*="base_"] > [class^="bar_"] > :is([class*="leading_"], [class*="trailing_"]) [class*="clickable_"] {
+    width: var(--d18-titlebar-button);
+    height: var(--d18-titlebar-height);
+    border-radius: 0;
+    background: none;
+    color: #fff;
+    opacity: .6;
+}
+
+[class*="base_"] > [class^="bar_"] > :is([class*="leading_"], [class*="trailing_"]) [class*="clickable_"]:hover {
+    background: none;
+    color: #fff;
+    opacity: 1;
+}
+
+[class*="base_"] > [class^="bar_"] > :is([class*="leading_"], [class*="trailing_"]) [class*="clickable_"]:is([aria-expanded="true"], [class*="selected_"]) {
+    color: #fff;
+    opacity: 1;
+}
+
+[class*="base_"] > [class^="bar_"] > :is([class*="leading_"], [class*="trailing_"]) [class*="clickable_"] > svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Window buttons: 28x22, white at 60%, no gap, no divider */
+[class*="winButtons_"] {
+    gap: 0;
+    color: #fff;
+}
+
+[class*="winButtons_"]::before {
+    display: none;
+}
+
+[class*="winButtons_"] > [class*="winButton_"] {
+    width: var(--d18-titlebar-button);
+    height: var(--d18-titlebar-height);
+    color: #fff;
+    opacity: .6;
+    background: none;
+}
+
+[class*="winButtons_"] > [class*="winButton_"]:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+[class*="winButtons_"] > [class*="winButtonMinMax_"]:is(:hover, :active) {
+    background-color: rgba(255, 255, 255, .05);
+    color: #fff;
+}
+
+[class*="winButtons_"] > [class*="winButtonClose_"]:is(:hover, :active) {
+    background-color: #f04747;
+    color: #fff;
+}
+
+/* ---------- Column frame ---------- */
+:root body[style] {
+    --custom-guild-sidebar-width: calc(var(--d18-guilds-width) + var(--d18-channels-width)) !important;
+}
+
+[class*="content_"] > [class*="sidebar_"]:has(> [class*="sidebarList_"]) {
+    background: var(--d18-guilds);
+    overflow: clip;
+}
+
+[class*="content_"] > [class*="sidebar_"]:has(> [class*="sidebarList_"])::after {
+    display: none;
+}
+
+[class*="sidebar_"] > [class*="sidebarList_"] {
+    width: var(--d18-channels-width);
+    border: 0;
+    border-radius: var(--d18-base-radius) 0 0 var(--d18-base-radius);
+    background: var(--d18-channels);
+}
+
+[class*="sidebar_"] > [class*="sidebarResizeHandle_"] {
+    display: none;
+}
+
+[class*="sidebar_"][data-collapsed="true"] > [class*="sidebarList_"] {
+    border-radius: 0;
+}
+
+/* A notice sits on top of the base, so it takes the top corner instead */
+[class*="base_"]:has(> [class^="notice_"]) [class*="sidebar_"] > [class*="sidebarList_"] {
+    border-start-start-radius: 0;
+}
+
+[class*="base_"] > [class*="content_"] > [class*="page_"] {
+    border: 0;
+}
+
+[class*="page_"] [class^="chat_"],
+[class*="page_"] [class*=" chat_"],
+[class*="page_"] [class^="chat_"][data-has-border="true"] {
+    border-top: 0;
+    border-inline-start: 0;
+    border-radius: 0;
+}
+
+[class*="membersWrap_"] > [class^="container_"],
+[class*="membersWrap_"] > [class*=" container_"] {
+    border-inline-start: 0;
+}
+
+/* ---------- Notice bar ---------- */
+[class*="base_"] > [class^="notice_"] {
+    border: 0;
+    border-radius: var(--d18-base-radius) var(--d18-base-radius) 0 0;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+    padding: 0 28px 0 4px;
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
+    text-align: center;
+    --custom-notice-text: #fff;
+}
+
+[class*="base_"] > [class^="notice_"] strong {
+    font-weight: 600;
+}
+
+[class*="base_"] > [class^="notice_"][class*="colorDefault_"] {
+    --custom-notice-background: var(--d18-notice-default);
+    --custom-notice-button-hover: var(--d18-notice-default);
+}
+
+[class*="base_"] > [class^="notice_"]:is([class*="colorInfo_"], [class*="colorCustom_"]) {
+    --custom-notice-background: var(--d18-notice-info);
+    --custom-notice-button-hover: var(--d18-notice-info);
+}
+
+[class*="base_"] > [class^="notice_"][class*="colorCustom_"] {
+    --custom-notice-button-hover: #222;
+}
+
+[class*="base_"] > [class^="notice_"][class*="colorSuccess_"] {
+    --custom-notice-background: var(--d18-notice-success);
+    --custom-notice-button-hover: var(--d18-notice-success);
+}
+
+[class*="base_"] > [class^="notice_"][class*="colorDanger_"] {
+    --custom-notice-background: var(--d18-notice-danger);
+    --custom-notice-button-hover: var(--d18-notice-danger);
+}
+
+[class*="base_"] > [class^="notice_"][class*="colorWarning_"] {
+    --custom-notice-background: var(--d18-notice-warning);
+    --custom-notice-button-hover: var(--d18-notice-warning);
+}
+
+[class*="base_"] > [class^="notice_"][class*="colorStreamerMode_"] {
+    --custom-notice-background: var(--d18-notice-streamer);
+    --custom-notice-button-hover: var(--d18-notice-streamer);
+}
+
+[class*="base_"] > [class^="notice_"][class*="colorSpotify_"] {
+    --custom-notice-background: var(--d18-notice-spotify);
+    --custom-notice-button-hover: var(--d18-notice-spotify);
+}
+
+[class*="base_"] > [class^="notice_"][class*="colorBrand_"] {
+    --custom-notice-background: var(--d18-notice-brand);
+    --custom-notice-button-hover: var(--d18-notice-brand);
+}
+
+[class*="base_"] > [class^="notice_"]:is([class*="colorNeutral_"], [class*="colorPremium"]) {
+    --custom-notice-background: var(--d18-notice-premium);
+    --custom-notice-button-hover: var(--d18-notice-premium);
+}
+
+[class*="base_"] > [class^="notice_"] [class^="button_"] {
+    top: 6px;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 10px;
+    margin-inline-start: 10px;
+    border-radius: var(--d18-radius);
+    border: 1px solid rgba(255, 255, 255, .25) !important;
+    background-color: transparent;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+[class*="base_"] > [class^="notice_"] [class^="button_"]:hover {
+    background-color: #fff;
+    border-color: #fff !important;
+    color: var(--custom-notice-button-hover) !important;
+}
+
+[class*="base_"] > [class^="notice_"] [class^="button_"][class*="buttonMinor_"] {
+    border: 0 !important;
+    padding-inline: 10px 0;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+[class*="base_"] > [class^="notice_"] [class^="button_"][class*="buttonMinor_"]:hover {
+    background: none;
+    color: #fff !important;
+}
+
+[class*="base_"] > [class^="notice_"] [class*="closeButton_"] {
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    opacity: .5;
+    transition: opacity .2s;
+}
+
+[class*="base_"] > [class^="notice_"] [class*="closeButton_"]:hover {
+    opacity: 1;
+}
+
+[class*="base_"] > [class^="notice_"] [class*="closeButton_"] svg {
+    width: 10px;
+    height: 10px;
+}

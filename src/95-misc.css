@@ -1,0 +1,244 @@
+/* ==== 95 misc: form controls, scrollbars, text selection ==== */
+
+:root {
+  --d18-control-radius: 3px;
+  --d18-check-border: hsla(0, 0%, 100%, 0.2);
+  --d18-switch-off: #72767d;
+  --d18-switch-on: #7289da;
+  --d18-slider-bar: #4f545c;
+  --d18-grabber-border: #dcddde;
+  --d18-select-menu-bg: #303237;
+  --d18-select-option-hover: rgba(0, 0, 0, 0.1);
+  --d18-select-option-selected: rgba(0, 0, 0, 0.2);
+}
+
+/* ---- text selection ---- */
+::selection {
+  background: var(--d18-brand);
+  color: #ffffff;
+}
+
+/* ---- scrollbars (2018 themed scroller: 15px, 3px inset, round) ---- */
+[class*="auto_"][class*="scrollerBase_"]::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+[class*="auto_"][class*="scrollerBase_"]::-webkit-scrollbar-thumb,
+[class*="auto_"][class*="scrollerBase_"]::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 7.5px;
+}
+[class*="auto_"][class*="scrollerBase_"]::-webkit-scrollbar-thumb {
+  background-color: var(--d18-scroll-thumb);
+}
+[class*="auto_"][class*="scrollerBase_"]::-webkit-scrollbar-track {
+  background-color: var(--d18-scroll-track);
+}
+[class*="thin_"][class*="scrollerBase_"]::-webkit-scrollbar-thumb {
+  background-color: var(--d18-scroll-thumb-thin);
+  border-radius: 4px;
+}
+
+/* ---- buttons: 2018 flat 3px buttons ---- */
+button[class*="button_"][class*="hasText_"],
+button[class*="button_"][class*="lookFilled_"],
+button[class*="button_"][class*="lookOutlined_"] {
+  border-radius: var(--d18-control-radius);
+  font-family: var(--d18-font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+button[class*="button_"][class*="hasText_"] [class*="buttonChildrenWrapper_"] {
+  border-radius: var(--d18-control-radius);
+}
+button[class*="button_"][class*="hasText_"] [class*="buttonChildren_"],
+button[class*="button_"][class*="hasText_"] [class*="buttonChildren_"] * {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+button[class*="button_"][class*="hasText_"][class*="sm_"] [class*="buttonChildrenWrapper_"] {
+  min-height: 32px;
+  padding: 2px 16px;
+}
+button[class*="button_"][class*="hasText_"][class*="md_"] [class*="buttonChildrenWrapper_"] {
+  min-height: 38px;
+  padding: 2px 16px;
+}
+button[class*="button_"][class*="hasText_"]:is([class*="primary_"], [class*="secondary_"], [class*="critical-primary_"]) {
+  border-color: transparent;
+}
+button[class*="button_"][class*="secondary_"]:hover,
+button[class*="button_"][class*="secondary_"]:active {
+  background-color: #72767d;
+  color: #f6f6f7;
+}
+button[class*="button_"][class*="lookFilled_"][class*="colorPrimary_"] {
+  background-color: #4f545c;
+  color: #f6f6f7;
+}
+button[class*="button_"][class*="lookFilled_"][class*="colorPrimary_"]:hover {
+  background-color: #72767d;
+}
+button[class*="button_"][class*="rounded_"] {
+  border-radius: var(--d18-control-radius);
+}
+
+/* ---- text inputs ---- */
+[class*="wrapper_"][class*="container_"]:has(> input) {
+  --custom-input-border-radius: var(--d18-control-radius);
+  --custom-input-background-color: var(--d18-bg-input);
+  --custom-input-border-color: var(--d18-border-input);
+  --custom-input-hover-border-color: var(--d18-border-input-hover);
+  --custom-input-focus-border-color: var(--d18-brand);
+  --custom-text-input-height: 40px;
+  border-radius: var(--d18-control-radius);
+  font-size: 16px;
+}
+.theme-dark [class*="wrapper_"][class*="container_"]:has(> input):focus-within {
+  outline: none;
+}
+[class*="wrapper_"][class*="container_"]:has(> input) > input::placeholder {
+  color: var(--d18-text-muted);
+}
+[class*="wrapper_"][class*="container_"][class*="sm_"]:has(> input) {
+  --custom-text-input-height: 32px;
+  font-size: 14px;
+}
+textarea[class*="textArea_"] {
+  border-radius: var(--d18-control-radius);
+}
+
+/* ---- selects ---- */
+[class*="selectField_"] {
+  --custom-input-border-radius: var(--d18-control-radius);
+  --custom-input-background-color: var(--d18-bg-input);
+  --custom-input-border-color: var(--d18-border-input);
+  --custom-input-hover-border-color: var(--d18-border-input-hover);
+  --custom-input-focus-border-color: var(--d18-brand);
+  --select-option-height: 40px;
+  border-radius: var(--d18-control-radius);
+}
+.theme-dark [class*="selectField_"]:not([class*="isInert_"]):is([class*="isFocused_"], :focus-within) {
+  outline: none;
+  border-color: var(--d18-brand);
+}
+[class*="selectField_"] [class*="chevronButton_"],
+[class*="selectButton_"] [class*="chevron"] {
+  color: var(--d18-text-muted);
+}
+[class*="selectDropdown_"] {
+  background-color: var(--d18-select-menu-bg);
+  border: 1px solid var(--d18-bg-tertiary);
+  border-radius: 0 0 var(--d18-control-radius) var(--d18-control-radius);
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+}
+[class*="selectDropdown_"] [role="option"] {
+  border-radius: 0;
+  color: var(--d18-text-input);
+}
+[class*="selectDropdown_"] [role="option"]:hover,
+[class*="selectDropdown_"] [role="option"][class*="focused_"] {
+  background: var(--d18-select-option-hover);
+}
+[class*="selectDropdown_"] [role="option"][aria-selected="true"] {
+  background: var(--d18-select-option-selected);
+}
+
+/* ---- switches: 2018 42x24 pill, 18px white knob ---- */
+[class*="switchIndicator_"][data-mana-component="switch"] {
+  width: 42px;
+  height: 24px;
+  border-radius: 14px;
+  border: none !important;
+  background-color: var(--d18-switch-off) !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+label:has(input:checked) > [class*="switchIndicator_"][data-mana-component="switch"],
+[class*="container_"]:has(input[role="switch"]:checked) > [class*="switchIndicator_"][data-mana-component="switch"] {
+  background-color: var(--d18-switch-on) !important;
+}
+[class*="switchIndicator_"][data-mana-component="switch"] > svg[class*="thumb_"] {
+  width: 27px;
+  height: 27px;
+  margin: 0;
+  top: -1.5px;
+  left: -1.5px !important;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+}
+label:has(input:checked) > [class*="switchIndicator_"][data-mana-component="switch"] > svg[class*="thumb_"],
+[class*="container_"]:has(input[role="switch"]:checked) > [class*="switchIndicator_"][data-mana-component="switch"] > svg[class*="thumb_"] {
+  left: 16.5px !important;
+}
+[class*="switchIndicator_"][data-mana-component="switch"] rect {
+  fill: #ffffff;
+}
+
+/* ---- checkboxes: 2018 square 18px, 2px border ---- */
+[class*="checkboxOption_"] {
+  --checkbox-background-default: transparent;
+  --checkbox-background-hover: transparent;
+  --checkbox-border-default: var(--d18-check-border);
+  --checkbox-border-hover: hsla(0, 0%, 100%, 0.3);
+  --checkbox-background-selected-default: var(--d18-brand);
+  --checkbox-background-selected-hover: var(--d18-brand);
+  --checkbox-border-selected-default: var(--d18-brand);
+  --checkbox-border-selected-hover: var(--d18-brand);
+  --checkbox-icon-active: #ffffff;
+}
+[class*="checkboxOption_"] [class*="checkboxIndicator_"] {
+  border-width: 2px;
+  border-radius: 2px;
+}
+
+/* ---- radios: 2018 settings radio rows ---- */
+[class*="radioGroupOption_"] {
+  --radio-background-default: transparent;
+  --radio-border-default: var(--d18-check-border);
+  --radio-background-hover: transparent;
+  --radio-border-hover: hsla(0, 0%, 100%, 0.3);
+  --radio-background-selected-default: var(--d18-brand);
+  --radio-border-selected-default: var(--d18-brand);
+  --radio-background-selected-hover: var(--d18-brand);
+  --radio-border-selected-hover: var(--d18-brand);
+  --radio-thumb-background-active: #ffffff;
+  border-radius: var(--d18-control-radius);
+}
+[class*="radioGroupOption_"] [class*="description_"] {
+  color: var(--d18-text-muted);
+  font-size: 14px;
+}
+
+/* ---- sliders ---- */
+[class*="slider_"] > [class*="bar_"] {
+  background-color: var(--d18-slider-bar);
+  border-radius: 4px;
+  height: 8px;
+}
+[class*="slider_"] [class*="barFill_"] {
+  background: var(--d18-brand);
+}
+[class*="slider_"] [class*="grabber_"] {
+  background-color: #ffffff;
+  border: 1px solid var(--d18-grabber-border);
+  border-radius: 3px;
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  width: 10px;
+  height: 24px;
+}
+[class*="slider_"] [class*="markValue_"] {
+  color: var(--d18-text-muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+[class*="slider_"] [class*="markDash_"] {
+  background: var(--d18-slider-bar);
+}
+
+/* ---- dividers in settings and modals ---- */
+:is([data-mana-component="layer-modal"], [class*="standardSidebarView_"], [data-mana-component="modal"]) [class^="divider_"],
+:is([data-mana-component="layer-modal"], [class*="standardSidebarView_"], [data-mana-component="modal"]) [class*=" divider_"] {
+  border-top-color: hsla(218, 5%, 47%, 0.3);
+}

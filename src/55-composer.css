@@ -1,0 +1,318 @@
+/* ===== 55 composer: chat input, attach button, right buttons, autocomplete, typing ===== */
+
+:root {
+    --d18-composer-bg: hsla(218, 5%, 47%, 0.3);
+    --d18-composer-text: hsla(0, 0%, 100%, 0.7);
+    --d18-composer-placeholder: hsla(0, 0%, 100%, 0.3);
+    --d18-composer-icon: #ffffff;
+    --d18-composer-divider: hsla(0, 0%, 100%, 0.1);
+    --d18-composer-form-line: hsla(0, 0%, 100%, 0.06);
+    --d18-autocomplete-bg: #2f3136;
+    --d18-autocomplete-selected: #36393f;
+    --d18-autocomplete-divider: rgba(79, 84, 92, 0.6);
+    --d18-typing-text: hsla(0, 0%, 100%, 0.8);
+}
+
+.theme-light {
+    --d18-composer-bg: #f6f6f7;
+    --d18-composer-text: #737f8d;
+    --d18-composer-placeholder: hsla(218, 5%, 47%, 0.3);
+    --d18-composer-icon: #4f545c;
+    --d18-composer-divider: hsla(218, 5%, 47%, 0.1);
+    --d18-composer-form-line: rgba(0, 0, 0, 0.1);
+    --d18-autocomplete-bg: #f6f6f7;
+    --d18-autocomplete-selected: rgba(199, 208, 240, 0.6);
+    --d18-autocomplete-divider: hsla(210, 3%, 87%, 0.6);
+    --d18-typing-text: #737f8d;
+}
+
+/* form shell: 20px side margins and the thin line above the input */
+[class*="chatContent_"] > form[class*="form_"] {
+    margin: 0 20px;
+    padding-inline: 0;
+    margin-top: 0;
+    background-color: var(--d18-bg-primary);
+    box-shadow: 0 -1px 0 var(--d18-composer-form-line);
+}
+
+[class*="chatContent_"] > form [class*="channelTextArea_"][class*="channelTextArea_"]:not([class*="Inner"]):not([class*="Disabled"]) {
+    --custom-channel-textarea-text-area-height: 44px;
+}
+
+[class*="chatContent_"] > form [class*="channelBottomBarArea_"] > [class*="channelTextArea_"] {
+    background: transparent;
+    margin: 20px 0 30px;
+}
+
+/* input box */
+[class*="channelTextArea_"] > [class*="scrollableContainer_"] {
+    background: var(--d18-composer-bg);
+    border-radius: 5px;
+}
+
+[class*="channelBottomBarArea_"] [class*="channelTextArea_"]:has(> [class*="scrollableContainer_"]),
+[class*="channelBottomBarArea_"] [class*="channelTextArea_"]:has(> [class*="scrollableContainer_"]):focus-within {
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+[class*="channelTextArea_"] > [class*="scrollableContainer_"][class*="hasStackedBar_"],
+[class*="channelTextArea_"]:has([class*="stackedBars_"]) > [class*="scrollableContainer_"] {
+    border-radius: 0 0 5px 5px;
+}
+
+[class*="channelTextArea_"]:has([class*="autocompleteAttached_"]) > [class*="scrollableContainer_"] {
+    border-radius: 0 0 5px 5px;
+}
+
+[class*="scrollableContainer_"] > [class*="inner_"] {
+    padding-inline-start: 0;
+}
+
+[class*="scrollableContainer_"] > [class*="inner_"] > [class*="textArea_"] {
+    --chat-markup-line-height: 1.25rem;
+    color: var(--d18-composer-text);
+    font-size: 0.9375rem;
+    letter-spacing: -0.025rem;
+    margin-inline-start: 10px;
+    padding-inline: 0 10px;
+}
+
+[class*="scrollableContainer_"] [class*="textArea_"] [class*="editor_"] {
+    color: var(--d18-composer-text);
+    caret-color: var(--d18-composer-text);
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+}
+
+[class*="scrollableContainer_"] [class*="textArea_"] [class*="placeholder_"] {
+    color: var(--d18-composer-placeholder);
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+}
+
+/* + upload button and its divider */
+[class*="scrollableContainer_"] [class*="attachWrapper_"] {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding-block: 0;
+}
+
+[class*="scrollableContainer_"] [class*="attachWrapper_"]::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 1px;
+    height: 35px;
+    background-color: var(--d18-composer-divider);
+    pointer-events: none;
+}
+
+[class*="scrollableContainer_"] [class*="attachButton_"][class*="attachButton_"] {
+    margin-inline: 0 1px;
+    padding: 0;
+    color: var(--d18-composer-icon);
+}
+
+[class*="scrollableContainer_"] [class*="attachButtonInner_"] {
+    height: 24px;
+    padding: 10px;
+    border-radius: 0;
+    background: none;
+}
+
+[class*="scrollableContainer_"] [class*="attachButtonInner_"]:hover {
+    background: none;
+}
+
+[class*="scrollableContainer_"] [class*="attachButtonInner_"] > svg {
+    width: 24px;
+    height: 24px;
+    opacity: 0.3;
+    transform-origin: 50% 50%;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+}
+
+[class*="scrollableContainer_"] [class*="attachButton_"]:hover [class*="attachButtonInner_"] > svg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+[class*="scrollableContainer_"] [class*="attachButton_"] [class*="attachButtonPlus_"],
+[class*="scrollableContainer_"] [class*="attachButton_"]:hover [class*="attachButtonPlus_"] {
+    fill: var(--d18-composer-icon) !important;
+}
+
+/* right side buttons: plain icons, no hover plates */
+[class*="scrollableContainer_"] > [class*="inner_"] > [class*="buttons_"] {
+    gap: 4px;
+    margin-inline-end: 8px;
+}
+
+[class*="scrollableContainer_"] [class*="buttons_"] [class*="button_"],
+[class*="scrollableContainer_"] [class*="buttons_"] [class*="buttonContainer_"] {
+    background: none !important;
+    border-radius: 0;
+    color: var(--d18-composer-icon);
+    min-width: 28px;
+}
+
+[class*="scrollableContainer_"] [class*="buttons_"] [class*="button_"]:not([class*="emojiButton_"]) [class*="lottieIcon_"],
+[class*="scrollableContainer_"] [class*="buttons_"] [class*="button_"]:not([class*="emojiButton_"]) > svg {
+    opacity: 0.3;
+    transform-origin: 50% 50%;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+}
+
+[class*="scrollableContainer_"] [class*="buttons_"] [class*="button_"]:not([class*="emojiButton_"]):hover [class*="lottieIcon_"],
+[class*="scrollableContainer_"] [class*="buttons_"] [class*="button_"]:not([class*="emojiButton_"]):hover > svg,
+[class*="scrollableContainer_"] [class*="buttons_"] [class*="button_"][aria-expanded="true"] [class*="lottieIcon_"] {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+[class*="scrollableContainer_"] [class*="buttons_"] [class*="lottieIcon_"] {
+    width: 22px !important;
+    height: 22px !important;
+}
+
+/* emoji button: 22px greyed sprite, full colour and scaled on hover (2018 sprite behaviour) */
+[class*="scrollableContainer_"] [class*="emojiButton_"] [class*="spriteContainer_"] {
+    --custom-emoji-sprite-size: 22px !important;
+}
+
+[class*="scrollableContainer_"] [class*="emojiButton_"] [class*="spriteGreyscale_"] {
+    opacity: 0;
+}
+
+[class*="scrollableContainer_"] [class*="emojiButton_"] [class*="spriteColored_"] {
+    opacity: 0.3;
+    filter: grayscale(100%);
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out, filter 0.1s ease-in-out;
+}
+
+[class*="scrollableContainer_"] [class*="emojiButtonHovered_"] [class*="spriteColored_"],
+[class*="scrollableContainer_"] [class*="emojiButton_"]:hover [class*="spriteColored_"],
+[class*="scrollableContainer_"] [class*="emojiButton_"][aria-expanded="true"] [class*="spriteColored_"] {
+    opacity: 1;
+    filter: none;
+    transform: scale(1.275);
+}
+
+/* reply / thread suggestion bars stacked above the input */
+[class*="channelTextArea_"] [class*="stackedBars_"] {
+    background: var(--d18-bg-secondary);
+    border-radius: 5px 5px 0 0;
+}
+
+[class*="channelTextArea_"] [class*="stackedBars_"] > :not(:last-child) {
+    border-bottom-color: var(--d18-composer-divider);
+}
+
+[class*="channelTextArea_"] [class*="replyBar_"],
+[class*="channelTextArea_"] [class*="threadSuggestionBar_"] {
+    background: var(--d18-bg-secondary);
+    color: var(--d18-text-muted);
+    font-size: 14px;
+}
+
+[class*="channelTextArea_"] [class*="replyBar_"] strong,
+[class*="channelTextArea_"] [class*="replyBar_"] [class*="name_"] {
+    color: var(--d18-text-header);
+}
+
+/* autocomplete, flush with the top of the input like 2018 */
+[class*="channelTextArea_"] [class*="autocompleteAttached_"] {
+    bottom: 100%;
+    inset-inline: 0;
+    border-radius: 5px 5px 0 0;
+    box-shadow: none;
+}
+
+[class*="channelTextArea_"] [class*="autocompleteAttached_"][class*="bottom_"] {
+    border-radius: 0 0 5px 5px;
+}
+
+[class^="autocomplete_"],
+[class*=" autocomplete_"] {
+    --background-surface-high: var(--d18-autocomplete-bg);
+    --interactive-background-hover: var(--d18-autocomplete-selected);
+    --interactive-background-selected: var(--d18-autocomplete-selected);
+    --border-subtle: var(--d18-autocomplete-divider);
+    --interactive-text-default: var(--d18-text-input);
+    --text-subtle: var(--d18-text-input);
+    background-color: var(--d18-autocomplete-bg);
+}
+
+[class*="autocomplete_"] [class*="autocompleteRow_"] {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+[class*="autocomplete_"] [class*="base_"] {
+    border-radius: 3px;
+}
+
+[class*="autocomplete_"] [class*="contentTitle_"] {
+    color: var(--d18-text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+[class*="autocomplete_"] [class*="contentTitle_"] strong {
+    color: var(--d18-text-header);
+    text-transform: none;
+}
+
+[class*="autocomplete_"] [class*="autocompleteRowContentSecondary_"],
+[class*="autocomplete_"] [class*="autocompleteRowSubheading_"] {
+    color: var(--d18-text-muted);
+}
+
+[class*="autocomplete_"] [class*="autocompleteRowIcon_"],
+[class*="autocomplete_"] [class*="icon_"]:not(img) {
+    color: var(--d18-text-muted);
+}
+
+/* typing row: back under the input, inside the 30px bottom margin */
+[class*="chatContent_"] > form [class*="base_"][class*="inTextChannel_"] {
+    top: auto;
+    bottom: 1px;
+    inset-inline: 0;
+    height: 26px;
+    padding-inline-start: 0;
+    background-color: var(--d18-bg-primary);
+    color: var(--d18-typing-text);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+[class*="chatContent_"] > form [class*="base_"][class*="inTextChannel_"] [class*="text_"] > strong {
+    color: var(--d18-typing-text);
+    font-weight: 700;
+}
+
+[class*="chatContent_"] > form [class*="base_"][class*="inTextChannel_"] [class*="typingDots_"] {
+    padding-inline-start: 0;
+    margin-top: -3px;
+}
+
+[class*="chatContent_"] > form [class*="base_"][class*="inTextChannel_"] [class*="dot_"] {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--d18-typing-text);
+}
+
+/* 2018 composer buttons only brighten on hover, no fill */
+[class*="scrollableContainer_"] [class*="attachButton_"][class*="button_"]:hover,
+[class*="channelTextArea_"] [class*="buttons_"] [class*="button_"]:hover {
+    background-color: transparent;
+}

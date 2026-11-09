@@ -1,0 +1,230 @@
+/* ===== 85 pickers: expression picker (GIFs / Stickers / Emoji) and reaction picker ===== */
+/* 2018 emoji picker was white in both themes (no theme-dark rules for .emojiPicker in the 2018 css) */
+
+:root {
+    --d18-picker-bg: #ffffff;
+    --d18-picker-border: hsla(0, 0%, 75%, 0.2);
+    --d18-picker-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    --d18-picker-line: rgba(0, 0, 0, 0.1);
+    --d18-picker-search-bg: rgba(199, 209, 216, 0.3);
+    --d18-picker-search-text: #737f8d;
+    --d18-picker-search-placeholder: rgba(115, 127, 141, 0.3);
+    --d18-picker-category: #98aab6;
+    --d18-picker-selected: #eceeef;
+    --d18-picker-hover: rgba(153, 170, 181, 0.1);
+    --d18-picker-accent: #697ec4;
+    --d18-picker-text: #4f545c;
+    --d18-picker-text-muted: #99aab5;
+}
+
+[class*="drawerSizingWrapper_"] > [class*="contentWrapper_"],
+:is([class^="wrapper_"], [class*=" wrapper_"]):has(> :is([class^="emojiPicker_"], [class*=" emojiPicker_"])) {
+    --custom-emoji-picker-border-radius: 5px;
+    --background-surface-high: var(--d18-picker-bg);
+    --background-surface-higher: var(--d18-picker-bg);
+    --background-base-lowest: var(--d18-picker-bg);
+    --background-base-lower: var(--d18-picker-bg);
+    --background-base-low: var(--d18-picker-selected);
+    --background-mod-subtle: var(--d18-picker-hover);
+    --background-mod-normal: var(--d18-picker-selected);
+    --background-mod-strong: var(--d18-picker-selected);
+    --background-modifier-hover: var(--d18-picker-hover);
+    --background-modifier-selected: var(--d18-picker-selected);
+    --border-subtle: var(--d18-picker-line);
+    --border-normal: var(--d18-picker-line);
+    --border-muted: var(--d18-picker-line);
+    --border-strong: var(--d18-picker-line);
+    --text-default: var(--d18-picker-search-text);
+    --text-strong: var(--d18-picker-text);
+    --text-subtle: var(--d18-picker-text-muted);
+    --text-muted: var(--d18-picker-text-muted);
+    --header-primary: var(--d18-picker-text);
+    --header-secondary: var(--d18-picker-search-text);
+    --interactive-text-default: var(--d18-picker-text-muted);
+    --interactive-text-hover: var(--d18-picker-text);
+    --interactive-text-active: var(--d18-picker-text);
+    --interactive-background-hover: var(--d18-picker-hover);
+    --interactive-background-selected: var(--d18-picker-selected);
+    --control-secondary-background-hover: var(--d18-picker-hover);
+    --control-secondary-background-active: var(--d18-picker-selected);
+    --input-background-default: var(--d18-picker-search-bg);
+    --input-border-default: transparent;
+    --input-text-default: var(--d18-picker-search-text);
+    --input-placeholder-text-default: var(--d18-picker-search-placeholder);
+    --icon-default: var(--d18-picker-text-muted);
+    --icon-muted: var(--d18-picker-text-muted);
+    --icon-subtle: var(--d18-picker-text-muted);
+    --icon-strong: var(--d18-picker-text);
+    --scrollbar-thin-thumb: rgba(0, 0, 0, 0.2);
+    --scrollbar-auto-thumb: rgba(0, 0, 0, 0.2);
+    --scrollbar-auto-track: transparent;
+    --shadow-border: none;
+    --shadow-high: var(--d18-picker-shadow);
+    color: var(--d18-picker-search-text);
+}
+
+/* shell */
+[class*="drawerSizingWrapper_"] > [class*="contentWrapper_"] {
+    background-color: var(--d18-picker-bg);
+    border: 1px solid var(--d18-picker-border);
+    border-radius: 5px;
+    box-shadow: var(--d18-picker-shadow);
+    padding-top: 12px;
+    row-gap: 0;
+}
+
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) {
+    background-color: var(--d18-picker-bg);
+    box-shadow: var(--d18-picker-shadow);
+}
+
+/* GIFs / Stickers / Emoji tabs, underlined like the 2018 category bar */
+[class*="drawerSizingWrapper_"] [class*="nav_"] {
+    padding: 0 12px;
+    border-bottom: 1px solid var(--d18-picker-line);
+}
+
+[class*="drawerSizingWrapper_"] [class*="navItem_"] + [class*="navItem_"] {
+    margin-inline-start: 4px;
+}
+
+[class*="drawerSizingWrapper_"] [class*="navButton_"] {
+    background: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    color: var(--d18-picker-text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    padding: 4px 8px 9px;
+}
+
+[class*="drawerSizingWrapper_"] [class*="navButton_"]:hover,
+[class*="drawerSizingWrapper_"] [class*="navButton_"]:active {
+    background: none;
+    color: var(--d18-picker-text);
+}
+
+[class*="drawerSizingWrapper_"] [class*="navButton_"][class*="navButtonActive_"],
+[class*="drawerSizingWrapper_"] [class*="navButton_"][aria-selected="true"] {
+    background: none;
+    border-bottom-color: var(--d18-picker-accent);
+    color: var(--d18-picker-text);
+}
+
+/* search header */
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) > [class*="header_"],
+[class*="emojiPickerHasTabWrapper_"] :is([class^="emojiPicker_"], [class*=" emojiPicker_"]) > [class*="header_"] {
+    background-color: var(--d18-picker-bg);
+    border-bottom: 1px solid var(--d18-picker-line);
+    padding: 12px;
+    gap: 12px;
+}
+
+[class*="drawerSizingWrapper_"] [class*="hasLeading_"]:has(> input),
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) [class*="hasLeading_"]:has(> input) {
+    --custom-text-input-height: 32px;
+    background-color: var(--d18-picker-search-bg);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+[class*="drawerSizingWrapper_"] [class*="hasLeading_"] > input,
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) [class*="hasLeading_"] > input {
+    color: var(--d18-picker-search-text);
+    font-size: 14px;
+    font-weight: 500;
+    padding-inline: 7px;
+}
+
+[class*="drawerSizingWrapper_"] [class*="hasLeading_"] > input::placeholder,
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) [class*="hasLeading_"] > input::placeholder {
+    color: var(--d18-picker-search-placeholder);
+}
+
+[class*="drawerSizingWrapper_"] [class*="header_"] button[class*="secondary_"],
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) > [class*="header_"] button[class*="secondary_"] {
+    background-color: var(--d18-brand);
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    height: 32px;
+    min-height: 32px;
+    padding: 2px 16px;
+}
+
+[class*="drawerSizingWrapper_"] [class*="header_"] button[class*="secondary_"]:hover,
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) > [class*="header_"] button[class*="secondary_"]:hover {
+    background-color: var(--d18-brand-hover);
+}
+
+/* category headers in the grid */
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) [class*="categorySection_"] [class*="header_"],
+[class*="drawerSizingWrapper_"] [class*="categorySection_"] [class*="header_"] {
+    color: var(--d18-picker-category);
+}
+
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) [class*="headerLabel_"],
+[class*="drawerSizingWrapper_"] [class*="headerLabel_"] {
+    color: var(--d18-picker-category);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+/* emoji cells */
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) [class*="emojiItem_"] {
+    border-radius: 3px;
+}
+
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) [class*="emojiItem_"][class*="emojiItemSelected_"] {
+    background-color: var(--d18-picker-selected);
+    box-shadow: none;
+}
+
+/* category column */
+[class*="emojiPickerHasTabWrapper_"] [class*="categoryList_"],
+:is([class^="wrapper_"], [class*=" wrapper_"]):has(> :is([class^="emojiPicker_"], [class*=" emojiPicker_"])) > [class*="categoryList_"] {
+    background-color: var(--d18-picker-bg);
+    border-inline-end: 1px solid var(--d18-picker-line);
+    box-sizing: border-box;
+}
+
+[class*="categoryList_"] [class*="categoryItemDefaultCategory_"] {
+    border-radius: 0;
+}
+
+[class*="categoryList_"] [class*="categoryItemDefaultCategory_"]:hover {
+    background: none;
+    opacity: 0.6;
+}
+
+[class*="categoryList_"] [class*="categoryItemDefaultCategorySelected_"],
+[class*="categoryList_"] [class*="categoryItemDefaultCategorySelected_"]:hover {
+    background: none;
+    box-shadow: inset 0 -3px 0 var(--d18-picker-accent);
+    opacity: 1;
+}
+
+[class*="categoryList_"] [class*="categoryItemPackCategory_"] {
+    border-radius: 3px;
+}
+
+/* preview footer */
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) > [class*="inspector_"] {
+    background-color: var(--d18-picker-bg);
+    border-top: 1px solid var(--d18-picker-line);
+}
+
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) > [class*="inspector_"] [class*="titlePrimary_"] {
+    color: var(--d18-picker-text);
+    font-weight: 600;
+}
+
+:is([class^="emojiPicker_"], [class*=" emojiPicker_"]) > [class*="inspector_"] [class*="titleSecondary_"] {
+    color: var(--d18-picker-text-muted);
+}

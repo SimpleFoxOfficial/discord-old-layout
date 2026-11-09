@@ -1,0 +1,256 @@
+/* ==== 31 dms: home sidebar with the DM list (2018-07-02) ==== */
+
+:root {
+    --d18-dm-hover-box: #36393f;
+    --d18-dm-name: #f6f6f7;
+}
+
+[class*="sidebarList_"] > nav[class*="privateChannels_"] {
+    background: var(--d18-channels);
+}
+
+/* "Find or start a conversation" */
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="searchBar_"] {
+    height: 48px;
+    padding: 0 12px;
+    border-bottom: 0;
+    background-color: transparent;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 2px 0 rgba(0, 0, 0, .06);
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="searchBar_"] > button,
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="searchBar_"] > button:hover,
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="searchBar_"] > button:active {
+    height: 32px;
+    min-height: 32px;
+    padding: 0 0 0 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, .2);
+    box-shadow: none;
+    color: hsla(0, 0%, 100%, .2);
+    justify-content: flex-start;
+    text-align: left;
+    cursor: pointer;
+    transition: none;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="searchBar_"] > button [class*="buttonChildrenWrapper_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="searchBar_"] > button [class*="buttonChildren_"] {
+    justify-content: flex-start;
+    padding: 0;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="searchBar_"] > button span,
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="searchBar_"] > button span > div {
+    color: hsla(0, 0%, 100%, .2);
+    font-family: var(--d18-font-primary);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+/* list */
+[class*="sidebarList_"] > nav[class*="privateChannels_"] > [class*="scroller_"] {
+    margin-bottom: var(--custom-app-panels-height, 0);
+    padding-bottom: 0;
+    background: transparent;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="scroller_"] > ul {
+    padding-top: 12px;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] {
+    margin-inline-start: 8px;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"] {
+    margin: 1px 0;
+    border-radius: 3px;
+    background: transparent;
+    color: #fff;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"]:hover {
+    background: var(--d18-dm-hover-box);
+    color: #fff;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"][class*="selected_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"][class*="selected_"]:hover {
+    background: var(--d18-selected);
+    color: #fff;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] a[class*="link_"] {
+    padding: 0 0 0 8px;
+    gap: 0;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="layout_"] {
+    height: 40px;
+    padding: 0;
+    border-radius: 3px;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="layout_"] > [class*="avatar_"] {
+    margin-inline-end: 12px;
+}
+
+/* names: white at .3, full on hover and selected */
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="name_"] {
+    color: var(--d18-dm-name);
+    font-family: var(--d18-font-primary);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="content_"] {
+    opacity: .3;
+    padding-right: 5px;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"]:hover [class*="content_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"][class*="selected_"] [class*="content_"] {
+    opacity: 1;
+}
+
+/* activity / members line */
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="subText_"] {
+    margin-top: 0;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="subText_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="subText_"] div,
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="subText_"] span {
+    color: var(--d18-text-h5);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="subText_"] strong {
+    font-weight: 700;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"]:hover [class*="subText_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"]:hover [class*="subText_"] div,
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] > [class*="interactive_"]:hover [class*="subText_"] span {
+    color: #fff;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] li[class*="channel_"] [class*="subText_"] img {
+    width: 12px;
+    height: 12px;
+}
+
+/* Friends / Nitro / Shop / Quests link rows */
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="linkButton_"] [class*="layout_"] > [class*="avatar_"] {
+    margin-inline-end: 18px;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] svg[class*="linkButtonIcon_"] {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    opacity: .6;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="linkButton_"]:hover svg[class*="linkButtonIcon_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="linkButton_"][class*="selected_"] svg[class*="linkButtonIcon_"] {
+    opacity: 1;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="linkButton_"] a[class*="link_"] {
+    padding-inline-end: 8px;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="tabHoverGradient_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="marketingButtonBackground"] {
+    display: none;
+}
+
+/* Offer / New badges in the 2018 badge shape, blurple like the 2019 NEW tag */
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="premiumTrialBadge_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="newBadge_"] > div {
+    height: auto;
+    padding: 3px 6px;
+    border: 0;
+    border-radius: 3px;
+    background: var(--d18-brand);
+    background-clip: padding-box;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .25), inset 0 1px 0 hsla(0, 0%, 100%, .15);
+    color: #fff;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="premiumTrialBadge_"] > div,
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="newBadge_"] > div,
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="newBadge_"] span {
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="tabBadge_"],
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="numberBadge_"] {
+    height: auto;
+    min-width: 0;
+    padding: 3px 6px;
+    border-radius: 3px;
+    background-color: var(--d18-red);
+    background-clip: padding-box;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .25), inset 0 1px 0 hsla(0, 0%, 100%, .15);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+}
+
+/* "DIRECT MESSAGES" header (the divider above it did not exist) */
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="sectionDivider_"] {
+    height: 0;
+    margin: 0;
+    background: none;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] h2[class*="privateChannelsHeaderContainer_"] {
+    height: auto;
+    margin-top: 12px;
+    padding: 9px 8px 9px 20px;
+    color: #fff;
+    cursor: default;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] h2[class*="privateChannelsHeaderContainer_"]:hover {
+    color: #fff;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="headerText_"] {
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    opacity: .3;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="headerActions_"] [class*="clickable_"] {
+    color: #fff;
+    opacity: .3;
+}
+@media (hover: hover) {
+    [class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="headerActions_"] [class*="moreButton_"]:not([aria-expanded="true"]) {
+        opacity: 0;
+    }
+    [class*="sidebarList_"] > nav[class*="privateChannels_"] h2[class*="privateChannelsHeaderContainer_"]:hover [class*="moreButton_"] {
+        opacity: .3;
+    }
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="headerActions_"] [class*="clickable_"]:hover {
+    color: #fff;
+    opacity: .6;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="headerActions_"] svg {
+    color: #fff;
+}
+
+/* close X: plain white, only while the row is hovered (Discord already hides it otherwise) */
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="closeButton_"] {
+    margin-inline-end: 8px;
+    opacity: 1;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] [class*="closeButton_"] [class*="innerCloseButton_"] {
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    backdrop-filter: none;
+}
+[class*="sidebarList_"] > nav[class*="privateChannels_"] svg[class*="closeIcon_"] {
+    width: 18px;
+    height: 18px;
+    color: #fff;
+}

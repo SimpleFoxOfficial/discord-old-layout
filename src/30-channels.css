@@ -1,0 +1,389 @@
+/* ==== 30 channels: channel sidebar inside a server (2018-07-02) ==== */
+
+:root {
+    --d18-ch-bright: #f6f6f7;
+    --d18-ch-muted: #4f545c;
+    --d18-ch-hover-box: #36393f;
+    --d18-ch-icon-opacity: .36;
+}
+
+/* column */
+[class*="sidebarList_"] > nav[class*="container_"] {
+    background: var(--d18-channels);
+    padding-bottom: var(--custom-app-panels-height, 0);
+}
+
+/* server header */
+[class*="sidebarList_"] > nav[class*="container_"] header[class*="header_"] {
+    height: 48px;
+    padding: 0 12px 0 16px;
+    border-bottom: 0;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 2px 0 rgba(0, 0, 0, .06);
+    background-color: transparent;
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .15s ease;
+    z-index: 3;
+}
+[class*="sidebarList_"] > nav[class*="container_"] header[class*="header_"]:hover,
+[class*="sidebarList_"] > nav[class*="container_"] header[class*="header_"]:has([aria-expanded="true"]) {
+    background-color: rgba(0, 0, 0, .1);
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="headerEllipseBackdrop_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="headerEllipseForeground_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="headerGlass_"] {
+    display: none;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="guildDropdown_"] {
+    flex: 1 1 auto;
+    height: 48px;
+    padding: 0;
+    gap: 0;
+    border-radius: 0;
+    background-color: transparent;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="guildDropdown_"]:hover {
+    background-color: transparent;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="guildDropdown_"] h2[class*="name_"] {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 48px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="headerChildren_"] > svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+    color: #fff;
+    opacity: .6;
+    transform: translate3d(0, 1px, 0);
+    transition: transform .2s ease;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="guildDropdown_"][aria-expanded="true"] [class*="headerChildren_"] > svg {
+    transform: rotate(-180deg);
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="inviteButton_"] {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+    border-radius: 0;
+    background-color: transparent;
+    color: #fff;
+    opacity: .3;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="inviteButton_"]:hover {
+    background-color: transparent;
+    opacity: .6;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="inviteButton_"] svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* divider after the top rows: no line in 2018, keep the gap */
+[class*="sidebarList_"] > nav[class*="container_"] [class*="sectionDivider_"] {
+    background: none;
+    border: 0;
+    box-shadow: none;
+}
+
+/* categories */
+[class*="sidebarList_"] > nav[class*="container_"] li[class*="containerDefault_"]:has(> [class*="wrapperCommon_"]) {
+    padding-top: 28px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"] {
+    height: 20px;
+    padding: 0 8px 0 18px;
+    color: var(--d18-text-muted);
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"] [class*="mainContent_"] {
+    gap: 0;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"] [class*="name_"] > div {
+    color: var(--d18-text-muted);
+    font-family: var(--d18-font-primary);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: color .1s ease-out;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"] svg[class*="icon_"] {
+    position: absolute;
+    left: 3px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    color: var(--d18-text-muted);
+    opacity: 1;
+    transition: none;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"]:hover [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"]:hover [class*="name_"] > div,
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"]:hover svg[class*="icon_"] {
+    color: var(--d18-text-h5);
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"][class*="muted_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"][class*="muted_"] [class*="name_"] > div,
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"][class*="muted_"] svg[class*="icon_"] {
+    color: var(--d18-ch-muted);
+    opacity: 1;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"] [class*="addButton_"] {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"] [class*="addButtonIcon_"] {
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    opacity: .3;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapperCommon_"] [class*="addButtonIcon_"]:hover {
+    color: #fff;
+    opacity: .6;
+}
+
+/* channel rows */
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] {
+    min-height: 32px;
+    padding: 0 8px;
+    border-radius: 3px;
+    justify-content: center;
+    background: transparent;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="linkTop_"] {
+    gap: 0;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="iconContainer_"],
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] svg[class*="icon_"] {
+    width: 16px;
+    height: 16px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="iconContainer_"] {
+    margin-inline-end: 4px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] svg[class*="icon_"] {
+    color: var(--d18-text-h5);
+    opacity: var(--d18-ch-icon-opacity);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="name_"] > span {
+    color: var(--d18-text-muted);
+    font-family: var(--d18-font-primary);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    opacity: 1;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="name_"] {
+    line-height: 32px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="children_"] > * + * {
+    margin-left: 4px;
+}
+
+/* hover: text rows get the box, voice rows only brighten */
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="wrapper_"]:hover a[class*="link_"] {
+    background: var(--d18-ch-hover-box);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="wrapper_"]:hover a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="wrapper_"]:hover a[class*="link_"] [class*="name_"] > span {
+    color: var(--d18-text-h5);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="wrapper_"]:hover a[class*="link_"][role="button"] {
+    background: transparent;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="wrapper_"]:active a[class*="link_"][role="button"] {
+    background: var(--d18-ch-hover-box);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="wrapper_"]:hover a[class*="link_"][role="button"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="wrapper_"]:hover a[class*="link_"][role="button"] [class*="name_"] > span {
+    color: var(--d18-ch-bright);
+}
+
+/* modes */
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeUnreadImportant_"] a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeUnreadImportant_"] a[class*="link_"] [class*="name_"] > span,
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeUnreadImportant_"]:hover a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeUnreadImportant_"]:hover a[class*="link_"] [class*="name_"] > span {
+    color: var(--d18-text-normal);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeSelected_"] a[class*="link_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeSelected_"]:hover a[class*="link_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeSelected_"]:hover a[class*="link_"][role="button"] {
+    background: var(--d18-selected);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeSelected_"] a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeSelected_"] a[class*="link_"] [class*="name_"] > span,
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeSelected_"]:hover a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeSelected_"]:hover a[class*="link_"] [class*="name_"] > span,
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeConnected_"] a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeConnected_"] a[class*="link_"] [class*="name_"] > span,
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeConnected_"]:hover a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeConnected_"]:hover a[class*="link_"] [class*="name_"] > span {
+    color: var(--d18-ch-bright);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeMuted_"] a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeMuted_"] a[class*="link_"] [class*="name_"] > span,
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeMuted_"]:hover a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeMuted_"]:hover a[class*="link_"] [class*="name_"] > span {
+    color: var(--d18-ch-muted);
+    opacity: 1;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeMuted_"] a[class*="link_"] svg[class*="icon_"] {
+    color: var(--d18-text-muted);
+    opacity: var(--d18-ch-icon-opacity);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeSelected_"] a[class*="link_"] svg[class*="icon_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeConnected_"] a[class*="link_"] svg[class*="icon_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="modeUnreadImportant_"] a[class*="link_"] svg[class*="icon_"] {
+    color: var(--d18-text-h5);
+    opacity: var(--d18-ch-icon-opacity);
+}
+
+/* unread pill at the column edge */
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="unread_"] {
+    inset-inline-start: -8px;
+    width: 4px;
+    height: 8px;
+    margin-top: -4px;
+    border-radius: 0 6px 6px 0;
+    background-color: hsla(0, 0%, 100%, .6);
+}
+
+/* row action icons (invite, settings, open chat) */
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="iconItem_"] {
+    margin-inline-start: 4px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="iconItem_"] svg[class*="actionIcon_"] {
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    opacity: .3;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="iconItem_"]:hover svg[class*="actionIcon_"] {
+    color: #fff;
+    opacity: .6;
+}
+
+/* mention and count badges */
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="numberBadge_"] {
+    height: auto;
+    min-width: 0;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    color: #fff;
+    background-clip: padding-box;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .25), inset 0 1px 0 hsla(0, 0%, 100%, .15);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="newBadge_"] {
+    padding: 3px 6px;
+    border-radius: 3px;
+    background-color: var(--d18-brand);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    text-transform: uppercase;
+}
+
+/* second line under a channel (voice status, thread counts) */
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="linkBottom_"] {
+    margin-inline-start: 20px;
+    padding-bottom: 6px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li a[class*="link_"] [class*="subtitle_"] {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    color: var(--d18-text-muted) !important;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="wrapper_"]:hover a[class*="link_"] [class*="subtitle_"] {
+    color: var(--d18-text-h5) !important;
+}
+
+/* threads: no tree lines in 2018 */
+[class*="sidebarList_"] > nav[class*="container_"] [class*="spine_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="spineBorder_"] {
+    opacity: 0;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="typeThread_"] a[class*="link_"] {
+    min-height: 28px;
+    margin-inline-start: 20px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="typeThread_"] a[class*="link_"] [class*="name_"],
+[class*="sidebarList_"] > nav[class*="container_"] li [class*="typeThread_"] a[class*="link_"] [class*="name_"] > span {
+    font-size: 14px;
+    line-height: 28px;
+}
+
+/* voice users */
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] {
+    padding: 0 8px 8px 20px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="content_"] {
+    height: 28px;
+    padding: 0;
+    gap: 0;
+    border-radius: 2px;
+    background: transparent;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="clickable_"]:active [class*="content_"] {
+    background-color: var(--d18-hover);
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="avatarContainer_"] {
+    margin: 0 4px 0 8px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="avatarSmall_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="avatarLarge_"] {
+    width: 20px;
+    height: 20px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="username_"] {
+    margin-left: 4px;
+    color: var(--d18-text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 28px;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="clickable_"]:hover [class*="username_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="usernameSpeaking_"] {
+    color: var(--d18-ch-bright);
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="icons_"] {
+    gap: 0;
+}
+[class*="sidebarList_"] > nav[class*="container_"] [class*="listDefault_"] [class*="icons_"] svg {
+    width: 16px;
+    height: 16px;
+    margin: 0 1px 0 5px;
+    color: #fff;
+    opacity: .3;
+}
+
+/* voice user limit chip: one 2018 "02/10" style box */
+[class*="sidebarList_"] > nav[class*="container_"] [class*="users_"][class*="wrapper_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapper_"] > [class*="users_"],
+[class*="sidebarList_"] > nav[class*="container_"] [class*="wrapper_"] > [class*="total_"] {
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 0;
+    background: var(--d18-ch-hover-box);
+    color: var(--d18-text-muted);
+    font-family: var(--d18-font-code);
+    font-size: 12px;
+    line-height: 16px;
+}

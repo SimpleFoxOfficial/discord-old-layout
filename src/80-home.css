@@ -1,0 +1,448 @@
+/* Home: Friends page, Active Now, Nitro / Shop / Quests */
+
+:root {
+    --d18-home-tab: hsla(0, 0%, 100%, 0.6);
+    --d18-home-line: hsla(0, 0%, 100%, 0.1);
+    --d18-home-label: hsla(0, 0%, 100%, 0.3);
+    --d18-home-name: hsla(0, 0%, 100%, 0.6);
+    --d18-home-status: hsla(0, 0%, 100%, 0.4);
+    --d18-home-row-hover: #414449;
+    --d18-home-input-bg: rgba(36, 39, 43, 0.2);
+}
+
+/* Page */
+
+main:has(> [class*="tabBody_"] > [class*="peopleColumn_"]) {
+    border-top: 0;
+    background: var(--d18-bg-primary);
+}
+
+main [class*="tabBody_"]:has(> [class*="peopleColumn_"]) {
+    background: var(--d18-bg-primary);
+    font-family: var(--d18-font-primary);
+}
+
+/* Tab bar: Add Friend first, then a separator, then the sections */
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] {
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    line-height: 16px;
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"]::before {
+    content: "";
+    order: -1;
+    flex-shrink: 0;
+    width: 1px;
+    height: 22px;
+    background: var(--d18-home-line);
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"] {
+    min-width: 40px;
+    min-height: 0;
+    margin: 0 8px;
+    padding: 2px 8px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--d18-home-tab);
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.4px;
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"] [class*="itemText_"] {
+    font: inherit;
+    letter-spacing: inherit;
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"]:hover:not([aria-selected="true"]) {
+    background-color: var(--d18-bg-secondary);
+    color: var(--d18-home-tab);
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"][class*="selected_"][aria-selected="true"] {
+    background-color: #fff;
+    color: var(--d18-bg-primary);
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"][class*="addFriend_"][class*="addFriend_"][class*="addFriend_"] {
+    order: -2;
+    background-color: var(--d18-brand);
+    color: #fff;
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"][class*="addFriend_"][class*="addFriend_"][class*="addFriend_"]:hover,
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"][class*="addFriend_"][class*="addFriend_"][class*="addFriend_"][aria-selected="true"] {
+    background-color: var(--d18-brand-hover);
+    color: #fff;
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"][class*="addFriend_"][class*="addFriend_"][class*="addFriend_"]:active {
+    background-color: var(--d18-brand-active);
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] [class*="badge_"] {
+    min-width: 0;
+    height: auto;
+    margin-left: 4px;
+    padding: 3px 5px;
+    border-radius: var(--d18-radius);
+    background-color: var(--d18-home-tab) !important;
+    color: var(--d18-bg-primary);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 12px;
+    box-shadow: none;
+}
+
+[class*="topPill_"][class*="tabBar_"][role="tablist"] > [aria-selected="true"] [class*="badge_"] {
+    background-color: var(--d18-brand) !important;
+    color: #fff;
+}
+
+/* Friends list */
+
+[class*="peopleColumn_"] > [class*="searchBar_"] {
+    margin: 12px 20px 8px 30px;
+}
+
+[class*="peopleColumn_"] > [class*="searchBar_"] [class*="wrapper_"] {
+    border: 1px solid var(--d18-border-input);
+    border-radius: var(--d18-radius);
+    background: var(--d18-bg-input);
+}
+
+[class*="peopleColumn_"] > [class*="searchBar_"] input {
+    color: var(--d18-text-input);
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+}
+
+[class*="peopleList_"] [class*="sectionTitle_"] {
+    margin-top: 8px;
+    padding: 8px 30px;
+    border-bottom: 1px solid var(--d18-home-line);
+}
+
+[class*="peopleList_"] [class*="sectionTitle_"] h2 {
+    margin: 0;
+    color: var(--d18-home-label);
+    font-family: var(--d18-font-primary);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+}
+
+[class*="peopleList_"] [class*="divider_"] {
+    margin-inline: 30px 20px;
+    background-color: var(--d18-home-line);
+}
+
+[class*="peopleList_"] [class*="sectionTitle_"] + [class*="divider_"] {
+    background-color: transparent;
+}
+
+[class*="peopleList_"] [class*="peopleListItem_"] {
+    margin-inline: 20px;
+    padding: 16px 10px;
+    border-radius: var(--d18-radius);
+    font-family: var(--d18-font-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+[class*="peopleList_"] [class*="peopleListItem_"] [class*="rowButton_"] {
+    border-radius: var(--d18-radius);
+}
+
+[class*="peopleList_"] [class*="peopleListItem_"]:is(:hover, [class*="active_"]) {
+    background: var(--d18-home-row-hover);
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Name column (200px) and status column side by side, like the 2018 table */
+
+[class*="peopleListItem_"] [class*="userInfo_"] {
+    align-items: center;
+}
+
+[class*="peopleListItem_"] [class*="userInfo_"] > [class*="avatar_"] {
+    margin: 0 10px 0 0;
+}
+
+[class*="peopleListItem_"] [class*="userInfo_"] > [class*="text_"] {
+    flex-direction: row;
+    align-items: center;
+    min-width: 0;
+}
+
+[class*="peopleListItem_"] [class*="discordTag_"] {
+    flex: 0 0 158px;
+    align-items: flex-end;
+    min-width: 0;
+}
+
+[class*="peopleListItem_"] [class*="username_"] {
+    color: var(--d18-home-name);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+[class*="peopleListItem_"] [class*="discriminator_"] {
+    margin-bottom: 1px;
+    color: var(--d18-home-name);
+    font-size: 12px;
+    line-height: 16px;
+    opacity: 0.6;
+}
+
+[class*="peopleListItem_"]:is(:hover, [class*="active_"]) [class*="discriminator_"] {
+    visibility: visible;
+}
+
+[class*="peopleListItem_"] [class*="subtext_"] {
+    flex: 0 1 250px;
+    min-width: 0;
+    margin-left: 41px;
+    color: var(--d18-home-status);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+[class*="peopleListItem_"] [class*="subtext_"] :is([class*="body-sm/"], [class*="textSm_"]) {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+/* Action buttons: square 36px, shown on hover */
+
+[class*="peopleListItem_"] [class*="actions_"] {
+    visibility: hidden;
+}
+
+[class*="peopleListItem_"]:is(:hover, :focus-within, [class*="active_"]) [class*="actions_"] {
+    visibility: visible;
+}
+
+[class*="peopleListItem_"] [class*="actions_"] [class*="actionButton_"] {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--d18-radius);
+    background-color: var(--d18-bg-secondary);
+    color: #fff;
+    transition: background-color 0.2s;
+}
+
+[class*="peopleListItem_"] [class*="actions_"] [class*="actionButton_"]:hover {
+    background-color: var(--d18-bg-accent);
+    color: #fff;
+}
+
+[class*="peopleListItem_"] [class*="actions_"] [class*="actionButton_"][class*="actionAccept_"]:hover {
+    background-color: var(--d18-green);
+    color: #fff;
+}
+
+[class*="peopleListItem_"] [class*="actions_"] [class*="actionButton_"][class*="actionDeny_"]:hover {
+    background-color: var(--d18-red);
+    color: #fff;
+}
+
+[class*="peopleListItem_"] [class*="actions_"] [class*="actionButton_"] svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Add Friend */
+
+[class*="peopleColumn_"] > header:has(form [class*="addFriendInputWrapper_"]) {
+    padding: 8px 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background: linear-gradient(-180deg, rgba(54, 57, 62, 0.3), rgba(47, 49, 54, 0.3));
+}
+
+[class*="peopleColumn_"] > header > h2 {
+    margin: 5px 0;
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+[class*="peopleColumn_"] > header > div,
+[class*="addFriendWumpusWrapper_"] > div {
+    margin: 5px 0;
+    color: var(--d18-home-name);
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+[class*="peopleColumn_"] [class*="addFriendInputWrapper_"] {
+    margin: 13px 0;
+    padding: 0 16px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: var(--d18-radius);
+    background-color: var(--d18-home-input-bg);
+}
+
+[class*="peopleColumn_"] [class*="addFriendInputWrapper_"]:focus-within {
+    border-color: var(--d18-brand);
+}
+
+[class*="peopleColumn_"] [class*="addFriendInputWrapper_"][class*="success_"] {
+    border-color: var(--d18-green);
+}
+
+[class*="peopleColumn_"] [class*="addFriendInputWrapper_"][class*="errorWithBg_"] {
+    border-color: var(--d18-red);
+    background-color: var(--d18-home-input-bg);
+}
+
+[class*="addFriendUsernameRow_"] {
+    min-height: 50px;
+    padding: 0;
+}
+
+[class*="addFriendUsernameRow_"] input[class*="input_"],
+[class*="addFriendInputWrapper_"] textarea {
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+}
+
+[class*="addFriendUsernameRow_"] input[class*="input_"]::placeholder,
+[class*="addFriendInputWrapper_"] textarea::placeholder,
+[class*="addFriendHint_"] {
+    color: hsla(0, 0%, 100%, 0.2);
+}
+
+[class*="addFriendUsernameRow_"] button[type="submit"] {
+    height: 32px;
+    min-height: 32px;
+    padding: 7px 16px;
+    border: 0;
+    border-radius: var(--d18-radius);
+    background: var(--d18-brand);
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+[class*="addFriendUsernameRow_"] button[type="submit"]:hover {
+    background: var(--d18-brand-hover);
+}
+
+[class*="addFriendUsernameRow_"] button[type="submit"]:disabled {
+    background: var(--d18-brand);
+    opacity: 0.5;
+}
+
+[class*="addFriendUsernameRow_"] button[type="submit"] span {
+    font: inherit;
+}
+
+[class*="friendNoteTextContainer_"] {
+    border-top-color: var(--d18-separator);
+}
+
+/* Other Places to Make Friends */
+
+[class*="peopleColumn_"] > header:not(:has(form)) {
+    padding: 40px 30px 16px;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+}
+
+[class*="peopleColumn_"] > header:not(:has(form)) > h2 {
+    color: #fff !important;
+}
+
+[class*="peopleColumn_"] > [class*="grid_"] {
+    padding: 16px 30px;
+}
+
+[class*="peopleColumn_"] > [class*="grid_"] > button {
+    border: 1px solid var(--d18-home-line);
+    border-radius: var(--d18-radius);
+    background: transparent;
+    color: var(--d18-text-normal);
+    font-family: var(--d18-font-primary);
+}
+
+[class*="peopleColumn_"] > [class*="grid_"] > button:hover {
+    border-color: transparent;
+    background-color: var(--d18-home-line);
+}
+
+[class*="peopleColumn_"] > [class*="grid_"] > button [class*="icon_"] {
+    border-radius: var(--d18-radius);
+}
+
+/* Active Now column */
+
+[class*="nowPlayingColumn_"] {
+    background: var(--d18-bg-secondary);
+    font-family: var(--d18-font-primary);
+}
+
+[class*="nowPlayingColumn_"] [class*="scroller_"] {
+    border-inline-start: 0;
+}
+
+[class*="nowPlayingColumn_"] [class*="content_"] > h2 {
+    margin: 8px 0 12px;
+    color: var(--d18-home-label);
+    font-family: var(--d18-font-primary);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+}
+
+[class*="nowPlayingColumn_"] [class*="itemCard_"] {
+    border: 1px solid var(--d18-border-card);
+    border-radius: var(--d18-radius);
+    background: var(--d18-bg-card);
+    box-shadow: none;
+}
+
+[class*="nowPlayingColumn_"] [class*="itemCard_"]:hover {
+    background: var(--d18-home-row-hover);
+}
+
+[class*="nowPlayingColumn_"] [class*="itemCard_"] [class*="inset_"] {
+    border-radius: var(--d18-radius);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[class*="nowPlayingColumn_"] [class*="itemCard_"] :is([class*="largeImage_"], [class*="headerIcon_"]) {
+    border-radius: var(--d18-radius);
+}
+
+/* Nitro, Shop and Quests: 2018 surfaces and type only */
+
+:is([class*="applicationStore_"], [class*="shopPageContainer_"], [class*="questHomePage_"]) {
+    background-color: var(--d18-bg-primary);
+    font-family: var(--d18-font-primary);
+}

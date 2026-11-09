@@ -1,0 +1,269 @@
+/* Call screen (ported from Old Call Screen) */
+
+/* Button text follows Discord's own labels, so it stays right in other languages and modes (Stop Watching, Decline). Only English "Disconnect" is swapped for --occ-leave-text. */
+:root {
+    --occ-red: var(--d18-red);
+    --occ-red-hover: var(--d18-red-hover);
+    --occ-red-active: var(--d18-red-active);
+    --occ-green: var(--d18-green);
+    --occ-green-hover: var(--d18-green-hover);
+    --occ-green-active: var(--d18-green-active);
+    --occ-panel: var(--d18-bg-tertiary);
+    --occ-bar: rgba(0, 0, 0, 0.3);
+    --occ-icon: var(--d18-icon);
+    --occ-icon-hover: var(--d18-icon-active);
+    --occ-radius: var(--d18-radius);
+    --occ-font: var(--d18-font-primary);
+    --occ-leave-text: "Leave Call";
+}
+/* Panel */
+
+[class*="minimum_"]:has(> [class*="callContainer_"]) {
+    background: var(--occ-panel) !important;
+}
+
+[class*="minimum_"] > [class*="callContainer_"] :is([class^="root_"], [class*=" root_"]):has(> [class*="videoControls_"]) {
+    background: transparent;
+}
+
+div[class*="callContainer_"] {
+    --status-speaking: var(--occ-green);
+    --custom-base-tile-border-radius: var(--occ-radius);
+}
+
+[class*="callContainer_"] [class*="gradientContainer_"] {
+    display: none;
+}
+
+/* Corner buttons: expand, invite, volume, pop out, full screen */
+
+[class*="callContainer_"] [class*="edgeControls_"] {
+    gap: 8px;
+}
+
+[class*="callContainer_"] [class*="edgeControls_"] :is([class*="leftTrayIcon_"], [class*="rightTrayIcon_"]) {
+    margin: 0;
+}
+
+[class*="callContainer_"] [class*="edgeControls_"] button {
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: var(--occ-radius) !important;
+    background: var(--occ-bar) !important;
+    color: var(--occ-icon) !important;
+}
+
+[class*="callContainer_"] [class*="edgeControls_"] button:hover {
+    color: var(--occ-icon-hover) !important;
+}
+
+[class*="callContainer_"] [class*="edgeControls_"] button svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: inherit !important;
+}
+
+/* Center bar */
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] {
+    box-sizing: border-box;
+    gap: 2px;
+    height: 40px;
+    padding: 0 4px;
+    border-radius: 4px;
+    background: var(--occ-bar);
+}
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"]:not(:has([class*="buttonSection_"])) {
+    gap: 8px;
+    padding: 0;
+    background: none;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > [class*="buttonSection_"] {
+    display: contents;
+}
+
+/* Old order: screen share, camera, extras, LEAVE CALL, mic, more */
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > [class*="buttonSection_"] > * {
+    order: 3;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > [class*="buttonSection_"] > :is([class*="controlButton_"], :has([class*="controlButton_"])) {
+    order: 1;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > [class*="buttonSection_"]:first-child > :nth-child(2) {
+    order: 2;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > :last-child {
+    order: 4;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > [class*="buttonSection_"]:first-child > :first-child {
+    order: 5;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > [class*="buttonSection_"] + [class*="buttonSection_"] > :last-child {
+    order: 6;
+}
+
+/* Icon buttons */
+
+[class*="callContainer_"] [class*="centerControls_"] :is([class*="centerButton_"], [class*="contextMenuNub_"], [class*="attachedCaretButtonContainer_"], [class*="fullRegionDropdownButton_"]) {
+    border: 0 !important;
+    border-radius: var(--occ-radius) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="fullRegionDropdownButton_"] {
+    padding: 0 !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"] {
+    justify-content: center;
+    min-width: 36px;
+    height: 32px;
+    padding: 0 8px !important;
+    color: var(--occ-icon) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"]:hover {
+    color: var(--occ-icon-hover) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerIcon_"] {
+    width: 20px !important;
+    height: 20px !important;
+    padding: 0 !important;
+    color: inherit !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"]:is([class*="white_"], [class*="activeLight_"]) {
+    color: #fff !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] :is([class*="centerButton_"], [class*="contextMenuNub_"])[class*="redGlow_"] {
+    color: var(--occ-red) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] :is([class*="centerButton_"], [class*="contextMenuNub_"])[class*="greenGlow_"] {
+    color: var(--occ-green) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="contextMenuNub_"] {
+    width: 14px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    margin: 0 0 0 -6px !important;
+    color: rgba(255, 255, 255, 0.35) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="contextMenuNub_"]:hover {
+    color: var(--occ-icon-hover) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="contextMenuCaret_"] {
+    width: 12px;
+    height: 12px;
+}
+
+/* LEAVE CALL and JOIN CALL */
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="disconnect_"] {
+    min-width: 106px;
+    margin: 0 8px;
+    padding: 0 12px !important;
+    background: var(--occ-red) !important;
+    color: #fff !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="disconnect_"]:hover {
+    background: var(--occ-red-hover) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="disconnect_"]:active {
+    background: var(--occ-red-active) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="join_"] {
+    background: var(--occ-green) !important;
+    color: #fff !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="join_"]:hover {
+    background: var(--occ-green-hover) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="join_"]:active {
+    background: var(--occ-green-active) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > :not(:first-child) > [class*="centerButton_"][class*="join_"] {
+    min-width: 106px;
+    padding: 0 12px !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="disconnect_"] > *,
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > :not(:first-child) > [class*="centerButton_"][class*="join_"] > * {
+    display: none;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="disconnect_"]::after,
+[class*="callContainer_"] [class*="centerControls_"] > [class*="wrapper_"] > :not(:first-child) > [class*="centerButton_"][class*="join_"]::after {
+    content: attr(aria-label);
+    font-family: var(--occ-font);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="centerButton_"][class*="disconnect_"]:is([aria-label="Disconnect"], :not([aria-label]))::after {
+    content: var(--occ-leave-text);
+}
+
+/* LEAVE CALL with the stream menu caret next to it */
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="fullRegionDropdownButton_"][class*="disconnect_"] {
+    margin: 0 8px;
+    background: var(--occ-red) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="fullRegionDropdownButton_"] [class*="centerButton_"][class*="disconnect_"] {
+    margin: 0;
+    background: transparent !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="fullRegionDropdownButton_"] [class*="centerButton_"][class*="disconnect_"]:hover,
+[class*="callContainer_"] [class*="centerControls_"] [class*="contextMenuNub_"][class*="disconnect_"]:hover {
+    background: var(--occ-red-hover) !important;
+}
+
+[class*="callContainer_"] [class*="centerControls_"] [class*="contextMenuNub_"][class*="disconnect_"] {
+    width: 24px !important;
+    margin: 0 !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.15) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Avatars and tiles */
+
+[class*="callContainer_"] [class*="voiceCallWrapper_"] [class*="statusContainer_"] {
+    background-color: var(--occ-red) !important;
+}
+
+[class*="callContainer_"] [class*="overlayTitle_"] {
+    padding: 4px 8px !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: #fff !important;
+    font-family: var(--occ-font);
+}

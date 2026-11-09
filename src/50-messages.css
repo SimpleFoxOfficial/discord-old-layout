@@ -1,0 +1,383 @@
+/* Message list: 2018 cozy groups, dividers, bars, system messages, hover buttons, replies, typing */
+
+:root {
+    --d18-msg-group-pad: 20px;
+    --d18-msg-margin-left: 20px;
+    --d18-msg-margin-right: 6px;
+    --d18-msg-date-line: #474a4f;
+    --d18-msg-date-text: rgba(153, 170, 181, 0.5);
+    --d18-msg-red-line: rgba(240, 71, 71, 0.4);
+    --d18-msg-red-text: rgba(240, 71, 71, 0.8);
+    --d18-msg-bar: rgba(114, 137, 218, 0.9);
+    --d18-msg-bar-alt: #c9d2f0;
+    --d18-msg-text-size: 0.9375rem;
+}
+
+[class*="messagesWrapper_"] {
+    --custom-message-margin-horizontal: 0px;
+    --custom-message-margin-left-content-cozy: 60px;
+    --custom-message-spacing-vertical-container-cozy: 0px;
+    --chat-avatar-size: 40px;
+    --chat-markup-line-height: 1.1em;
+}
+
+/* Groups */
+[class*="messagesWrapper_"] [class*="cozyMessage_"] {
+    margin-left: var(--d18-msg-margin-left);
+    margin-right: var(--d18-msg-margin-right);
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-inline-end: 20px;
+    background: transparent;
+    border-radius: 0;
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="groupStart_"] {
+    margin-top: var(--d18-msg-group-pad);
+    padding-top: var(--d18-msg-group-pad);
+    border-top: 1px solid var(--d18-message-border);
+    min-height: 0;
+}
+
+[class*="messagesWrapper_"] [class*="divider_"][role="separator"] + [class*="messageListItem_"] > [class*="groupStart_"],
+[class*="messagesWrapper_"] li[class*="messageListItem_"]:first-of-type > [class*="groupStart_"] {
+    margin-top: 0;
+    border-top-color: transparent;
+}
+
+[class*="messagesWrapper_"] [class*="scrollerSpacer_"] {
+    height: var(--d18-msg-group-pad);
+}
+
+/* Avatar and header */
+[class*="cozyMessage_"] > [class*="contents_"] > img[class^="avatar_"] {
+    width: 40px;
+    height: 40px;
+    inset-inline-start: 0;
+    margin-top: -2px;
+}
+
+[class*="cozyMessage_"] > [class*="contents_"] > img[class^="avatar_"]:hover {
+    filter: none;
+    opacity: 0.8;
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"] h3[class^="header_"] {
+    line-height: 18px;
+    min-height: 18px;
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"] h3[class^="header_"] [class^="username_"] {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 18px;
+    color: var(--d18-text-header);
+    letter-spacing: 0;
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"] h3[class^="header_"] [class^="timestamp_"] {
+    color: var(--d18-text-timestamp);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 18px;
+    height: auto;
+    margin-inline-start: 6px;
+    letter-spacing: 0;
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"] [class*="timestampVisibleOnHover_"] {
+    color: var(--d18-text-timestamp);
+    font-weight: 400;
+}
+
+/* Message text */
+[class*="messagesWrapper_"] [class*="cozyMessage_"] > [class*="contents_"] > [class*="messageContent_"] {
+    font-size: var(--d18-msg-text-size);
+    line-height: 1.1em;
+    margin-top: 6px;
+    color: var(--d18-text-message);
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"] [class*="edited_"] {
+    color: var(--d18-text-timestamp);
+    font-size: 0.625rem;
+    line-height: 0.625rem;
+    margin-left: 3px;
+}
+
+/* Mentioned message: bar and tint on the text column only */
+[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"] {
+    background: linear-gradient(to right, transparent 54px, rgba(250, 166, 26, 0.2) 54px, rgba(250, 166, 26, 0.2) 60px, var(--d18-mentioned-bg) 60px);
+}
+
+[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="mentioned_"]::before {
+    background: var(--d18-mentioned-border);
+    left: 54px;
+    inset-inline-start: 54px;
+    width: 4px;
+    border-radius: 2px 0 0 2px;
+}
+
+/* Dividers */
+[class*="messagesWrapper_"] [class*="divider_"][role="separator"] {
+    margin: var(--d18-msg-group-pad) var(--d18-msg-margin-right) 0 var(--d18-msg-margin-left);
+    border-top: 1px solid var(--d18-msg-date-line);
+    opacity: 1;
+}
+
+[class*="messagesWrapper_"] [class*="divider_"][role="separator"] [class^="content_"] {
+    background: var(--d18-bg-primary);
+    border-radius: 8px;
+    color: var(--d18-msg-date-text);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    padding: 0 10px;
+    margin-top: -1px;
+}
+
+[class*="messagesWrapper_"] [class*="divider_"][role="separator"][class*="isUnread_"] {
+    border-top-color: var(--d18-msg-red-line);
+    z-index: 2;
+}
+
+[class*="messagesWrapper_"] [class*="isUnread_"] [class^="content_"] {
+    color: var(--d18-msg-red-text);
+}
+
+[class*="messagesWrapper_"] [class*="isUnread_"] [class*="unreadPill_"] {
+    background: var(--d18-bg-primary);
+    color: var(--d18-msg-red-text);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    padding: 0 10px;
+    height: auto;
+}
+
+[class*="messagesWrapper_"] [class*="isUnread_"] [class*="unreadPillCap"] {
+    display: none;
+}
+
+/* New messages bar and jump to present */
+[class*="newMessagesBar_"] {
+    background-color: var(--d18-msg-bar);
+    border: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: none;
+    inset-inline: 20px;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    font-weight: 400;
+    color: #fff;
+}
+
+[class*="newMessagesBar_"]:hover {
+    background-color: var(--d18-brand);
+}
+
+[class*="newMessagesBar_"] [class*="barButtonMain_"] {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    padding: 6px 10px;
+}
+
+[class*="newMessagesBar_"] [class*="barButtonAlt_"] {
+    color: var(--d18-msg-bar-alt);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    background: none;
+    border-radius: 0;
+}
+
+[class*="newMessagesBar_"] [class*="barButtonAlt_"]:hover {
+    color: #fff;
+}
+
+[class*="jumpToPresentBar_"] {
+    background-color: var(--d18-bg-secondary);
+    border: none;
+    border-radius: 5px 5px 0 0;
+    box-shadow: none;
+    color: var(--d18-text-message);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+[class*="jumpToPresentBar_"] [class*="barButtonAlt_"] {
+    color: var(--d18-link-content);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: none;
+}
+
+/* System messages (calls, joins, pins) */
+[class*="messagesWrapper_"] [class*="cozyMessage_"][class*="systemMessage_"] > [class*="contents_"] > [class*="messageContent_"] {
+    margin-top: 0;
+}
+
+[class*="messagesWrapper_"] [class*="systemMessage_"] [class*="container_"][class*="cozy_"] {
+    color: hsla(0, 0%, 100%, 0.5);
+    font-size: var(--d18-msg-text-size);
+    line-height: 18px;
+    padding: 0;
+}
+
+[class*="messagesWrapper_"] [class*="systemMessage_"] [class*="container_"][class*="cozy_"] [class*="iconContainer_"] {
+    width: 40px;
+    height: 18px;
+    margin-inline-end: 20px;
+}
+
+[class*="messagesWrapper_"] [class*="systemMessage_"] [class*="container_"][class*="cozy_"] [class*="iconSize_"] {
+    width: 16px;
+    height: 16px;
+}
+
+[class*="messagesWrapper_"] [class*="systemMessage_"] [class*="container_"][class*="cozy_"] [class*="username_"],
+[class*="messagesWrapper_"] [class*="systemMessage_"] [class*="container_"][class*="cozy_"] [class*="name_"] {
+    color: var(--d18-text-header);
+    font-weight: 500;
+}
+
+[class*="messagesWrapper_"] [class*="systemMessage_"] [class^="timestamp_"] {
+    color: var(--d18-text-timestamp);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-inline-start: 6px;
+}
+
+/* Hover actions: 2018 had faint 16px icons at the right of the text line */
+[class*="cozyMessage_"] > [class^="buttonContainer_"] [class^="buttons_"] {
+    top: 6px;
+    inset-inline-end: 20px;
+    padding: 0;
+}
+
+[class*="cozyMessage_"][class*="groupStart_"] > [class^="buttonContainer_"] [class^="buttons_"] {
+    top: calc(var(--d18-msg-group-pad) + 24px);
+}
+
+[class*="cozyMessage_"][class*="hasReply_"] > [class^="buttonContainer_"] [class^="buttons_"] {
+    top: calc(var(--d18-msg-group-pad) + 50px);
+}
+
+[class*="cozyMessage_"][class*="systemMessage_"] > [class^="buttonContainer_"] [class^="buttons_"] {
+    top: calc(var(--d18-msg-group-pad) + 1px);
+}
+
+[class*="cozyMessage_"] [class*="buttonsInner_"][class*="popover_"][class*="popover_"] {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none !important;
+    padding: 0;
+    gap: 6px;
+    height: 16px;
+}
+
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"][class*="hoverBarButton_"] {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--d18-text-header);
+    opacity: 0.4;
+}
+
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"][class*="hoverBarButton_"]:hover {
+    background: transparent;
+    opacity: 1;
+}
+
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="hoverBarButton_"] [class*="icon_"] {
+    width: 16px;
+    height: 16px;
+    transform: none !important;
+}
+
+[class*="cozyMessage_"] [class*="buttonsInner_"] [class*="separator_"] {
+    height: 12px;
+    margin: 2px 0;
+    background: var(--d18-msg-date-line);
+}
+
+/* Replies (new): a quiet 2018 style line above the message */
+[class*="messagesWrapper_"] [class*="cozyMessage_"] [class*="repliedMessage_"] {
+    font-size: 0.875rem;
+    color: hsla(0, 0%, 100%, 0.5);
+    margin-bottom: 4px;
+}
+
+[class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="repliedMessageClickableSpine_"] {
+    border-color: var(--d18-embed-pill);
+    border-radius: 3px 0 0 0;
+}
+
+[class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="repliedMessageClickableSpine_"]:hover {
+    border-color: var(--d18-text-muted);
+}
+
+[class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="replyAvatar_"] {
+    width: 16px;
+    height: 16px;
+}
+
+[class*="messagesWrapper_"] [class*="repliedMessage_"] [class^="username_"] {
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+[class*="messagesWrapper_"] [class*="repliedMessage_"] [class*="repliedTextContent_"] {
+    color: hsla(0, 0%, 100%, 0.5);
+}
+
+/* APP tag in the 2018 bot tag shape */
+[class*="messagesWrapper_"] [class*="botTagCozy_"] {
+    height: auto;
+    margin: 2px 0 0 6px;
+    padding: 1px 2px;
+    border-radius: 3px;
+    background: var(--d18-brand);
+    color: #fff;
+    vertical-align: top;
+}
+
+[class*="messagesWrapper_"] [class*="botTagCozy_"] [class*="botText_"] {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 13px;
+}
+
+[class*="messagesWrapper_"] [class*="botTagCozy_"] [class*="botTagVerified_"] {
+    width: 13px;
+    height: 13px;
+    margin-inline-end: 1px;
+}
+
+/* Typing indicator */
+[class*="typingDots_"] {
+    font-size: 13px;
+    font-weight: 400;
+    color: hsla(0, 0%, 100%, 0.8);
+}
+
+[class*="typingDots_"] strong {
+    font-weight: 700;
+    color: hsla(0, 0%, 100%, 0.8);
+}
+
+[class*="typing_"] > [class*="ellipsis_"] {
+    color: hsla(0, 0%, 100%, 0.8);
+}

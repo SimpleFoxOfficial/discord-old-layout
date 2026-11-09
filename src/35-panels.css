@@ -1,0 +1,264 @@
+/* ==== 35 panels: account, voice connected and activity panels (2018-07-02) ==== */
+
+:root {
+    --d18-panel-bg: var(--d18-account);
+    --d18-panel-border: #36393f;
+    --d18-panel-button-hover: rgba(24, 25, 28, .3);
+}
+
+/* panels sit flush at the bottom of the channel column only */
+[class*="sidebarList_"] ~ section[class*="panels_"] {
+    inset-inline-start: var(--custom-guild-list-width);
+    inset-inline-end: 0;
+    bottom: 0;
+    width: auto;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--d18-channels);
+    box-shadow: none;
+    --custom-panels-spacing: 0px;
+}
+@supports (grid-template-columns: subgrid) and (white-space-collapse: collapse) {
+    [class*="sidebarList_"] ~ section[class*="panels_"] {
+        grid-area: channelsList;
+        inset-inline-start: 0;
+    }
+}
+/* the guild list no longer has to stop above the panels */
+[class*="sidebar_"] > nav[class*="guilds_"] {
+    margin-bottom: 0;
+}
+
+/* account panel */
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="container_"]:has([class*="nameTag_"]) {
+    height: 52px;
+    min-height: 52px;
+    margin: 0;
+    padding: 0 10px;
+    gap: 0;
+    border-radius: 0;
+    background: var(--d18-panel-bg);
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+    font-weight: 400;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="accountPopoutButtonWrapper_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="accountPopoutButtonWrapper_"]:hover {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+    border-radius: 0;
+    background-color: transparent;
+    transition: none;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="accountPopoutButtonWrapper_"] [class*="avatar_"]:hover {
+    opacity: .8;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="nameTag_"] {
+    margin: 0;
+    min-width: 0;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="panelTitleContainer_"] {
+    margin: 0;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="panelTitleContainer_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="panelTitleContainer_"] > div {
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="panelSubtextContainer_"] {
+    margin-top: 2px;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="panelSubtextContainer_"] > div,
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="panelSubtextContainer_"] [class*="hovered_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="panelSubtextContainer_"] [class*="default_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="panelSubtextContainer_"] [class*="animatedText_"] {
+    color: hsla(0, 0%, 100%, .4);
+    font-family: var(--d18-font-primary);
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0;
+}
+
+/* panel buttons: 32px, transparent, icon at .6 */
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] {
+    gap: 0;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] button[class*="button_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] button[class*="button_"][class*="redGlow_"] {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 3px;
+    background-color: transparent;
+    color: #fff;
+    opacity: .6;
+    transition: none;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] button[class*="button_"]:hover,
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] button[class*="button_"][class*="redGlow_"]:hover,
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] [class*="popoutOpen_"] button[class*="button_"] {
+    background-color: var(--d18-panel-button-hover);
+    color: #fff;
+    opacity: 1;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] button[class*="buttonChevron_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] button[class*="buttonChevron_"][class*="redGlow_"] {
+    width: 12px;
+    padding: 0;
+    margin-inline-start: 0;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] [class*="lottieIcon_"] {
+    width: 18px !important;
+    height: 18px !important;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="buttons_"] [class*="buttonChevronIcon_"] {
+    width: 12px;
+    height: 12px;
+}
+
+/* voice connected panel */
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="container_"]:has(> [class*="connection_"]),
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="container_"]:has([class*="rtcConnectionStatus_"]) {
+    margin: 0;
+    padding: 10px;
+    gap: 8px;
+    border: 0;
+    border-bottom: 1px solid var(--d18-panel-border);
+    border-radius: 0;
+    background: var(--d18-panel-bg);
+    font-family: var(--d18-font-primary);
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="connection_"] {
+    height: auto;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="rtcConnectionStatus_"] {
+    height: auto;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="rtcConnectionStatusLabel_"] {
+    height: auto;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="rtcConnectionStatusConnected_"] {
+    color: var(--d18-green);
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="rtcConnectionStatusConnecting_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="rtcConnectionQualityAverage_"] {
+    color: var(--d18-yellow);
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="rtcConnectionStatusError_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="rtcConnectionQualityBad_"] {
+    color: var(--d18-red);
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="ping_"] {
+    width: 16px;
+    height: 16px;
+    margin: 0 4px 0 0;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: inherit;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="statusLine_"] {
+    gap: 0;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="connection_"] [class*="channel_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="connection_"] [class*="subtext_"] {
+    margin-top: 4px;
+    color: hsla(0, 0%, 100%, .4);
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+/* camera / screen / activity / soundboard row as 2018 icon buttons */
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="actionButtons_"] {
+    grid-gap: 0;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="actionButtons_"] [class*="button_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="actionButtons_"] [class*="button_"][class*="buttonColor_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="actionButtons_"] [class*="buttonColor_"] {
+    height: 32px;
+    min-height: 32px;
+    border-radius: 3px;
+    background-color: transparent;
+    color: #fff;
+    opacity: .6;
+    transition: none;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="actionButtons_"] [class*="button_"]:hover,
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="actionButtons_"] [class*="buttonColor_"]:hover {
+    background-color: var(--d18-panel-button-hover);
+    opacity: 1;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="actionButtons_"] [class*="buttonActive_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="actionButtons_"] [class*="greyButtonActive_"] {
+    background-color: transparent;
+    opacity: 1;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="voiceButtonsContainer_"] button {
+    border-radius: 3px;
+    background-color: transparent;
+    color: #fff;
+    opacity: .6;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="voiceButtonsContainer_"] button:hover {
+    background-color: var(--d18-panel-button-hover);
+    opacity: 1;
+}
+
+/* now playing / game activity panel */
+[class*="sidebarList_"] ~ section[class*="panels_"] [class*="activityPanel_"] {
+    margin: 0;
+    padding: 10px;
+    border: 0;
+    border-bottom: 1px solid var(--d18-panel-border);
+    border-radius: 0;
+    background: var(--d18-panel-bg);
+}
+
+/* quest / promo strip: kept, flat */
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] > [class*="wrapper_"] {
+    border-radius: 0;
+    background: var(--d18-panel-bg);
+    box-shadow: inset 0 -1px 0 var(--d18-panel-border);
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="contentWrapper_"] {
+    border-radius: 0;
+    background: transparent;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="contentCollapsedBackgroundWrapper_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="heroAssetWrapper_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="legibilityGradient_"],
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="opaqueExpandedBackground_"] {
+    display: none;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="questRewardTile_"] {
+    border-radius: 3px !important;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="rewardHighlightCTA_"] {
+    border-radius: 3px;
+    background: var(--d18-brand);
+    box-shadow: none;
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="rewardHighlightCTA_"]:hover {
+    background: var(--d18-brand-hover);
+}
+[class*="sidebarList_"] ~ section[class*="panels_"] > [class*="mask_"] [class*="rewardHighlightCTA_"] div {
+    color: #fff !important;
+    font-family: var(--d18-font-primary);
+    font-size: 14px;
+    font-weight: 500;
+}

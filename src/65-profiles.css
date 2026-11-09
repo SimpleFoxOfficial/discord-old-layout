@@ -1,0 +1,516 @@
+/* 65-profiles: user popout, full profile modal, DM profile panel (2018-07-02 dark) */
+
+:root {
+    --d18-pf-header: #202225;
+    --d18-pf-body: #2f3136;
+    --d18-pf-body-text: hsla(0, 0%, 100%, 0.8);
+    --d18-pf-title: #72767d;
+    --d18-pf-tag: hsla(0, 0%, 100%, 0.6);
+    --d18-pf-input: #36393f;
+    --d18-pf-input-border: #23262a;
+    --d18-pf-footer-border: rgba(32, 34, 37, 0.3);
+    --d18-pf-section-border: #202225;
+}
+
+/* profile theme colors become a flat colored header, like the 2018 activity headers */
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2).custom-user-profile-theme {
+    --d18-pf-header: var(--profile-gradient-primary-color, #202225);
+}
+
+/* shared shell */
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2)[class*="outer_"] {
+    padding: 0;
+    background: var(--d18-pf-body);
+    color: var(--d18-pf-body-text);
+    font-family: var(--d18-font-primary);
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2)[class*="outer_"] > [class*="inner_"][class*="inner_"] {
+    background: none;
+    border-radius: 0;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) > [class*="inner_"]::before {
+    display: none;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="dnsFont_"][class*="dnsFont_"] {
+    font-family: var(--d18-font-primary);
+    letter-spacing: 0;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="displayName_"] [class*="innerContainer_"] {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    animation: none;
+}
+
+/* popout: 250px card, 2018 shadow */
+.user-profile-popout[class*="outer_"] {
+    width: 250px;
+    border-radius: var(--d18-radius-md);
+    box-shadow: var(--d18-elevation-high), var(--d18-elevation-border);
+    overflow: hidden;
+}
+
+.user-profile-popout > [class*="inner_"] {
+    gap: 0;
+    padding-bottom: 0;
+}
+
+/* header: banner on top, 90px avatar centered, status as a 2018 activity line */
+:is(.user-profile-popout, .user-profile-sidebar) [class*="header_"]:has(> [class*="banner_"]) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+    background: var(--d18-pf-header);
+}
+
+:is(.user-profile-popout, .user-profile-sidebar) [class*="header_"] > [class*="banner_"] {
+    align-self: stretch;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="fill_"][class*="banner_"] {
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-radius: 0;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="fill_"][class*="banner_"]::before {
+    display: none;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar) [class*="header_"] > [class*="avatar_"][class*="avatar_"] {
+    position: relative;
+    inset: auto;
+    margin: -45px auto 10px;
+}
+
+.user-profile-popout [class*="header_"] > [class*="avatar_"] > [class*="wrapper_"] {
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.user-profile-popout [class*="header_"] > [class*="avatar_"] svg[class*="mask_"] {
+    width: 103.5px;
+    height: 103.5px;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar) [class*="header_"] > [class*="referenceContainer_"] {
+    display: none;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar) [class*="header_"] > [class*="container_"]:has(> [class*="outer_"]) {
+    position: relative;
+    inset: auto;
+    max-width: 100%;
+    margin: 0 10px 6px;
+    box-sizing: border-box;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="container_"] > [class*="outer_"][role="group"] {
+    max-width: none;
+    min-width: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="container_"] > [class*="outer_"][role="group"]::before,
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="container_"] > [class*="outer_"][role="group"]::after {
+    display: none;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="container_"] > [class*="outer_"][role="group"] > [class*="inner_"] {
+    padding: 0;
+    background: none;
+    text-align: center;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="statusText_"] {
+    color: var(--d18-pf-tag);
+    font-size: 14px;
+    line-height: 18px;
+}
+
+/* banner buttons */
+:is(.user-profile-popout, .user-profile-sidebar) [class*="bannerButton_"] {
+    background: rgba(0, 0, 0, 0.5);
+    border: 0;
+    color: hsla(0, 0%, 100%, 0.8);
+}
+
+:is(.user-profile-popout, .user-profile-sidebar) [class*="bannerButton_"]:hover {
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+}
+
+/* body */
+.user-profile-popout [class*="body_"][class*="scrollerBase_"] {
+    gap: 12px;
+    padding: 0 10px 10px;
+    background: var(--d18-pf-body);
+    -webkit-mask-image: none;
+    mask-image: none;
+    animation: none;
+    scrollbar-gutter: auto;
+}
+
+/* name block keeps the header color so it reads as the 2018 header */
+.user-profile-popout [class*="body_"][class*="scrollerBase_"] > div:first-child,
+.user-profile-sidebar [class*="info_"] > div:first-child {
+    margin: 0 -10px;
+    padding: 0 10px 20px;
+    background: var(--d18-pf-header);
+    text-align: center;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar) [class*="displayNameRow_"],
+:is(.user-profile-popout, .user-profile-sidebar) [class*="usernameAndPronounsRow_"] {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="displayNameRow_"] [class*="heading-"] {
+    color: #ffffff;
+    font-family: var(--d18-font-primary);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.user-profile-modal-v2 [class*="displayNameRow_"] [class*="heading-"] {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="displayName_"] {
+    color: #ffffff;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="usernameAndPronounsRow_"] [class*="userTag_"] {
+    color: var(--d18-pf-tag) !important;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="dotSpacer_"] {
+    background: var(--d18-pf-tag);
+}
+
+/* badges: bare 16px icons, 6px apart */
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="usernameAndPronounsRow_"] [role="group"] {
+    flex-basis: 100%;
+    justify-content: center;
+    gap: 6px;
+    margin: 8px 0 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+}
+
+.user-profile-modal-v2 [class*="usernameAndPronounsRow_"] [role="group"] {
+    justify-content: flex-start;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="usernameAndPronounsRow_"] [role="group"]::before {
+    display: none;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="usernameAndPronounsRow_"] [role="group"] img {
+    width: auto;
+    height: 16px;
+}
+
+/* mutuals */
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="mutuals_"] [class*="text_"] {
+    color: var(--d18-text-h5) !important;
+    font-size: 12px;
+}
+
+/* section titles: hidden h2 shown as the 2018 bodyTitle, plus visible section headers */
+:is(.user-profile-popout, .user-profile-sidebar) section > [class*="hiddenVisually_"]:has(> h2) {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0 0 8px;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar) section > [class*="hiddenVisually_"] > h2,
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) section [class*="header_"][style] {
+    color: var(--d18-pf-title) !important;
+    font-family: var(--d18-font-primary);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="bioText_"] {
+    color: var(--d18-pf-body-text) !important;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+/* app widgets */
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="cardsList_"] [class*="card_"],
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="cardsList_"] [class*="backgroundCard_"] {
+    background: var(--d18-bg-tertiary);
+    border: 0;
+    border-radius: var(--d18-radius);
+    box-shadow: none;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="cardsList_"] [class*="heading-xs"] {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* roles: 22px pill, role colored circle, border is the role color at 60% */
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] {
+    gap: 0;
+    margin-top: 0;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="listContentsInteractive_"] {
+    gap: 0;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="role_"] {
+    position: relative;
+    box-sizing: border-box;
+    height: 22px;
+    min-height: 22px;
+    margin: 0 4px 4px 0;
+    padding: 4px;
+    background: transparent;
+    border: 1px solid var(--d18-bg-accent);
+    border-radius: 11px;
+    color: var(--d18-pf-body-text);
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="role_"]:has([class*="roleCircle_"]) {
+    border-color: transparent;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="roleCircle_"] {
+    width: 12px;
+    height: 12px;
+    margin: 0 4px 0 0;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="roleCircle_"]::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    box-sizing: border-box;
+    padding: 1px;
+    border-radius: 11px;
+    background: inherit;
+    opacity: 0.6;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="roleName_"] {
+    margin-inline-end: 4px;
+    color: var(--d18-pf-body-text) !important;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="removeButton_"] {
+    width: 12px;
+    height: 12px;
+    margin-inline-end: 2px;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="pillButton_"] {
+    padding: 4px 8px;
+    border-color: var(--d18-bg-accent);
+    color: var(--d18-text-h5);
+    font-size: 11px;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="addButton_"] {
+    width: 22px;
+    min-width: 22px;
+    height: 22px;
+    border: 1px solid var(--d18-bg-accent);
+    border-radius: 11px;
+    color: var(--d18-text-h5);
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="roleListContainer_"] [class*="addButton_"] svg {
+    width: 10px;
+    height: 10px;
+}
+
+/* footer: quick message box */
+.user-profile-popout [class*="footer_"] {
+    padding: 10px;
+    background: var(--d18-pf-body);
+    border-top: 1px solid var(--d18-pf-footer-border);
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="footer_"] [class*="channelTextArea_"][class*="container_"] {
+    background: var(--d18-pf-input);
+    border: 1px solid var(--d18-pf-input-border);
+    border-radius: var(--d18-radius);
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="footer_"] [class*="themedBackground_"] {
+    background: transparent;
+}
+
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="footer_"] [class*="slateTextArea_"],
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="footer_"] [class*="placeholder_"] {
+    color: hsla(0, 0%, 100%, 0.7);
+    font-size: 14px;
+}
+
+/* full profile modal: left card is the 2018 top section, right side the body */
+.user-profile-modal-v2[class*="outer_"] {
+    border-radius: 8px;
+    box-shadow: var(--d18-elevation-high), var(--d18-elevation-border);
+}
+
+.user-profile-modal-v2 [class*="profileHeader_"] > [class*="container_"]:has(> [class*="outer_"]) {
+    inset-block-start: calc(var(--custom-user-profile-banner-height) + 8px);
+}
+
+.user-profile-modal-v2 [class*="profileHeader_"] > [class*="container_"] > [class*="outer_"][role="group"] > [class*="inner_"] {
+    text-align: start;
+}
+
+.user-profile-modal-v2 [class*="backgroundImage_"] {
+    display: none;
+}
+
+.user-profile-modal-v2 main[class*="profile_"] {
+    background: var(--d18-pf-header);
+    border: 0;
+    border-radius: var(--d18-radius-md);
+    box-shadow: none;
+}
+
+.user-profile-modal-v2 [class*="profileHeaderBannerContainer_"] [class*="banner_"] {
+    border-radius: var(--d18-radius-md) var(--d18-radius-md) 0 0;
+}
+
+.user-profile-modal-v2 section[class*="section_"] + section[class*="section_"] {
+    border-top: 1px solid hsla(0, 0%, 100%, 0.06);
+}
+
+.user-profile-modal-v2 [class*="profileButtons_"] [class*="primary_"] {
+    background: var(--d18-brand);
+    border-radius: var(--d18-radius);
+    color: #ffffff;
+}
+
+.user-profile-modal-v2 [class*="profileButtons_"] [class*="primary_"]:hover {
+    background: var(--d18-brand-hover);
+}
+
+.user-profile-modal-v2 [class*="profileButtons_"] [class*="secondary_"] {
+    background: var(--d18-bg-accent);
+    border-radius: var(--d18-radius);
+    color: #ffffff;
+}
+
+/* modal tab bar: 13px, 2px underline, 40px apart */
+.user-profile-modal-v2 [role="tablist"] {
+    gap: 40px;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+
+.user-profile-modal-v2 [role="tablist"] > [role="tab"] {
+    margin: 0;
+    padding: 1px 0 0;
+    border-bottom: 2px solid transparent;
+    color: var(--d18-pf-tag);
+    background: none;
+}
+
+.user-profile-modal-v2 [role="tablist"] > [role="tab"]::after {
+    display: none;
+}
+
+.user-profile-modal-v2 [role="tablist"] > [role="tab"]:hover {
+    border-bottom-color: hsla(0, 0%, 100%, 0.2);
+    color: var(--d18-pf-tag);
+}
+
+.user-profile-modal-v2 [role="tablist"] > [role="tab"][aria-selected="true"] {
+    border-bottom-color: #ffffff;
+    color: #ffffff;
+}
+
+.user-profile-modal-v2 [role="tablist"] > [role="tab"] [class*="itemText_"] {
+    color: inherit;
+    font-family: var(--d18-font-primary);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 52px;
+}
+
+/* modal board cards */
+.user-profile-modal-v2 [class*="profileContentColumns_"] > :not(main) [class*="overlay_"] {
+    background: var(--d18-bg-card);
+    border: 1px solid var(--d18-border-card);
+    border-radius: var(--d18-radius-md);
+    box-shadow: none;
+}
+
+/* DM side panel */
+.user-profile-sidebar[class*="outer_"] {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.user-profile-sidebar [class*="info_"] {
+    padding-top: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+}
+
+.user-profile-sidebar [class*="scrollerFade_"] {
+    -webkit-mask-image: none;
+    mask-image: none;
+    animation: none;
+}
+
+.user-profile-sidebar [class*="header_"]:has(> [class*="banner_"]) {
+    margin-bottom: 0;
+}
+
+.user-profile-sidebar [class*="scrollerFade_"] > [class*="body_"] {
+    margin: 0 10px;
+    padding-bottom: 10px;
+}
+
+.user-profile-sidebar button[class*="secondary_"][class*="fullWidth_"] {
+    background: var(--d18-brand);
+    border: 0;
+    border-radius: var(--d18-radius);
+    color: #ffffff;
+}
+
+.user-profile-sidebar button[class*="secondary_"][class*="fullWidth_"]:hover {
+    background: var(--d18-brand-hover);
+}
+
+.user-profile-sidebar :is(section, [class*="overlay_"]) {
+    border-radius: var(--d18-radius);
+}

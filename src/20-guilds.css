@@ -1,0 +1,369 @@
+/* ===== 20-guilds: July 2018 server list (folders, discovery in the 2019 look) ===== */
+
+:root {
+    --d18-guilds-icon: 40px;
+    --d18-guilds-width: calc(var(--d18-guilds-icon) + 24px);
+    --d18-guilds-icon-bg: #2f3136;
+    --d18-guilds-radius-idle: calc(var(--d18-guilds-icon) / 2);
+    --d18-guilds-radius-active: calc(var(--d18-guilds-icon) * .3);
+    --d18-guilds-unread: #8a8e94;
+    --d18-guilds-add-bg: #1e2124;
+    --d18-guilds-add-line: #535559;
+    --d18-guilds-add-hover: rgba(255, 255, 255, .75);
+    --d18-guilds-voice-bg: #1e2124;
+    --d18-guilds-spring: cubic-bezier(.3, 1.6, .5, 1);
+}
+
+/* the id step beats .refresh-fast-follow-avatars.density-* */
+:root:not(#d18) {
+    --guildbar-avatar-size: var(--d18-guilds-icon);
+    --guildbar-folder-size: var(--d18-guilds-icon);
+    --custom-guild-list-padding: 12px;
+}
+
+/* ---------- Column ---------- */
+nav[class*="wrapper_"][class*="guilds_"] {
+    width: var(--d18-guilds-width);
+    margin-bottom: 0;
+    background-color: var(--d18-guilds);
+    -webkit-mask: none;
+    mask: none;
+}
+
+nav[class*="guilds_"] [class*="tree_"] > [class*="scroller_"] {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    scrollbar-width: none;
+    scrollbar-gutter: auto;
+}
+
+nav[class*="guilds_"] [class*="tree_"] > [class*="scroller_"]::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+nav[class*="guilds_"] [class*="tree_"] > [class*="scroller_"] > [role="group"]:empty {
+    display: none;
+}
+
+nav[class*="guilds_"] [class^="listItem_"] {
+    width: var(--d18-guilds-width);
+}
+
+nav[class*="guilds_"] [class*="tree_"] > [class*="scroller_"] {
+    gap: 10px !important;
+}
+
+nav[class*="guilds_"] [class*="scroller_"] [class*="stack_"][role="group"],
+nav[class*="guilds_"] [class*="folderGuildsList_"] {
+    gap: 8px !important;
+}
+
+/* ---------- Icon shape (the blob masks are replaced by a plain radius) ---------- */
+nav[class*="guilds_"] [class^="wrapper_"]:has(> svg[class*="svg_"]) {
+    width: var(--d18-guilds-icon) !important;
+    height: var(--d18-guilds-icon) !important;
+}
+
+nav[class*="guilds_"] svg[class*="svg_"] {
+    overflow: visible;
+    contain: none;
+}
+
+nav[class*="guilds_"] svg[class*="svg_"] > foreignObject {
+    width: var(--d18-guilds-icon);
+    height: var(--d18-guilds-icon);
+    -webkit-mask: none;
+    mask: none;
+    overflow: visible;
+}
+
+nav[class*="guilds_"] [role="treeitem"][class^="wrapper_"] {
+    width: var(--d18-guilds-icon);
+    height: var(--d18-guilds-icon);
+    border-radius: var(--d18-guilds-radius-idle);
+    overflow: hidden;
+    transition: border-radius .45s var(--d18-guilds-spring);
+}
+
+nav[class*="guilds_"] [role="treeitem"][class^="wrapper_"]:is(:hover, [aria-selected="true"]) {
+    border-radius: var(--d18-guilds-radius-active);
+}
+
+nav[class*="guilds_"] [role="treeitem"][class^="wrapper_"] > img {
+    width: var(--d18-guilds-icon);
+    height: var(--d18-guilds-icon);
+}
+
+/* acronym servers and the home button */
+nav[class*="guilds_"] [role="treeitem"] > [class*="childWrapper_"] {
+    width: var(--d18-guilds-icon);
+    height: var(--d18-guilds-icon);
+    background-color: var(--d18-guilds-icon-bg);
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-weight: 400;
+    scale: 1;
+    transition: background-color .2s ease-in-out;
+}
+
+nav[class*="guilds_"] [role="treeitem"]:is(:hover, [aria-selected="true"]) > [class*="childWrapper_"] {
+    background-color: var(--d18-brand);
+    color: #fff;
+    scale: 1;
+}
+
+nav[class*="guilds_"] [role="treeitem"] > [class*="childWrapper_"] [class*="acronym_"] {
+    font-weight: 400;
+    line-height: var(--d18-guilds-icon);
+}
+
+nav[class*="guilds_"] [data-list-item-id$="___home"] > [class*="childWrapper_"] > svg {
+    width: 30px;
+    height: 30px;
+}
+
+/* ---------- Pill: 5px visible, white 40px selected, grey 10px dot unread, no hover pill ---------- */
+nav[class*="guilds_"] [class^="listItem_"] > [class*="overlay_"] {
+    width: 8px;
+}
+
+nav[class*="guilds_"] [class^="listItem_"] [class^="item_"] {
+    width: 10px;
+    height: 10px;
+    margin-inline-start: -5px;
+    margin-top: -2px;
+    border-radius: 5px;
+    background-color: var(--d18-guilds-unread);
+    transform: none;
+    transition: none;
+}
+
+nav[class*="guilds_"] [class^="listItem_"] [class^="item_"][class*="hovered_"] {
+    height: 10px;
+}
+
+nav[class*="guilds_"] [class^="listItem_"] [class^="item_"]:not([class*="visible_"]) {
+    opacity: 0;
+}
+
+nav[class*="guilds_"] [class^="listItem_"] [class^="item_"][class*="selected_"] {
+    height: calc(var(--d18-guilds-icon) * .8);
+    margin-top: 0;
+    background-color: #fff;
+    opacity: 1;
+    transition: height .25s ease-in-out, margin-top .25s ease-in-out;
+}
+
+/* ---------- Separator ---------- */
+nav[class*="guilds_"] [class^="listItem_"]:has(> [class*="guildSeparator_"]) {
+    margin: 0;
+}
+
+nav[class*="guilds_"] [class*="guildSeparator_"] {
+    width: calc(var(--d18-guilds-icon) * .6);
+    height: 2px;
+    border-radius: 0;
+    background-color: var(--d18-guilds-icon-bg);
+}
+
+/* ---------- Mention badge (2018 .badge) ---------- */
+nav[class*="guilds_"] [class*="lowerBadge_"] {
+    bottom: -2px;
+    inset-inline-end: -2px;
+}
+
+nav[class*="guilds_"] [class*="lowerBadge_"] > [class*="numberBadge_"] {
+    width: auto !important;
+    min-width: 0;
+    height: 18px;
+    min-height: 18px;
+    padding: 3px 6px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #f04747 !important;
+    background-clip: padding-box;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .15);
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+}
+
+/* ---------- Voice / video / live corner badge (2018 .guild.audio) ---------- */
+nav[class*="guilds_"] [class*="upperBadge_"] {
+    top: -6px;
+    inset-inline-end: -6px;
+}
+
+nav[class*="guilds_"] [class*="upperBadge_"] > [class*="iconBadge_"] {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 12px;
+    background-color: var(--d18-guilds-voice-bg);
+    background-image: none;
+    color: #fff;
+}
+
+nav[class*="guilds_"] [class*="upperBadge_"] > [class*="iconBadge_"] > svg {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+}
+
+nav[class*="guilds_"] [class*="upperBadge_"] > [class*="unavailableBadge_"] {
+    background-color: #f04747;
+    color: #fff !important;
+}
+
+/* ---------- Add server / discovery (dashed 2018 add ring) ---------- */
+nav[class*="guilds_"] [role="treeitem"][class*="circleIconButton_"] {
+    width: var(--d18-guilds-icon);
+    height: var(--d18-guilds-icon);
+    border: 1px dashed var(--d18-guilds-add-line);
+    border-radius: 50%;
+    background-color: var(--d18-guilds-add-bg);
+    color: var(--d18-guilds-add-line);
+    transition: border-color .25s ease, color .25s ease;
+}
+
+nav[class*="guilds_"] [role="treeitem"][class*="circleIconButton_"]:is(:hover, [aria-selected="true"]) {
+    border-color: var(--d18-guilds-add-hover);
+    background-color: var(--d18-guilds-add-bg);
+    color: var(--d18-guilds-add-hover);
+}
+
+nav[class*="guilds_"] [role="treeitem"][class*="circleIconButton_"] > svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Download Apps: the 2018 web button's dark disc with the green arrow */
+nav[class*="guilds_"] [role="treeitem"][class*="circleIconButton_"][data-list-item-id$="app-download-button"] {
+    border: 0;
+    background-color: var(--d18-guilds-icon-bg);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .1);
+    color: var(--d18-green);
+    transition: background-color .1s ease-in-out;
+}
+
+nav[class*="guilds_"] [role="treeitem"][class*="circleIconButton_"][data-list-item-id$="app-download-button"]:hover {
+    background-color: #43464a;
+    color: var(--d18-green);
+}
+
+/* ---------- Folders (2019 look at 2018 sizes) ---------- */
+nav[class*="guilds_"] [class*="folderGroup_"] {
+    --custom-folder-preview-padding: 5px;
+    --custom-folder-preview-gap: 4px;
+    --custom-folder-preview-guild-size: 16px;
+}
+
+nav[class*="guilds_"] [class*="folderGroupBackground_"] {
+    width: var(--d18-guilds-icon);
+    border: 0;
+    border-radius: 25px;
+    background-color: var(--d18-guilds-icon-bg);
+}
+
+nav[class*="guilds_"] [class*="isExpanded_"] [class*="folderGroupBackground_"] {
+    background-color: var(--d18-guilds-icon-bg);
+}
+
+nav[class*="guilds_"] [class*="folderButtonInner_"] {
+    border-radius: var(--d18-guilds-radius-active);
+}
+
+nav[class*="guilds_"] [class*="folderIconWrapper_"] {
+    padding: 0;
+}
+
+nav[class*="guilds_"] [class*="folderIcon_"] {
+    width: var(--d18-guilds-icon);
+    height: var(--d18-guilds-icon);
+    border-radius: var(--d18-guilds-radius-active);
+    background-color: var(--d18-guilds-icon-bg);
+}
+
+nav[class*="guilds_"] [class*="folderIcon_"] > svg {
+    width: 24px;
+    height: 24px;
+}
+
+nav[class*="guilds_"] [class*="folderPreviewWrapper_"] {
+    width: var(--d18-guilds-icon);
+    height: var(--d18-guilds-icon);
+    padding: 5px;
+    border-radius: var(--d18-guilds-radius-active);
+}
+
+nav[class*="guilds_"] [class*="folderPreview_"] {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 0;
+    width: 40px;
+    height: 40px;
+}
+
+nav[class*="guilds_"] [class*="folderPreviewGuildIcon_"],
+nav[class*="guilds_"] [class*="folderPreviewGuildIcon_"]:nth-child(n) {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+/* ---------- Unread mention jump bars ---------- */
+nav[class*="guilds_"] :is([class*="unreadMentionsIndicatorTop_"], [class*="unreadMentionsIndicatorBottom_"]) {
+    width: var(--d18-guilds-width);
+    padding: 6px;
+}
+
+nav[class*="guilds_"] [class*="unreadMentionsIndicatorBottom_"] {
+    padding-bottom: 6px;
+}
+
+nav[class*="guilds_"] [class*="unreadMentionsBar_"] {
+    height: 20px;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .6);
+    color: #fff;
+    font-family: var(--d18-font-primary);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: uppercase;
+}
+
+nav[class*="guilds_"] [class*="unreadMentionsBar_"][class*="mention_"] {
+    background-color: rgba(240, 71, 71, .9);
+}
+
+nav[class*="guilds_"] [class*="unreadMentionsBar_"][class*="mention_"]:hover {
+    background-color: #f04747;
+}
+
+nav[class*="guilds_"] [class*="unreadMentionsBar_"][class*="mention_"]:active {
+    background-color: #d84040;
+}
+
+nav[class*="guilds_"] [class*="unreadMentionsBar_"][class*="unread_"] {
+    background-color: hsla(218, 5%, 47%, .9);
+}
+
+nav[class*="guilds_"] [class*="unreadMentionsBar_"][class*="unread_"]:hover {
+    background-color: #72767d;
+}
+
+nav[class*="guilds_"] [class*="unreadMentionsBar_"] svg {
+    width: 12px;
+    height: 12px;
+    margin-inline-start: 4px;
+    color: #fff;
+}
