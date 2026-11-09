@@ -119,7 +119,7 @@ function compileSelector(sel) {
     if (idx % 2 === 1) return part === ' ' ? ' ' : ' ' + part + ' ';
     const inner = part.replace(/(:(?:has|is|not|where)\()/g, '$1');
     if (idx !== lastIdx) {
-      return convertAnc(inner).replace(/:has(([^()]*(?:([^()]*)[^()]*)*))/g, (m, a) => ':has(' + convertInner(a) + ')');
+      return convertAnc(inner).replace(/:has\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, (m, a) => ':has(' + convertInner(a) + ')');
     }
     return inner;
   });
