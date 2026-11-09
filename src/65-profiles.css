@@ -82,19 +82,6 @@
     display: none;
 }
 
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="dnsFont_"][class*="dnsFont_"] {
-    font-family: var(--d18-font-primary);
-    letter-spacing: 0;
-}
-
-/* display name styles keep their main color, flat like a 2018 role color */
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="displayName_"] [class*="innerContainer_"] {
-    background: none;
-    color: var(--custom-display-name-styles-main-color, var(--d18-pf-name));
-    -webkit-text-fill-color: currentColor;
-    animation: none;
-}
-
 /* popout: 250px card, 2018 shadow */
 .user-profile-popout[class*="outer_"] {
     width: 250px;
@@ -145,6 +132,12 @@
 .user-profile-popout [class*="header_"] > [class*="avatar_"] svg[class*="mask_"] {
     width: 103.5px;
     height: 103.5px;
+}
+
+/* decorations come sized for discord's avatar size, so they follow the wrapper wherever an avatar was resized */
+svg[class*="mask_"][class*="svg_"] + svg[class*="avatarDecorationContainer_"] {
+    width: auto;
+    height: calc(100% * var(--decoration-to-avatar-ratio, 1.2));
 }
 
 /* discord measures this copy to size the status, so it has to keep the real line width */
@@ -211,6 +204,7 @@
     -webkit-mask-image: none;
     mask-image: none;
     animation: none;
+    scrollbar-width: none;
     scrollbar-gutter: auto;
 }
 
@@ -323,6 +317,11 @@
     border: 0;
     border-radius: var(--d18-radius);
     box-shadow: none;
+}
+
+/* the peeking card is the next one in the stack, so it sits a shade back */
+:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="cardsList_"] [class*="backgroundCard_"] {
+    background: color-mix(in srgb, var(--d18-pf-card) 50%, transparent);
 }
 
 :is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) [class*="cardsList_"] [class*="heading-xs"] {
@@ -667,4 +666,8 @@
 
 .user-profile-sidebar :is(section, [class*="overlay_"]) {
     border-radius: var(--d18-radius);
+}
+
+.user-profile-sidebar [class*="overlay_"] {
+    background: var(--d18-pf-card);
 }

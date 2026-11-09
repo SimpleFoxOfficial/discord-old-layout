@@ -47,6 +47,12 @@ section[class*="container_"][class*="themed_"] [class*="upperContainer_"] {
 }
 
 /* ----- title ----- */
+/* room for the dm avatar decoration, which hangs 2px past the avatar */
+[class*="upperContainer_"] > [class*="children_"] {
+  margin-inline-start: -2px;
+  padding-inline-start: 2px;
+}
+
 [class*="upperContainer_"] > [class*="children_"] > [class*="channelIcon_"] {
   width: auto;
   height: auto;
@@ -614,7 +620,17 @@ section[class*="container_"][class*="themed_"] [class*="upperContainer_"] {
 [class*="groupWrapper_"] > [class*="itemContainer_"]:hover,
 [class*="groupWrapper_"] > [class*="itemContainer_"]:active,
 [class*="groupWrapper_"] > [class*="itemContainer_"][aria-selected="true"] {
-  background-color: var(--d18-popout-bg);
+  background-color: var(--d18-search-option-hover, var(--d18-popout-bg));
+}
+
+/* light popouts are as white as the popout itself, 2018 used a grey row there */
+.theme-light.theme-light {
+  --d18-search-option-hover: #f3f3f3;
+}
+
+:root.custom-theme-background.theme-light.theme-light,
+:root.custom-theme-background .theme-light.theme-light {
+  --d18-search-option-hover: color-mix(in oklab, #f3f3f3 100%, var(--d18-tint));
 }
 
 [class*="groupWrapper_"] > [class*="itemContainer_"] > [class*="item_"] {
@@ -631,7 +647,8 @@ section[class*="container_"][class*="themed_"] [class*="upperContainer_"] {
   display: none;
 }
 
-[class*="groupWrapper_"] [class*="item_"]:has([class*="filterSublabelTextContainer_"]) > div > div:not([class*="filterSublabelTextContainer_"]) {
+/* :has stays in the rightmost compound, the build breaks it anywhere else */
+[class*="groupWrapper_"] [class*="item_"] > div > div:has(+ [class*="filterSublabelTextContainer_"]) {
   display: none;
 }
 
@@ -645,6 +662,16 @@ section[class*="container_"][class*="themed_"] [class*="upperContainer_"] {
   display: flex;
   gap: 4px;
   align-items: baseline;
+}
+
+[class*="filterSublabelTextContainer_"] {
+  gap: 4px;
+  align-items: baseline;
+}
+
+[class*="filterSublabelTextContainer_"] > div {
+  font-size: 16px;
+  line-height: 20px;
 }
 
 [class*="filterSublabelTextContainer_"] > div:first-child {

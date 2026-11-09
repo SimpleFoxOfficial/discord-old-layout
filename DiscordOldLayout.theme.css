@@ -1408,7 +1408,7 @@
     --d18-menu-bg: color-mix(in oklab, #ffffff 100%, var(--d18-tint));
     --d18-menu-item-hover-bg: color-mix(in oklab, #f6f6f7 100%, var(--d18-tint));
     --d18-select-menu-bg: color-mix(in oklab, #ffffff 100%, var(--d18-tint));
-    --d18-home-row-hover: color-mix(in oklab, #f6f6f7 100%, var(--d18-tint));
+    --d18-home-row-hover: var(--d18-hover);
     --d18-composer-bg: rgba(255, 255, 255, 0.45);
 }:root.custom-theme-background.theme-dark.theme-dark,
 :root.custom-theme-background .theme-dark.theme-dark,
@@ -1498,8 +1498,13 @@
     --d18-guilds-icon-bg: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
     --d18-guilds-add-bg: color-mix(in oklab, #1e2124 100%, var(--d18-tint));
     --d18-guilds-voice-bg: color-mix(in oklab, #1e2124 100%, var(--d18-tint));
-    --d18-ch-hover-box: color-mix(in oklab, #36393f 100%, var(--d18-tint));
-    --d18-dm-hover-box: color-mix(in oklab, #36393f 100%, var(--d18-tint));
+    --d18-hover: color-mix(in oklab, var(--d18-bg-accent) 30%, transparent);
+    --d18-selected: color-mix(in oklab, var(--d18-bg-accent) 60%, transparent);
+    --interactive-background-hover: var(--d18-hover);
+    --interactive-background-active: var(--d18-hover);
+    --interactive-background-selected: var(--d18-selected);
+    --d18-ch-hover-box: var(--d18-hover);
+    --d18-dm-hover-box: var(--d18-hover);
     --d18-panel-border: color-mix(in oklab, #36393f 100%, var(--d18-tint));
     --d18-header-bg: color-mix(in oklab, #36393f 100%, var(--d18-tint));
     --d18-popout-bg: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
@@ -1508,10 +1513,11 @@
     --d18-search-popout-bg: color-mix(in oklab, #36393f 100%, var(--d18-tint));
     --d18-autocomplete-bg: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
     --d18-autocomplete-selected: color-mix(in oklab, #36393f 100%, var(--d18-tint));
-    --d18-members-hover: color-mix(in oklab, #36393f 100%, var(--d18-tint));
+    --d18-members-hover: var(--d18-hover);
+    --d18-members-open: var(--d18-selected);
     --d18-menu-bg: color-mix(in oklab, #18191c 100%, var(--d18-tint));
     --d18-menu-item-hover-bg: color-mix(in oklab, #040405 100%, var(--d18-tint));
-    --d18-home-row-hover: color-mix(in oklab, #414449 100%, var(--d18-tint));
+    --d18-home-row-hover: var(--d18-hover);
     --d18-select-menu-bg: color-mix(in oklab, #303237 100%, var(--d18-tint));
     --d18-msg-date-line: hsla(0, 0%, 100%, 0.1);
     --d18-composer-bg: rgba(0, 0, 0, 0.25);
@@ -1610,9 +1616,14 @@
 :root.custom-theme-background.theme-light .sidebar_z-Dk_P:has(> .sidebarList_pog62O) {
     --background-base-lower: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
     --background-base-low: color-mix(in oklab, #2b2d31 100%, var(--d18-tint));
-    --interactive-background-hover: color-mix(in oklab, #36393f 100%, var(--d18-tint));
-    --interactive-background-active: color-mix(in oklab, #36393f 100%, var(--d18-tint));
-    --background-modifier-active: color-mix(in oklab, #36393f 100%, var(--d18-tint));
+    --interactive-background-hover: var(--d18-hover);
+    --interactive-background-active: var(--d18-hover);
+    --interactive-background-selected: var(--d18-selected);
+    --background-modifier-active: var(--d18-hover);
+}:root.custom-theme-background :is(.theme-dark, .theme-darker) .membersWrap_86es0b {
+    --interactive-background-hover: var(--d18-hover);
+    --interactive-background-active: var(--d18-hover);
+    --interactive-background-selected: var(--d18-selected);
 }
 
 :root {
@@ -1868,7 +1879,7 @@
     display: none;
 }[class*="sidebar_"][data-collapsed="true"] > .sidebarList_pog62O {
     border-radius: 0;
-}[class*="base_"]:has()(> [class^="notice_"]) [class*="sidebar_"] > .sidebarList_pog62O {
+}[class*="base_"]:has(> :is(.notice_-OWpGx, .notice_6XH7h0, .notice_6g5Jai, .notice_AI9GeR, .notice_DzIB9D, .notice_FHSxiv, .notice_FROYgk, .notice_INrZ8n, .notice_Iutnam, .notice_LNt8Yx, .notice_NFyjfB, .notice_NTyAV6, .notice_Q02kKo, .notice_SUjSf4, .notice_UBdWBJ, .notice_UCQIss, .notice_XwKvBN, .notice_ZTKX02, .notice_aTnRjo, .notice_alBGD-, .notice_chLwsG, .notice_f0Y-Hj, .notice_gE-9Ye, .notice_ipBn6f, .notice_jgizwB, .notice_lLdfT5, .notice_nNq2Vb, .notice_opJNsq, .notice_pjsc5i, .notice_sPmmqh, .notice_sYzG8R, .notice_x29oOx, .notice_x3HD6i, .notice_zV869I)) [class*="sidebar_"] > .sidebarList_pog62O {
     border-start-start-radius: 0;
 }[class*="base_"] > [class*="content_"] > .page_-hEsUl,
 [class*="base_"] > [class*="content_"] > .page_4JoJic,
@@ -4272,6 +4283,22 @@ section[class*="container_"].themed_ybUK7Z {
   background: var(--d18-header-bg);
 }section[class*="container_"]:is(.themed_5Hv024, .themed_6zZYhF, .themed_B8IhI-, .themed_C1dbpS, .themed_ybUK7Z) .upperContainer_ybUK7Z {
   align-items: center;
+}.upperContainer_ybUK7Z > .children_5m-AKz,
+.upperContainer_ybUK7Z > .children_7AR6oU,
+.upperContainer_ybUK7Z > .children_J1Adu_,
+.upperContainer_ybUK7Z > .children_J1RNcC,
+.upperContainer_ybUK7Z > .children_KXPGIh,
+.upperContainer_ybUK7Z > .children_TNyK-N,
+.upperContainer_ybUK7Z > .children_bWCaDq,
+.upperContainer_ybUK7Z > .children_pDnMjx,
+.upperContainer_ybUK7Z > .children_pM2RE8,
+.upperContainer_ybUK7Z > .children_s64Ydp,
+.upperContainer_ybUK7Z > .children_yOdhm_,
+.upperContainer_ybUK7Z > .children_ybUK7Z,
+.upperContainer_ybUK7Z > .children_z-Dk_P,
+.upperContainer_ybUK7Z > .children_zyBOuq {
+  margin-inline-start: -2px;
+  padding-inline-start: 2px;
 }.upperContainer_ybUK7Z > [class*="children_"] > .channelIcon_-94tyB,
 .upperContainer_ybUK7Z > [class*="children_"] > .channelIcon_0SicsV,
 .upperContainer_ybUK7Z > [class*="children_"] > .channelIcon_2zb7OH,
@@ -5050,7 +5077,7 @@ section[class*="container_"].themed_ybUK7Z {
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
-}[role="dialog"] > [class*="container_"]:has()(> [class*="header_"] .headerTabs_LSviKk) > [class*="scroller_"] {
+}[role="dialog"] > [class*="container_"]:has(> [class*="header_"] .headerTabs_LSviKk) > [class*="scroller_"] {
   padding: 13px 5px 7px 13px;
 }[class*="scroller_"] .actionBarCheckbox_dvN-MP:has(> :is(.headerContainer_-kuxsn, .headerContainer_29CVSE, .headerContainer_2ciB6o, .headerContainer_2lDrYu, .headerContainer_4aSOFi, .headerContainer_4dy_KE, .headerContainer_5qg940, .headerContainer_7bz1_m, .headerContainer_7ne32W, .headerContainer_8ZcKCk, .headerContainer_BkGrJJ, .headerContainer_C-o8GY, .headerContainer_COIWNl, .headerContainer_CxKjua, .headerContainer_HxSvbL, .headerContainer_K7aN4Z, .headerContainer_KljP7l, .headerContainer_MdxyIO, .headerContainer_NnWqs2, .headerContainer_POHM-Y, .headerContainer_Q7s_Rv, .headerContainer_UGbKo5, .headerContainer_V1nvOI, .headerContainer_VtZJ9m, .headerContainer_Wu0ZxP, .headerContainer_Xz_lTv, .headerContainer_YMXX4L, .headerContainer_YWrQKs, .headerContainer_ZbIvmP, .headerContainer_aWZQh8, .headerContainer_bNwrTb, .headerContainer_bPh85R, .headerContainer_bmGE2U, .headerContainer_c9deIk, .headerContainer_dkXc93, .headerContainer_g73Xad, .headerContainer_hbPaoT, .headerContainer_kSeJ_p, .headerContainer_mssHMP, .headerContainer_qDptEN, .headerContainer_s7QiTL, .headerContainer_vjZEv2, .headerContainer_whSvVg, .headerContainer_yKeh5i, .subheaderContainer_L_XqWT)),
 [class*="scroller_"] .arrowHitbox_7N-Bri:has(> :is(.headerContainer_-kuxsn, .headerContainer_29CVSE, .headerContainer_2ciB6o, .headerContainer_2lDrYu, .headerContainer_4aSOFi, .headerContainer_4dy_KE, .headerContainer_5qg940, .headerContainer_7bz1_m, .headerContainer_7ne32W, .headerContainer_8ZcKCk, .headerContainer_BkGrJJ, .headerContainer_C-o8GY, .headerContainer_COIWNl, .headerContainer_CxKjua, .headerContainer_HxSvbL, .headerContainer_K7aN4Z, .headerContainer_KljP7l, .headerContainer_MdxyIO, .headerContainer_NnWqs2, .headerContainer_POHM-Y, .headerContainer_Q7s_Rv, .headerContainer_UGbKo5, .headerContainer_V1nvOI, .headerContainer_VtZJ9m, .headerContainer_Wu0ZxP, .headerContainer_Xz_lTv, .headerContainer_YMXX4L, .headerContainer_YWrQKs, .headerContainer_ZbIvmP, .headerContainer_aWZQh8, .headerContainer_bNwrTb, .headerContainer_bPh85R, .headerContainer_bmGE2U, .headerContainer_c9deIk, .headerContainer_dkXc93, .headerContainer_g73Xad, .headerContainer_hbPaoT, .headerContainer_kSeJ_p, .headerContainer_mssHMP, .headerContainer_qDptEN, .headerContainer_s7QiTL, .headerContainer_vjZEv2, .headerContainer_whSvVg, .headerContainer_yKeh5i, .subheaderContainer_L_XqWT)),
@@ -5335,7 +5362,12 @@ section[class*="container_"].themed_ybUK7Z {
 .groupWrapper_lm2_KW > .itemContainer_lm2_KW[aria-selected="true"],
 .groupWrapper_lm2_KW > .itemContainer_mn9YAd[aria-selected="true"],
 .groupWrapper_lm2_KW > .itemContainer_xyJHva[aria-selected="true"] {
-  background-color: var(--d18-popout-bg);
+  background-color: var(--d18-search-option-hover, var(--d18-popout-bg));
+}.theme-light.theme-light {
+  --d18-search-option-hover: #f3f3f3;
+}:root.custom-theme-background.theme-light.theme-light,
+:root.custom-theme-background .theme-light.theme-light {
+  --d18-search-option-hover: color-mix(in oklab, #f3f3f3 100%, var(--d18-tint));
 }.groupWrapper_lm2_KW > :is(.itemContainer_EAKysR, .itemContainer_lm2_KW, .itemContainer_mn9YAd, .itemContainer_xyJHva) > .item_-wlZx4,
 .groupWrapper_lm2_KW > :is(.itemContainer_EAKysR, .itemContainer_lm2_KW, .itemContainer_mn9YAd, .itemContainer_xyJHva) > .item_1nVkKR,
 .groupWrapper_lm2_KW > :is(.itemContainer_EAKysR, .itemContainer_lm2_KW, .itemContainer_mn9YAd, .itemContainer_xyJHva) > .item_2rG0YD,
@@ -5385,7 +5417,7 @@ section[class*="container_"].themed_ybUK7Z {
 .groupWrapper_lm2_KW [class*="item_"] > svg.itemIcon_ge8IFm,
 .groupWrapper_lm2_KW [class*="item_"] > svg.itemIcon_lm2_KW {
   display: none;
-}.groupWrapper_lm2_KW [class*="item_"]:has()(.filterSublabelTextContainer_lm2_KW) > div > div:not(.filterSublabelTextContainer_lm2_KW) {
+}.groupWrapper_lm2_KW [class*="item_"] > div > div:has(+ .filterSublabelTextContainer_lm2_KW) {
   display: none;
 }.groupWrapper_lm2_KW [class*="item_"] > div > div {
   font-size: 16px;
@@ -5395,6 +5427,12 @@ section[class*="container_"].themed_ybUK7Z {
   display: flex;
   gap: 4px;
   align-items: baseline;
+}.filterSublabelTextContainer_lm2_KW {
+  gap: 4px;
+  align-items: baseline;
+}.filterSublabelTextContainer_lm2_KW > div {
+  font-size: 16px;
+  line-height: 20px;
 }.filterSublabelTextContainer_lm2_KW > div:first-child {
   font-weight: 500;
 }.filterSublabelTextContainer_lm2_KW > div + div,
@@ -5455,6 +5493,16 @@ section[class*="container_"].themed_ybUK7Z {
     height: 40px;
     inset-inline-start: 0;
     margin-top: -2px;
+}.cozyMessage_SY_P2T > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > img[class^="avatar_"] + .avatarDecoration_2i8Bfm,
+.cozyMessage_SY_P2T > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > img[class^="avatar_"] + .avatarDecoration_BThP8L,
+.cozyMessage_SY_P2T > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > img[class^="avatar_"] + .avatarDecoration_Gi8li2,
+.cozyMessage_SY_P2T > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > img[class^="avatar_"] + .avatarDecoration_MSDRWg,
+.cozyMessage_SY_P2T > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > img[class^="avatar_"] + .avatarDecoration_XpIUHy,
+.cozyMessage_SY_P2T > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > img[class^="avatar_"] + .avatarDecoration_mwdTRW {
+    width: calc(40px * var(--decoration-to-avatar-ratio, 1.2));
+    height: calc(40px * var(--decoration-to-avatar-ratio, 1.2));
+    inset-inline-start: calc(20px - 20px * var(--decoration-to-avatar-ratio, 1.2));
+    margin-top: calc(-2px + 20px - 20px * var(--decoration-to-avatar-ratio, 1.2));
 }.cozyMessage_SY_P2T > :is(.contents_2i8Bfm, .contents_9OQtot, .contents_CXA5dw, .contents_oITdBA, .contents_ydey4M) > img[class^="avatar_"]:hover {
     filter: none;
     opacity: 0.8;
@@ -6569,9 +6617,9 @@ section[class*="container_"].themed_ybUK7Z {
     border-radius: 5px;
     box-shadow: none;
 }:is(.channelTextArea_2x8-Qn, .channelTextArea_SY_P2T, .channelTextArea_UU236g, .channelTextArea_owUmX8, .channelTextArea_z_gUBg) > .scrollableContainer_2x8-Qn.hasStackedBar_2x8-Qn,
-:is(.channelTextArea_2x8-Qn, .channelTextArea_SY_P2T, .channelTextArea_UU236g, .channelTextArea_owUmX8, .channelTextArea_z_gUBg):has()(.stackedBars_2x8-Qn) > .scrollableContainer_2x8-Qn {
+:is(.channelTextArea_2x8-Qn, .channelTextArea_SY_P2T, .channelTextArea_UU236g, .channelTextArea_owUmX8, .channelTextArea_z_gUBg):has(.stackedBars_2x8-Qn) > .scrollableContainer_2x8-Qn {
     border-radius: 0 0 5px 5px;
-}:is(.channelTextArea_2x8-Qn, .channelTextArea_SY_P2T, .channelTextArea_UU236g, .channelTextArea_owUmX8, .channelTextArea_z_gUBg):has()(.autocompleteAttached_rg6La1) > .scrollableContainer_2x8-Qn {
+}:is(.channelTextArea_2x8-Qn, .channelTextArea_SY_P2T, .channelTextArea_UU236g, .channelTextArea_owUmX8, .channelTextArea_z_gUBg):has(.autocompleteAttached_rg6La1) > .scrollableContainer_2x8-Qn {
     border-radius: 0 0 5px 5px;
 }.scrollableContainer_2x8-Qn > [class*="inner_"] {
     padding-inline-start: 0;
@@ -7029,9 +7077,6 @@ section[class*="container_"].themed_ybUK7Z {
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
-}.membersWrap_86es0b [role="listitem"] .dnsFont_OAgVZM.dnsFont_OAgVZM {
-    font-family: var(--d18-font-primary);
-    letter-spacing: 0;
 }.membersWrap_86es0b [role="listitem"][class*="container_"]:hover .childContainer_J1Adu_,
 .membersWrap_86es0b [role="listitem"][class*="container_"]:hover .childContainer_d3vyhc {
     background-color: var(--d18-members-hover);
@@ -7243,9 +7288,6 @@ section[class*="container_"].themed_ybUK7Z {
     font-family: var(--d18-font-primary);
     font-size: 12px;
     font-weight: 500;
-}.membersWrap_86es0b .usesCardRows_g7esM5 .dnsFont_OAgVZM.dnsFont_OAgVZM {
-    font-family: var(--d18-font-primary);
-    letter-spacing: 0;
 }.membersWrap_86es0b .usesCardRows_g7esM5 .contentTitle_CAMiwx,
 .membersWrap_86es0b .usesCardRows_g7esM5 .contentTitle_g7esM5,
 .membersWrap_86es0b .usesCardRows_g7esM5 .contentTitle_v5eeZH {
@@ -7360,44 +7402,6 @@ section[class*="container_"].themed_ybUK7Z {
     border-radius: 0;
 }:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) > [class*="inner_"]::before {
     display: none;
-}:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) .dnsFont_OAgVZM.dnsFont_OAgVZM {
-    font-family: var(--d18-font-primary);
-    letter-spacing: 0;
-}:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_4sPjw-,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_GAXaiU,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_H11xQD,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_Hv1EkO,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_Lcors1,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_MLLsfk,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_NZ34f3,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_PHnyXK,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_TfLD5L,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_efZcjx,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_or4Hj-,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_s6-upr,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .innerContainer_vbNX0y,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_5AnA9_,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_61u9G9,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_BTjcfU,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_Bs1Jwb,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_Et7tR8,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_H8nOze,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_JP8RBE,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_SMlho9,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_VAgy6F,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer__KoJTP,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_d2GpC2,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_ePgMSx,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_jGUOK0,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_klbANn,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_ro3Uxe,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_ySVCWt,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_yW5Dvc,
-:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) :is(.displayName_2Rf5at, .displayName_C2XpHA, .displayName__Bgzj0, .displayName_axd_gA, .displayName_uKEKOI) .spinnerContainer_yzLwxU {
-    background: none;
-    color: var(--custom-display-name-styles-main-color, var(--d18-pf-name));
-    -webkit-text-fill-color: currentColor;
-    animation: none;
 }.user-profile-popout.outer_2LrOmL,
 .user-profile-popout.outer_ERB-Vv,
 .user-profile-popout.outer_P1YEjQ,
@@ -7498,6 +7502,10 @@ section[class*="container_"].themed_ybUK7Z {
 .user-profile-popout [class*="header_"] > [class*="avatar_"] svg.mask_jdr5pz {
     width: 103.5px;
     height: 103.5px;
+}svg[class*="mask_"]:is(.svg_7RsUnm, .svg_SZ8p4i, .svg_XpIUHy, .svg_bFFeGy, .svg_hqZPsU, .svg_so5RkR, .svg_wWbLtM) + svg.avatarDecorationContainer_NdapwK,
+svg[class*="mask_"]:is(.svg_7RsUnm, .svg_SZ8p4i, .svg_XpIUHy, .svg_bFFeGy, .svg_hqZPsU, .svg_so5RkR, .svg_wWbLtM) + svg.avatarDecorationContainer_XpIUHy {
+    width: auto;
+    height: calc(100% * var(--decoration-to-avatar-ratio, 1.2));
 }:is(.user-profile-popout, .user-profile-sidebar) [class*="header_"] > .referenceContainer_rmCN9_ {
     position: absolute;
     inset: 0 auto auto 10px;
@@ -7578,6 +7586,7 @@ section[class*="container_"].themed_ybUK7Z {
     -webkit-mask-image: none;
     mask-image: none;
     animation: none;
+    scrollbar-width: none;
     scrollbar-gutter: auto;
 }.user-profile-popout [class*="body_"]:is(.scrollerBase_JFqgFB, .scrollerBase_Wo6Fk5, .scrollerBase_tqapBM) > div:first-child,
 .user-profile-sidebar [class*="info_"] > div:first-child {
@@ -7663,6 +7672,8 @@ section[class*="container_"].themed_ybUK7Z {
     border: 0;
     border-radius: var(--d18-radius);
     box-shadow: none;
+}:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) .cardsList_M2WrKU .backgroundCard_M2WrKU {
+    background: color-mix(in srgb, var(--d18-pf-card) 50%, transparent);
 }:is(.user-profile-popout, .user-profile-sidebar, .user-profile-modal-v2) .cardsList_M2WrKU [class*="heading-xs"] {
     color: var(--d18-pf-name);
     font-size: 14px;
@@ -8268,6 +8279,44 @@ section[class*="container_"].themed_ybUK7Z {
     background: var(--d18-brand-hover);
 }.user-profile-sidebar :is(section, :is(.overlay_-tj9SA, .overlay_3SsYXF, .overlay_8Ei6w_, .overlay_A7qlid, .overlay_APCwFf, .overlay_CXA5dw, .overlay_D8O-nd, .overlay_EAKysR, .overlay_ECBSq8, .overlay_HhFoZE, .overlay_HjAsMI, .overlay_J5LrJv, .overlay_JHO5jQ, .overlay_Lb4UkJ, .overlay_NdapwK, .overlay_OG6JVj, .overlay_P1YEjQ, .overlay_PupK8L, .overlay_SlQp4P, .overlay_T3Ot2R, .overlay_WRLIGC, .overlay_Xweo-z, .overlay_Y0eJLL, .overlay__H_udz, .overlay__o8_Xq, .overlay_a4dZSO, .overlay_hKMjy9, .overlay_jdr5pz, .overlay_jk-MUB, .overlay_o3hXTo, .overlay_oKjO_f, .overlay_pN_Oce, .overlay_tvT5v-, .overlay_w2kxj3, .overlay_wNVtHP, .overlay_wWbLtM, .overlay_zNeEEq)) {
     border-radius: var(--d18-radius);
+}.user-profile-sidebar .overlay_-tj9SA,
+.user-profile-sidebar .overlay_3SsYXF,
+.user-profile-sidebar .overlay_8Ei6w_,
+.user-profile-sidebar .overlay_A7qlid,
+.user-profile-sidebar .overlay_APCwFf,
+.user-profile-sidebar .overlay_CXA5dw,
+.user-profile-sidebar .overlay_D8O-nd,
+.user-profile-sidebar .overlay_EAKysR,
+.user-profile-sidebar .overlay_ECBSq8,
+.user-profile-sidebar .overlay_HhFoZE,
+.user-profile-sidebar .overlay_HjAsMI,
+.user-profile-sidebar .overlay_J5LrJv,
+.user-profile-sidebar .overlay_JHO5jQ,
+.user-profile-sidebar .overlay_Lb4UkJ,
+.user-profile-sidebar .overlay_NdapwK,
+.user-profile-sidebar .overlay_OG6JVj,
+.user-profile-sidebar .overlay_P1YEjQ,
+.user-profile-sidebar .overlay_PupK8L,
+.user-profile-sidebar .overlay_SlQp4P,
+.user-profile-sidebar .overlay_T3Ot2R,
+.user-profile-sidebar .overlay_WRLIGC,
+.user-profile-sidebar .overlay_Xweo-z,
+.user-profile-sidebar .overlay_Y0eJLL,
+.user-profile-sidebar .overlay__H_udz,
+.user-profile-sidebar .overlay__o8_Xq,
+.user-profile-sidebar .overlay_a4dZSO,
+.user-profile-sidebar .overlay_hKMjy9,
+.user-profile-sidebar .overlay_jdr5pz,
+.user-profile-sidebar .overlay_jk-MUB,
+.user-profile-sidebar .overlay_o3hXTo,
+.user-profile-sidebar .overlay_oKjO_f,
+.user-profile-sidebar .overlay_pN_Oce,
+.user-profile-sidebar .overlay_tvT5v-,
+.user-profile-sidebar .overlay_w2kxj3,
+.user-profile-sidebar .overlay_wNVtHP,
+.user-profile-sidebar .overlay_wWbLtM,
+.user-profile-sidebar .overlay_zNeEEq {
+    background: var(--d18-pf-card);
 }
 
 :root {
@@ -9135,10 +9184,32 @@ section[class*="container_"].themed_ybUK7Z {
 [role="menu"] :is(.colorDefault_M3qk4j, .colorDefault_Q02kKo) .checkbox_yW5Dvc,
 [role="menu"] :is(.colorDefault_M3qk4j, .colorDefault_Q02kKo) .checkbox_z5ZLH3 {
   color: var(--d18-brand);
-}[role="menu"] .customItem_M3qk4j {
-  color: var(--d18-menu-item);
 }[role="menu"] [role="group"]:has(> .customItem_M3qk4j) {
-  padding: 4px 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 0;
+  padding: 4px 3px;
+}[role="menu"] .customItem_M3qk4j {
+  --background-mod-subtle: transparent;
+  --background-mod-normal: transparent;
+  --background-mod-strong: transparent;
+  --background-mod-muted: transparent;
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  min-width: 0;
+  height: 24px;
+  border-radius: 3px;
+  overflow: hidden;
+  color: var(--d18-menu-item);
+  cursor: pointer;
+}[role="menu"] .customItem_M3qk4j:is(:hover, :is(.focused_J7VcHX, .focused_JpdZpJ, .focused_K-iqS8, .focused_M3qk4j, .focused_N99eHz, .focused_PupK8L, .focused_Qi4I4L, .focused_YIHpnz, .focused_b-mzk1, .focused_frsBab, .focused_gnMEnp, .focused_i16Ad0, .focused_lZtGs8, .focused_uFkqU2, .focused_xGVN-l, .pauseWhenUnfocused_MJp8Qt, .unfocused_gnMEnp)) {
+  background-color: var(--d18-menu-item-hover-bg);
+}[role="menu"] .customItem_M3qk4j img {
+  width: 18px;
+  height: 18px;
 }[data-mana-component="tooltip"] {
   background-color: var(--d18-tooltip-bg);
   border-radius: 5px;
@@ -10220,60 +10291,60 @@ section[class*="container_"].themed_ybUK7Z {
   line-height: 16px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-}:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.applicationSublabel_nByiE3[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.defaultMarginlabel_csPsk2[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_-MQQPo[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_-PdA9i[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_2k8BZI[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_4guu7-[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_5HupHs[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_5cyhKQ[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_8b5Lkq[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_Ax3P1g[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_BkGrJJ[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_CWLnwx[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_D4-WfD[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_FOCwq3[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_GEES5c[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_GxzgQj[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_M3qk4j[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_M5fVqw[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_MRjIbW[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_MeMr9t[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_NNQ_IR[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_NdYDYt[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_PiyhYP[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_Q6iJsn[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_R-K6-V[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_Us_HOb[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_V7nUkK[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_VhFsFg[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_Z5MObs[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_ZMR-xe[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label__LdbI1[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_b6IrA3[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_cR4ic2[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_csPsk2[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_dxHapT[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_j5xNzb[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_nqXfgO[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_oCxUd2[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_pfW0SY[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_qGOiIb[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_qLCogH[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_s3GN8p[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_tJLRhf[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_u5soQM[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_uFkqU2[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_uH52YQ[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_vDbele[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_vTUVyc[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_yW5Dvc[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_-sYQF3[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_R-K6-V[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_qLCogH[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_tPzYCm[data-text-variant],
-:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has()(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_yW5Dvc[data-text-variant] {
+}:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.applicationSublabel_nByiE3[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.defaultMarginlabel_csPsk2[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_-MQQPo[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_-PdA9i[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_2k8BZI[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_4guu7-[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_5HupHs[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_5cyhKQ[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_8b5Lkq[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_Ax3P1g[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_BkGrJJ[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_CWLnwx[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_D4-WfD[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_FOCwq3[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_GEES5c[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_GxzgQj[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_M3qk4j[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_M5fVqw[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_MRjIbW[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_MeMr9t[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_NNQ_IR[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_NdYDYt[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_PiyhYP[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_Q6iJsn[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_R-K6-V[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_Us_HOb[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_V7nUkK[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_VhFsFg[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_Z5MObs[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_ZMR-xe[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label__LdbI1[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_b6IrA3[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_cR4ic2[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_csPsk2[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_dxHapT[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_j5xNzb[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_nqXfgO[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_oCxUd2[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_pfW0SY[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_qGOiIb[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_qLCogH[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_s3GN8p[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_tJLRhf[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_u5soQM[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_uFkqU2[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_uH52YQ[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_vDbele[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_vTUVyc[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.label_yW5Dvc[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_-sYQF3[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_R-K6-V[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_qLCogH[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_tPzYCm[data-text-variant],
+:is([data-mana-component="layer-modal"], .standardSidebarView_jnk11m, [data-mana-component="modal"]) [class*="container_"]:has(> :is(.control_9clQ_c, .control_VhFsFg, .control_fNq-Kh, .control_vDbele) [data-mana-component="switch"]) label.sublabel_yW5Dvc[data-text-variant] {
   color: var(--d18-text-input) !important;
   font-size: 16px;
   font-weight: 500;
@@ -11086,7 +11157,7 @@ section[class*="container_"].themed_ybUK7Z {
 }.peopleColumn_zrUwGA > header:not(:has(form)) {
     padding: 40px 30px 16px;
     border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
-}.peopleColumn_zrUwGA > header:not(:has()(form)) > h2 {
+}.peopleColumn_zrUwGA > header:not(:has(form)) > h2 {
     color: var(--d18-text-header) !important;
 }.peopleColumn_zrUwGA > .grid_2akU6F,
 .peopleColumn_zrUwGA > .grid_2jx7Hy,
@@ -11382,10 +11453,10 @@ section[class*="container_"].themed_ybUK7Z {
 .emojiPickerHasTabWrapper_-sZhZn .categoryList_40yGEf,
 .emojiPickerHasTabWrapper_-sZhZn .categoryList_X9_kMu,
 .emojiPickerHasTabWrapper_-sZhZn .categoryList_gYY06b,
-:is([class^="wrapper_"], [class*=" wrapper_"]):has()(> :is(:is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c), :is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c))) > .categoryList_-sZhZn,
-:is([class^="wrapper_"], [class*=" wrapper_"]):has()(> :is(:is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c), :is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c))) > .categoryList_40yGEf,
-:is([class^="wrapper_"], [class*=" wrapper_"]):has()(> :is(:is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c), :is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c))) > .categoryList_X9_kMu,
-:is([class^="wrapper_"], [class*=" wrapper_"]):has()(> :is(:is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c), :is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c))) > .categoryList_gYY06b {
+:is([class^="wrapper_"], [class*=" wrapper_"]):has(> :is(:is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c), :is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c))) > .categoryList_-sZhZn,
+:is([class^="wrapper_"], [class*=" wrapper_"]):has(> :is(:is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c), :is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c))) > .categoryList_40yGEf,
+:is([class^="wrapper_"], [class*=" wrapper_"]):has(> :is(:is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c), :is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c))) > .categoryList_X9_kMu,
+:is([class^="wrapper_"], [class*=" wrapper_"]):has(> :is(:is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c), :is(.emojiPicker_-sZhZn, .emojiPicker_GNQQ1c))) > .categoryList_gYY06b {
     background-color: var(--d18-picker-bg);
     border-inline-end: 1px solid var(--d18-picker-line);
     box-sizing: border-box;
@@ -11974,7 +12045,7 @@ button[class*="button_"].rounded_F7qvhY {
   font-size: 16px;
 }.theme-dark [class*="wrapper_"][class*="container_"]:has(> input):focus-within {
   outline: none;
-}[class*="wrapper_"][class*="container_"]:has()(> input) > input::placeholder {
+}[class*="wrapper_"][class*="container_"]:has(> input) > input::placeholder {
   color: var(--d18-text-muted);
 }[class*="wrapper_"][class*="container_"].prism_or4Hj-:has(> input),
 [class*="wrapper_"][class*="container_"].sm_0PLWhS:has(> input),
@@ -12081,8 +12152,8 @@ textarea.textArea_vyctKY {
   border: none !important;
   background-color: var(--d18-switch-off) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
-}label:has()(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"],
-[class*="container_"]:has()(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] {
+}label:has(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"],
+[class*="container_"]:has(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] {
   background-color: var(--d18-switch-on) !important;
 }.switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_-xPNlI,
 .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_8qMUr2,
@@ -12095,16 +12166,16 @@ textarea.textArea_vyctKY {
   top: -1.5px;
   left: -1.5px !important;
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
-}label:has()(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_-xPNlI,
-label:has()(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_8qMUr2,
-label:has()(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_9AraPt,
-label:has()(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_dXbb7s,
-label:has()(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_iar92T,
-[class*="container_"]:has()(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_-xPNlI,
-[class*="container_"]:has()(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_8qMUr2,
-[class*="container_"]:has()(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_9AraPt,
-[class*="container_"]:has()(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_dXbb7s,
-[class*="container_"]:has()(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_iar92T {
+}label:has(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_-xPNlI,
+label:has(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_8qMUr2,
+label:has(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_9AraPt,
+label:has(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_dXbb7s,
+label:has(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_iar92T,
+[class*="container_"]:has(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_-xPNlI,
+[class*="container_"]:has(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_8qMUr2,
+[class*="container_"]:has(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_9AraPt,
+[class*="container_"]:has(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_dXbb7s,
+[class*="container_"]:has(input[role="switch"]:checked) > .switchIndicator_9AraPt[data-mana-component="switch"] > svg.thumb_iar92T {
   left: 16.5px !important;
 }.switchIndicator_9AraPt[data-mana-component="switch"] rect {
   fill: #ffffff;
@@ -12279,6 +12350,8 @@ label:has()(input:checked) > .switchIndicator_9AraPt[data-mana-component="switch
     background: transparent;
 }:root.custom-theme-background .nowPlayingColumn_zrUwGA {
     background: var(--d18-nitro-members);
+}:root.custom-theme-background .topPill_6zZYhF[class*="tabBar_"][role="tablist"] > [role="tab"]:hover:not([aria-selected="true"]) {
+    background-color: var(--d18-hover);
 }.theme-light :is(.channelTextArea_2x8-Qn, .channelTextArea_SY_P2T, .channelTextArea_UU236g, .channelTextArea_owUmX8, .channelTextArea_z_gUBg) > .scrollableContainer_2x8-Qn {
     box-shadow: inset 0 0 0 1px var(--d18-border-input);
 }:root.theme-light:not(.custom-theme-background) [class*="base_"] > .bar_-wKTcX:has(> :is(.trailing_3zSH5d, .trailing_62dgo7, .trailing_CJLDJI, .trailing_INrZ8n, .trailing_dhbHaH, .trailing_o2hjBM, .trailing_u5soQM)),

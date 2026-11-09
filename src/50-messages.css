@@ -60,6 +60,13 @@
     margin-top: -2px;
 }
 
+[class*="cozyMessage_"] > [class*="contents_"] > img[class^="avatar_"] + [class*="avatarDecoration_"] {
+    width: calc(40px * var(--decoration-to-avatar-ratio, 1.2));
+    height: calc(40px * var(--decoration-to-avatar-ratio, 1.2));
+    inset-inline-start: calc(20px - 20px * var(--decoration-to-avatar-ratio, 1.2));
+    margin-top: calc(-2px + 20px - 20px * var(--decoration-to-avatar-ratio, 1.2));
+}
+
 [class*="cozyMessage_"] > [class*="contents_"] > img[class^="avatar_"]:hover {
     filter: none;
     opacity: 0.8;

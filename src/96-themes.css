@@ -70,6 +70,11 @@
     background: var(--d18-nitro-members);
 }
 
+/* the friends tabs sit on the see-through header, so their hover is an overlay instead of the solid 2018 grey */
+:root.custom-theme-background [class*="topPill_"][class*="tabBar_"][role="tablist"] > [role="tab"]:hover:not([aria-selected="true"]) {
+    background-color: var(--d18-hover);
+}
+
 /* light: the message box gets a thin border, as in the older light clients */
 .theme-light [class*="channelTextArea_"] > [class*="scrollableContainer_"] {
     box-shadow: inset 0 0 0 1px var(--d18-border-input);

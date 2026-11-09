@@ -108,11 +108,6 @@
     line-height: 20px;
 }
 
-[class*="membersWrap_"] [role="listitem"] [class*="dnsFont_"][class*="dnsFont_"] {
-    font-family: var(--d18-font-primary);
-    letter-spacing: 0;
-}
-
 [class*="membersWrap_"] [role="listitem"][class*="container_"]:hover [class*="childContainer_"] {
     background-color: var(--d18-members-hover);
 }
@@ -219,11 +214,6 @@
     font-family: var(--d18-font-primary);
     font-size: 12px;
     font-weight: 500;
-}
-
-[class*="membersWrap_"] [class*="usesCardRows_"] [class*="dnsFont_"][class*="dnsFont_"] {
-    font-family: var(--d18-font-primary);
-    letter-spacing: 0;
 }
 
 [class*="membersWrap_"] [class*="usesCardRows_"] [class*="contentTitle_"] {

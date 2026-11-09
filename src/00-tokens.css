@@ -1310,7 +1310,7 @@
     --d18-menu-bg: color-mix(in oklab, #ffffff 100%, var(--d18-tint));
     --d18-menu-item-hover-bg: color-mix(in oklab, #f6f6f7 100%, var(--d18-tint));
     --d18-select-menu-bg: color-mix(in oklab, #ffffff 100%, var(--d18-tint));
-    --d18-home-row-hover: color-mix(in oklab, #f6f6f7 100%, var(--d18-tint));
+    --d18-home-row-hover: var(--d18-hover);
     --d18-composer-bg: rgba(255, 255, 255, 0.45);
 }
 
@@ -1358,8 +1358,13 @@
     --d18-guilds-icon-bg: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
     --d18-guilds-add-bg: color-mix(in oklab, #1e2124 100%, var(--d18-tint));
     --d18-guilds-voice-bg: color-mix(in oklab, #1e2124 100%, var(--d18-tint));
-    --d18-ch-hover-box: color-mix(in oklab, #36393f 100%, var(--d18-tint));
-    --d18-dm-hover-box: color-mix(in oklab, #36393f 100%, var(--d18-tint));
+    --d18-hover: color-mix(in oklab, var(--d18-bg-accent) 30%, transparent);
+    --d18-selected: color-mix(in oklab, var(--d18-bg-accent) 60%, transparent);
+    --interactive-background-hover: var(--d18-hover);
+    --interactive-background-active: var(--d18-hover);
+    --interactive-background-selected: var(--d18-selected);
+    --d18-ch-hover-box: var(--d18-hover);
+    --d18-dm-hover-box: var(--d18-hover);
     --d18-panel-border: color-mix(in oklab, #36393f 100%, var(--d18-tint));
     --d18-header-bg: color-mix(in oklab, #36393f 100%, var(--d18-tint));
     --d18-popout-bg: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
@@ -1368,10 +1373,11 @@
     --d18-search-popout-bg: color-mix(in oklab, #36393f 100%, var(--d18-tint));
     --d18-autocomplete-bg: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
     --d18-autocomplete-selected: color-mix(in oklab, #36393f 100%, var(--d18-tint));
-    --d18-members-hover: color-mix(in oklab, #36393f 100%, var(--d18-tint));
+    --d18-members-hover: var(--d18-hover);
+    --d18-members-open: var(--d18-selected);
     --d18-menu-bg: color-mix(in oklab, #18191c 100%, var(--d18-tint));
     --d18-menu-item-hover-bg: color-mix(in oklab, #040405 100%, var(--d18-tint));
-    --d18-home-row-hover: color-mix(in oklab, #414449 100%, var(--d18-tint));
+    --d18-home-row-hover: var(--d18-hover);
     --d18-select-menu-bg: color-mix(in oklab, #303237 100%, var(--d18-tint));
     --d18-msg-date-line: hsla(0, 0%, 100%, 0.1);
     --d18-composer-bg: rgba(0, 0, 0, 0.25);
@@ -1387,7 +1393,15 @@
 :root.custom-theme-background.theme-light [class*="sidebar_"]:has(> [class*="sidebarList_"]) {
     --background-base-lower: color-mix(in oklab, #2f3136 100%, var(--d18-tint));
     --background-base-low: color-mix(in oklab, #2b2d31 100%, var(--d18-tint));
-    --interactive-background-hover: color-mix(in oklab, #36393f 100%, var(--d18-tint));
-    --interactive-background-active: color-mix(in oklab, #36393f 100%, var(--d18-tint));
-    --background-modifier-active: color-mix(in oklab, #36393f 100%, var(--d18-tint));
+    --interactive-background-hover: var(--d18-hover);
+    --interactive-background-active: var(--d18-hover);
+    --interactive-background-selected: var(--d18-selected);
+    --background-modifier-active: var(--d18-hover);
+}
+
+/* the gradient shows through the member list, so its rows take see-through overlays too */
+:root.custom-theme-background :is(.theme-dark, .theme-darker) [class*="membersWrap_"] {
+    --interactive-background-hover: var(--d18-hover);
+    --interactive-background-active: var(--d18-hover);
+    --interactive-background-selected: var(--d18-selected);
 }
