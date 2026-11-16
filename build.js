@@ -49,7 +49,7 @@ function splitTop(s, isSep) {
 function convertAnc(s) {
   return s.replace(ATTR, (whole, op, q, value) => {
     const h = hits(op, value);
-    if (!h.length || h.length > +(process.env.ANC_MAX || 8)) return whole;
+    if (!h.length || h.length > +(process.env.ANC_MAX || 64)) return whole;
     stats.isList++;
     return isList(h);
   });
@@ -128,7 +128,7 @@ function compileSelector(sel) {
   const { rest, found } = compoundAttrs(right);
   const prefix = fixed.slice(0, lastIdx).join('');
   const restConverted = convertInner(rest.replace(/\u0000\d+\u0000/g, m => m));
-  if (!found.length) return [prefix + convertInner(right)];
+  if (!found.length) return { prefix, combos: [convertInner(right)] };
   const lists = found.map(f => hits(f.op, f.value));
   let combos = [restConverted];
   let product = 1;
@@ -148,7 +148,46 @@ function compileSelector(sel) {
       combos = combos.map(c => c.replace(token, f.attr));
     }
   });
-  return combos.map(c => prefix + c);
+  return { prefix, combos };
+}
+
+function blockEnd(css, open) {
+  let depth = 0;
+  for (let i = open; i < css.length; i++) {
+    const c = css[i];
+    if (c === '/' && css[i + 1] === '*') { i = css.indexOf('*/', i + 2) + 1; continue; }
+    if (c === '"' || c === "'") { let j = i + 1; while (j < css.length && css[j] !== c) { if (css[j] === '\\') j++; j++; } i = j; continue; }
+    if (c === '{') depth++;
+    if (c === '}' && --depth === 0) return i;
+  }
+  return css.length;
+}
+
+function stripComments(text) {
+  let out = '';
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '/' && text[i + 1] === '*') { i = text.indexOf('*/', i + 2) + 1; continue; }
+    if (c === '"' || c === "'") { let j = i + 1; while (j < text.length && text[j] !== c) { if (text[j] === '\\') j++; j++; } out += text.slice(i, j + 1); i = j; continue; }
+    out += c;
+  }
+  return out;
+}
+
+function emitRule(compiled, body) {
+  const plain = [], nested = [];
+  for (const { prefix, combos } of compiled) {
+    stats.selectorsOut += combos.length;
+    if (combos.length > 1 && prefix.trim()) nested.push({ prefix, combos });
+    else plain.push(...combos.map(c => prefix + c));
+  }
+  let out = plain.length ? plain.join(',\n') + ' {' + body + '}' : '';
+  for (const { prefix, combos } of nested) {
+    const m = /^([\s\S]*?)\s*([>+~]?)\s*$/.exec(prefix);
+    const lead = '& ' + (m[2] ? m[2] + ' ' : '');
+    out += (out ? '\n' : '') + m[1] + ' {\n' + combos.map(c => lead + c).join(',\n') + ' {' + body + '}\n}';
+  }
+  return out;
 }
 
 function compileRuleList(css) {
@@ -163,9 +202,11 @@ function compileRuleList(css) {
       const mode = stack.length && stack[stack.length - 1] !== 'group' ? 'inner' : (p.startsWith('@media') || p.startsWith('@supports') || p.startsWith('@container') || p.startsWith('@layer') ? 'group' : p.startsWith('@') ? 'skip' : 'rule');
       if (mode === 'rule') {
         stats.rules++;
-        const sels = splitTop(p, ch => ch === ',').map(s => s.trim()).filter(Boolean).flatMap(compileSelector);
-        stats.selectorsOut += sels.length;
-        out += sels.join(',\n') + ' {';
+        const end = blockEnd(css, i);
+        out += emitRule(splitTop(p, ch => ch === ',').map(s => s.trim()).filter(Boolean).map(compileSelector), stripComments(css.slice(i + 1, end)));
+        prelude = '';
+        i = end + 1;
+        continue;
       } else {
         out += prelude + '{';
       }
